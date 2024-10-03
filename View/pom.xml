@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany</groupId>
+    <artifactId>View</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE220</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ingenme</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.9</version>
+            <type>jar</type>
+        </dependency>
+
+        <!-- Dependencia del módulo Business -->
+        <dependency>
+            <groupId>com.mycompany</groupId> <!-- Cambia por el groupId correcto del Business -->
+            <artifactId>Business</artifactId> <!-- Cambia por el artifactId correcto del Business -->
+            <version>1.0-SNAPSHOT</version> <!-- Cambia por la versión correcta -->
+        </dependency>
+
+        <!-- Dependencia del módulo Model -->
+        <dependency>
+            <groupId>com.mycompany</groupId> <!-- Cambia por el groupId correcto del Model -->
+            <artifactId>Model</artifactId> <!-- Cambia por el artifactId correcto del Model -->
+            <version>1.0-SNAPSHOT</version> <!-- Cambia por la versión correcta -->
+        </dependency>
+
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <exec.mainClass>com.mycompany.view.View</exec.mainClass>
+    </properties>
+</project>
