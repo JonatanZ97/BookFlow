@@ -24,7 +24,7 @@ public class SocioDAOImpl implements SocioDAO {
             conexion = objetoConexion.establecerConexion();
 
             // Consulta actualizada para incluir penalizado y motivoPenalizado
-            String consulta = "SELECT idsocio, nombre, apellido, dni, fecha_nac, telefono, mail, direccion, penalizado, motivo_penalizado FROM Personas";
+            String consulta = "SELECT idsocio, nombre, apellido, dni, fecha_nac, telefono, mail, direccion, penalizado, motivo_penalizado FROM Socios";
             preparacion = conexion.prepareStatement(consulta);
             resultado = preparacion.executeQuery();
 
@@ -73,7 +73,7 @@ public class SocioDAOImpl implements SocioDAO {
         // Consulta SQL actualizada con las columnas penalizado y motivoPenalizado
         Connection conexion = null;
         PreparedStatement ejecucion = null;
-        String consulta = "INSERT INTO Personas (nombre, apellido, dni, fecha_nac, telefono, mail, direccion, penalizado, motivo_penalizado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String consulta = "INSERT INTO Socios (nombre, apellido, dni, fecha_nac, telefono, mail, direccion, penalizado, motivo_penalizado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conexion = objetoConexion.establecerConexion();
             ejecucion = conexion.prepareStatement(consulta);
