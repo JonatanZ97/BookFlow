@@ -104,20 +104,20 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public void eliminarLibro(int idLibro) throws ModelException {
+    public void eliminarLibro(long numeroIdentificacion) throws ModelException {
         Connection conexion = null;
         PreparedStatement declaracion = null;
         try {
             conexion = objetoConexion.establecerConexion();
-            String consuta = "DELETE FROM Libros WHERE idlibro = ?";
+            String consuta = "DELETE FROM Libros WHERE numero_identificacion = ?";
             declaracion = conexion.prepareStatement(consuta);
-            declaracion.setInt(1, idLibro);
+            declaracion.setLong(1, numeroIdentificacion);
 
             int rowsAffected = declaracion.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Libro eliminado exitosamente.");
             } else {
-                System.out.println("No se encontro ningun libro con el ID especificado.");
+                System.out.println("No se encontro ningun libro con el numero de identificacion especificado.");
             }
         } catch (Exception e) {
             throw new ModelException("Error al eliminar el libro: " + e.getMessage());
@@ -136,22 +136,22 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public void cambiarEstadoLibro(int idLibro, String nuevoEstado) throws ModelException {
+    public void cambiarEstadoLibro(long numeroIdentificacion, String nuevoEstado) throws ModelException {
         Connection conexion = null;
         PreparedStatement declaracion = null;
 
         try {
             conexion = objetoConexion.establecerConexion();
-            String consulta = "UPDATE Libros SET estado_libro = ? WHERE idlibro = ?";
+            String consulta = "UPDATE Libros SET estado_libro = ? WHERE numero_identificacion = ?";
             declaracion = conexion.prepareStatement(consulta);
             declaracion.setString(1, nuevoEstado);
-            declaracion.setInt(2, idLibro);
+            declaracion.setLong(2, numeroIdentificacion);
 
             int filasAfectadas = declaracion.executeUpdate();
             if (filasAfectadas > 0) {
                 System.out.println("Estado del libro actualizado exitosamente a: " + nuevoEstado);
             } else {
-                System.out.println("No se encontro ningun libro con el ID especificado.");
+                System.out.println("No se encontro ningun libro con el numero de identificacion especificado.");
             }
         } catch (Exception e) {
             throw new ModelException("Error al actualizar el estado del libro: " + e.getMessage());
