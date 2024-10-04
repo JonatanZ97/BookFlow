@@ -1,11 +1,15 @@
 package com.mycompany.view;
 
+import BusinessObjects.SociosBusiness;
+import ModelException.ModelException;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -289,12 +293,18 @@ public class NuevoSocio extends javax.swing.JFrame {
             if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             } else {
+                SociosBusiness socios = new SociosBusiness();
+                socios.guardarSocio(nombre, apellido, dni, fechaLocal, telefono, mail, direccion);
+                Socios socio = new Socios();
+                socio.setVisible(true);
                 this.dispose();
             }
 
         } catch (NumberFormatException e) {
             // Manejar el error si el texto no es un número válido
             JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        } catch (ModelException ex) {
+            Logger.getLogger(NuevoSocio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
