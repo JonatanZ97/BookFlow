@@ -94,13 +94,16 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 190, 40));
         jPanel1.add(contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 190, 40));
 
-        jButton2.setText("jButton2");
+        jButton2.setBackground(new java.awt.Color(255, 0, 0));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("X");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -178,7 +181,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
