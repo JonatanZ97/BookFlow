@@ -178,9 +178,14 @@ public class SociosBusiness {
         socio.setDireccion(direccion);
 
         SocioDAOImpl guardar = new SocioDAOImpl();
-        guardar.guardarSocio(socio);
 
-        return true;
+        if (guardar.verificarSocio(socio.getDni())) {
+            return false;
+        } else {
+            guardar.guardarSocio(socio);
+            return true;
+        }
+
     }
 
     public boolean verificarNoVacia(String cadena) {
@@ -251,9 +256,58 @@ public class SociosBusiness {
         // Retornar la lista de descripciones
         return listaString;
     }
-    
-    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado){
-        
+
+    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado) throws ModelException {
+        if (dni < 1 || telefono < 10000000 || id < 1) {
+            return false;
+        }
+
+        if (verificarNoVacia(nombre)) {
+            return false;
+        }
+
+        if (verificarNoVacia(apellido)) {
+            return false;
+        }
+
+        if (verificarNoVacia(mail)) {
+            return false;
+        }
+
+        if (verificarNoVacia(direccion)) {
+            return false;
+        }
+
+        if (!soloLetras(nombre)) {
+            return false;
+        }
+
+        if (!soloLetras(apellido)) {
+            return false;
+        }
+
+        Socio socio = new Socio();
+
+        socio.setId(id);
+        socio.setNombre(nombre);
+        socio.setApellido(apellido);
+        socio.setDni(dni);
+        socio.setFechaNacimiento(fechaNacimiento);
+        socio.setTelefono(telefono);
+        socio.setMail(mail);
+        socio.setDireccion(direccion);
+        socio.setPenalizado(penalizado);
+        socio.setMotivoPenalizado(motivoPenalizado);
+
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        if (socioModel.verificarSocio(socio.getDni())) {//compruebo que no exista un socio con ese dni en la base de datos
+            return false;
+        } else {
+            socioModel.cambiarDatosSocio(socio);
+            return true;
+        }
+
     }
 
 }
