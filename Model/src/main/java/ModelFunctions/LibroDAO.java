@@ -10,7 +10,7 @@ public interface LibroDAO {
     
     public boolean guardarLibro(Libro libro) throws ModelException;
     
-    public void eliminarLibro(int idLibro) throws ModelException;
+    public void eliminarLibro(long numeroIdentificacion) throws ModelException;
     
-    public void cambiarEstadoLibro(int idLibro, String nuevoEstado) throws ModelException;
+    public void cambiarEstadoLibro(long numeroIdentificacion, String nuevoEstado) throws ModelException;
 }
