@@ -4,6 +4,9 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.LibrosBusiness;
+import java.util.ArrayList;
+
 /**
  *
  * @author 54234
@@ -35,15 +38,15 @@ public class CatalogoLibros extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        BuscarLibros = new javax.swing.JButton();
+        TotalLibros = new javax.swing.JButton();
+        BotonAutor = new javax.swing.JRadioButton();
+        BotonEditorial = new javax.swing.JRadioButton();
+        BotonCdu = new javax.swing.JRadioButton();
+        BotonTitulo = new javax.swing.JRadioButton();
+        CampoBusqueda = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        AreaLibros = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -98,50 +101,50 @@ public class CatalogoLibros extends javax.swing.JFrame {
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 300, 30));
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BuscarLibros.setBackground(new java.awt.Color(204, 255, 204));
+        BuscarLibros.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BuscarLibros.setText("BUSCAR");
+        BuscarLibros.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BuscarLibros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BuscarLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BuscarLibrosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 110, 40));
+        jPanel1.add(BuscarLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 110, 40));
 
-        jButton2.setBackground(new java.awt.Color(204, 255, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("MOSTRAR TODOS");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        TotalLibros.setBackground(new java.awt.Color(204, 255, 204));
+        TotalLibros.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TotalLibros.setText("MOSTRAR TODOS");
+        TotalLibros.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TotalLibros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TotalLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                TotalLibrosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 140, 40));
+        jPanel1.add(TotalLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 140, 40));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Autor");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        buttonGroup1.add(BotonAutor);
+        BotonAutor.setText("Autor");
+        jPanel1.add(BotonAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Editorial");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        buttonGroup1.add(BotonEditorial);
+        BotonEditorial.setText("Editorial");
+        jPanel1.add(BotonEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("CDU");
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        buttonGroup1.add(BotonCdu);
+        BotonCdu.setText("CDU");
+        jPanel1.add(BotonCdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("Titulo");
-        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 240, 40));
+        buttonGroup1.add(BotonTitulo);
+        BotonTitulo.setText("Titulo");
+        jPanel1.add(BotonTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel1.add(CampoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 240, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        AreaLibros.setColumns(20);
+        AreaLibros.setRows(5);
+        jScrollPane1.setViewportView(AreaLibros);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 590, 580));
 
@@ -187,13 +190,28 @@ public class CatalogoLibros extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BuscarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarLibrosActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BuscarLibrosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-               
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void TotalLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalLibrosActionPerformed
+     LibrosBusiness librosRecibidos = new LibrosBusiness();
+       ArrayList<LibrosBusiness> listaLibros = new ArrayList<>();  
+       listaLibros = librosRecibidos.getListaLibros();
+       
+       
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_TotalLibrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,9 +249,15 @@ public class CatalogoLibros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AreaLibros;
+    private javax.swing.JRadioButton BotonAutor;
+    private javax.swing.JRadioButton BotonCdu;
+    private javax.swing.JRadioButton BotonEditorial;
+    private javax.swing.JRadioButton BotonTitulo;
+    private javax.swing.JButton BuscarLibros;
+    private javax.swing.JTextField CampoBusqueda;
+    private javax.swing.JButton TotalLibros;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -243,15 +267,7 @@ public class CatalogoLibros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     // End of variables declaration//GEN-END:variables
