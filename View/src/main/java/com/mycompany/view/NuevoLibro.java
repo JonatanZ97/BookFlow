@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.view;
+
+import BusinessObjects.LibrosBusiness;
+import ModelException.ModelException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +38,7 @@ public class NuevoLibro extends javax.swing.JFrame {
         AutorLibro = new javax.swing.JTextField();
         EditorialLibro = new javax.swing.JTextField();
         IdentificadorLibro = new javax.swing.JTextField();
-        CduLibro = new javax.swing.JTextField();
+        GeneroLibro = new javax.swing.JTextField();
         TituloLibro = new javax.swing.JTextField();
         EstadoLibro = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -91,7 +94,7 @@ public class NuevoLibro extends javax.swing.JFrame {
         jPanel1.add(AutorLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 240, 40));
         jPanel1.add(EditorialLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 240, 40));
         jPanel1.add(IdentificadorLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 240, 40));
-        jPanel1.add(CduLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 240, 40));
+        jPanel1.add(GeneroLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 240, 40));
 
         TituloLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,16 +186,30 @@ public class NuevoLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void AceptarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarLibroActionPerformed
-
-        String titulo,autor,editorial,identificador,CDU,estado;
-        
+        LibrosBusiness datosLibros = new LibrosBusiness();
+        String titulo,autor,editorial,identificador,genero,estado; 
+        boolean respuestaLibro = false;
         titulo = TituloLibro.getText();
         autor = AutorLibro.getText();
         editorial = EditorialLibro.getText();
         identificador = IdentificadorLibro.getText();
-        CDU = CduLibro.getText();
+        genero = GeneroLibro.getText();
         estado = EstadoLibro.getSelectedItem().toString();
-        //falta terminar de enviar los datos como parametros. 
+        //falta terminar de enviar los datos como parametros.
+        try {
+            respuestaLibro = datosLibros.guardarLibro(titulo, autor, genero, editorial, identificador, estado);
+        } catch (ModelException ex) {
+            Logger.getLogger(NuevoLibro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(respuestaLibro == false){
+        JOptionPane.showMessageDialog(null, "Los datos ingresados no son correctos. Verifique los campos por favor.");
+            
+        }else{
+        JOptionPane.showMessageDialog(null, "El libro se ha registrado correctamente");
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setVisible(true);
+        this.dispose(); 
+        }
         
         
     }//GEN-LAST:event_AceptarLibroActionPerformed
@@ -240,10 +257,10 @@ public class NuevoLibro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarLibro;
     private javax.swing.JTextField AutorLibro;
-    private javax.swing.JTextField CduLibro;
     private javax.swing.JTextField EditorialLibro;
     private javax.swing.JComboBox<String> EstadoLibro;
     private javax.swing.JLabel FONDO;
+    private javax.swing.JTextField GeneroLibro;
     private javax.swing.JTextField IdentificadorLibro;
     private javax.swing.JTextField TituloLibro;
     private javax.swing.JLabel jLabel10;
