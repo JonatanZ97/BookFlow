@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.view;
 
 /**
@@ -127,15 +123,23 @@ public class Socios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sociosActionPerformed
-        // TODO add your handling code here:
+
+        NuevoSocio nSocio = new NuevoSocio();
+        nSocio.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_sociosActionPerformed
 
     private void socios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_socios1ActionPerformed
-        // TODO add your handling code here:
+        EliminarSocio eSocio = new EliminarSocio();
+        eSocio.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_socios1ActionPerformed
 
     private void socios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_socios2ActionPerformed
-        // TODO add your handling code here:
+        ModificacionSocio mSocio = new ModificacionSocio();
+        mSocio.setVisible(true);
+        this.dispose();
+// TODO add your handling code here:
     }//GEN-LAST:event_socios2ActionPerformed
 
     //autor JONATAN ZAMORA
