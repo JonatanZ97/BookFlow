@@ -4,6 +4,7 @@ import ModelException.ModelException;
 import ModelFunctions.SocioDAOImpl;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import modelObjets.Socio;
 
 public class SociosBusiness {
@@ -117,6 +118,7 @@ public class SociosBusiness {
             SociosBusiness socioBusiness = new SociosBusiness();
 
             // Copiamos los datos de Socio a SociosBusiness
+            socioBusiness.setIdsocio(socio.getId());
             socioBusiness.setNombre(socio.getNombre());
             socioBusiness.setApellido(socio.getApellido());
             socioBusiness.setDni(socio.getDni());
@@ -207,41 +209,51 @@ public class SociosBusiness {
         return true;
     }
 
-    public ArrayList<String> convertToString() {
+    public List<String> convertToString() {
 
         // Creamos la lista de string para devolver
-        ArrayList<String> listaString = new ArrayList<>();
+        List<String> listaString = new ArrayList<>();
 
-        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        // Creamos una instancia de SocioDAOImpl para obtener los datos de los socios desde la DB 
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
-        // Obtenemos la lista de libros desde el DAO
-        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+        // Obtenemos la lista de socios desde el DAO
+        List<Socio> listaModel = socioModel.obtenerSocios();
 
-        // Recorremos la listaModel y transferimos los datos a la lista de String
-        for (Socio socio : listaModel) {
+        // Verificamos si la lista de socios no es nula o vacía
+        if (listaModel != null && !listaModel.isEmpty()) {
+            // Recorremos la listaModel y transferimos los datos a la lista de String
+            for (Socio socio : listaModel) {
 
-            // Concatenar los valores en un String
-            String descripcionSocio = String.format(
-                    "Id socio: %s, Nombre: %s, Apellido: %s, Dni: %s, Fecha de nacimiento: %s, telefono: %s, Mail: %s, Direccion: %s, Penalizado: %s, Motivo de penalizacion: %s",
-                    socio.getId(),
-                    socio.getNombre(),
-                    socio.getApellido(),
-                    socio.getDni(),
-                    socio.getFechaNacimiento(),
-                    socio.getTelefono(),
-                    socio.getMail(),
-                    socio.getDireccion(),
-                    socio.getPenalizado(),
-                    socio.getMotivoPenalizado()
-            );
+                // Concatenar los valores en un String, manejando posibles valores nulos
+                String descripcionSocio = String.format(
+                        "Id socio: %s, Nombre: %s, Apellido: %s, Dni: %s, Fecha de nacimiento: %s, telefono: %s, Mail: %s, Direccion: %s, Penalizado: %s, Motivo de penalizacion: %s",
+                        socio.getId(),
+                        socio.getNombre() != null ? socio.getNombre() : "N/A",
+                        socio.getApellido() != null ? socio.getApellido() : "N/A",
+                        socio.getDni(),
+                        socio.getFechaNacimiento() != null ? socio.getFechaNacimiento() : "N/A",
+                        socio.getTelefono(),
+                        socio.getMail() != null ? socio.getMail() : "N/A",
+                        socio.getDireccion() != null ? socio.getDireccion() : "N/A",
+                        socio.getPenalizado(),
+                        socio.getMotivoPenalizado() != null ? socio.getMotivoPenalizado() : "N/A"
+                );
 
-            // Añadir el String a la lista
-            listaString.add(descripcionSocio);
+                // Añadir el String a la lista
+                listaString.add(descripcionSocio);
+            }
+        } else {
+            // Si la lista está vacía o nula, puedes manejarlo según lo requiera la lógica
+            listaString.add("No se encontraron socios.");
         }
 
         // Retornar la lista de descripciones
         return listaString;
+    }
+    
+    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado){
+        
     }
 
 }
