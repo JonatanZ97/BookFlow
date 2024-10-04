@@ -136,9 +136,9 @@ public class LibrosBusiness {
 //metodo que comprueba que las variables no esten vacias o sean null
     public boolean verificarNoVacia(String cadena) {
         if (cadena != null && !cadena.trim().isEmpty()) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
