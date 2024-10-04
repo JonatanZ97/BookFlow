@@ -276,38 +276,26 @@ public class NuevoSocio extends javax.swing.JFrame {
         direccion = nombreUsuario10.getText();
 
         try {
-            // Supongamos que tienes un JTextField llamado jTextField1
+            //obtengo los numeros de los campos de textos
             String texto = campDni.getText();
 
-            // Convertir el texto a long
-            dni = Long.parseLong(texto);
-
-            // Ahora puedes usar el valor 'numero' como un long
-        } catch (NumberFormatException e) {
-            // Manejar el error si el texto no es un número válido
-            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
-        }
-
-        try {
-            // Supongamos que tienes un JTextField llamado jTextField1
             String texto1 = campTelefono.getText();
 
-            // Convertir el texto a long
+            // Convierto el texto a long
             telefono = Long.parseLong(texto1);
 
-            // Ahora puedes usar el valor 'numero' como un long
+            dni = Long.parseLong(texto);
+
+            if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                this.dispose();
+            }
+
         } catch (NumberFormatException e) {
             // Manejar el error si el texto no es un número válido
             JOptionPane.showMessageDialog(null, "ingrese un numero valido");
         }
-
-        if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
-            JOptionPane.showMessageDialog(null, "Campo vacio");
-        } else {
-            this.dispose();
-        }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
