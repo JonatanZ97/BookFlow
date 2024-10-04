@@ -180,13 +180,14 @@ public class EliminarSocio extends javax.swing.JFrame {
             if (botonDni.isSelected()) {
                 long dni = Long.parseLong(texto);
                 socios.elinarSocioDNI(dni);
+                menuSocio.setVisible(true);
+                this.dispose();
             } else {
                 if (botonId.isSelected()) {
                     int id = Integer.parseInt(texto);
                     socios.elinarSocioID(id);
                     menuSocio.setVisible(true);
                     this.dispose();
-                    
                 } else {
                     JOptionPane.showMessageDialog(null, "seleccione una de las opciones de busqueda");
                 }
