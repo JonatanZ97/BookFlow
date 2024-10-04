@@ -190,9 +190,9 @@ public class SociosBusiness {
 
     public boolean verificarNoVacia(String cadena) {
         if (cadena != null && !cadena.trim().isEmpty()) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
