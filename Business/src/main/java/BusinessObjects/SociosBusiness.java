@@ -178,9 +178,14 @@ public class SociosBusiness {
         socio.setDireccion(direccion);
 
         SocioDAOImpl guardar = new SocioDAOImpl();
-        guardar.guardarSocio(socio);
 
-        return true;
+        if (guardar.verificarSocio(socio.getDni())) {
+            return false;
+        } else {
+            guardar.guardarSocio(socio);
+            return true;
+        }
+
     }
 
     public boolean verificarNoVacia(String cadena) {
@@ -251,11 +256,62 @@ public class SociosBusiness {
         // Retornar la lista de descripciones
         return listaString;
     }
-    
-    
-    public boolean elinarSocioID(int ID) throws ModelException{
-        
-         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+
+    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado) throws ModelException {
+        if (dni < 1 || telefono < 10000000 || id < 1) {
+            return false;
+        }
+
+        if (verificarNoVacia(nombre)) {
+            return false;
+        }
+
+        if (verificarNoVacia(apellido)) {
+            return false;
+        }
+
+        if (verificarNoVacia(mail)) {
+            return false;
+        }
+
+        if (verificarNoVacia(direccion)) {
+            return false;
+        }
+
+        if (!soloLetras(nombre)) {
+            return false;
+        }
+
+        if (!soloLetras(apellido)) {
+            return false;
+        }
+
+        Socio socio = new Socio();
+
+        socio.setId(id);
+        socio.setNombre(nombre);
+        socio.setApellido(apellido);
+        socio.setDni(dni);
+        socio.setFechaNacimiento(fechaNacimiento);
+        socio.setTelefono(telefono);
+        socio.setMail(mail);
+        socio.setDireccion(direccion);
+        socio.setPenalizado(penalizado);
+        socio.setMotivoPenalizado(motivoPenalizado);
+
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        if (socioModel.verificarSocio(socio.getDni())) {//compruebo que no exista un socio con ese dni en la base de datos
+            return false;
+        } else {
+            socioModel.cambiarDatosSocio(socio);
+            return true;
+        }
+    }
+
+    public boolean elinarSocioID(int ID) throws ModelException {
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
@@ -263,20 +319,20 @@ public class SociosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            
-            if(socio.getId() == ID){
+
+            if (socio.getId() == ID) {
                 socioModel.eliminarSocioID(ID);
                 return true;//retornamos true si se encontro el dato a eliminar
             }
-            
+
         }
-        
+
         return false;//retornamos false si no se encontro el id del socio a eliminar
     }
-    
-        public boolean elinarSocioDNI(long DNI) throws ModelException{
-        
-         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+
+    public boolean elinarSocioDNI(long DNI) throws ModelException {
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
@@ -284,33 +340,33 @@ public class SociosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            
-            if(socio.getDni()== DNI){
+
+            if (socio.getDni() == DNI) {
                 socioModel.eliminarSocioDNI(DNI);
                 return true;//retornamos true si se encontro el dato a eliminar
             }
-            
+
         }
-        
+
         return false;//retornamos false si no se encontro el id del socio a eliminar
     }
-        
-    public ArrayList<String> buscarPorNombre(String nombre){
-        
+
+    public ArrayList<String> buscarPorNombre(String nombre) {
+
         // Creamos la lista de string para devolver
         ArrayList<String> listaString = new ArrayList<>();
-        
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
         ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
-        
+
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            
-            if(socio.getNombre().equalsIgnoreCase(nombre)){
-                
+
+            if (socio.getNombre().equalsIgnoreCase(nombre)) {
+
                 // Concatenar los valores en un String, manejando posibles valores nulos
                 String descripcionSocio = String.format(
                         "Id socio: %s, Nombre: %s, Apellido: %s, Dni: %s, Fecha de nacimiento: %s, telefono: %s, Mail: %s, Direccion: %s, Penalizado: %s, Motivo de penalizacion: %s",
@@ -324,36 +380,34 @@ public class SociosBusiness {
                         socio.getDireccion() != null ? socio.getDireccion() : "N/A",
                         socio.getPenalizado(),
                         socio.getMotivoPenalizado() != null ? socio.getMotivoPenalizado() : "N/A"
-                        
-                        
                 );
-                
+
                 listaString.add(descripcionSocio);
-                
+
             }
-            
+
         }
-        
+
         return listaString;
-        
+
     }
-    
-    public ArrayList<String> buscarPorApellido(String apellido){
-        
+
+    public ArrayList<String> buscarPorApellido(String apellido) {
+
         // Creamos la lista de string para devolver
         ArrayList<String> listaString = new ArrayList<>();
-        
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
         ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
-        
+
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            
-            if(socio.getApellido().equalsIgnoreCase(apellido)){
-                
+
+            if (socio.getApellido().equalsIgnoreCase(apellido)) {
+
                 // Concatenar los valores en un String, manejando posibles valores nulos
                 String descripcionSocio = String.format(
                         "Id socio: %s, Nombre: %s, Apellido: %s, Dni: %s, Fecha de nacimiento: %s, telefono: %s, Mail: %s, Direccion: %s, Penalizado: %s, Motivo de penalizacion: %s",
@@ -367,19 +421,15 @@ public class SociosBusiness {
                         socio.getDireccion() != null ? socio.getDireccion() : "N/A",
                         socio.getPenalizado(),
                         socio.getMotivoPenalizado() != null ? socio.getMotivoPenalizado() : "N/A"
-                        
-                        
                 );
-                
+
                 listaString.add(descripcionSocio);
-                
+
             }
-            
+
         }
-        
+
         return listaString;
-        
+
     }
 }
-
-
