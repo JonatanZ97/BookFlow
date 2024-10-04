@@ -243,5 +243,67 @@ public class SociosBusiness {
         // Retornar la lista de descripciones
         return listaString;
     }
+    
+    
+    public boolean elinarSocioID(int ID) throws ModelException{
+        
+         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            
+            if(socio.getId() == ID){
+                socioModel.eliminarSocioID(ID);
+                return true;//retornamos true si se encontro el dato a eliminar
+            }
+            
+        }
+        
+        return false;//retornamos false si no se encontro el id del socio a eliminar
+    }
+    
+        public boolean elinarSocioDNI(long DNI) throws ModelException{
+        
+         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            
+            if(socio.getDni()== DNI){
+                socioModel.eliminarSocioDNI(DNI);
+                return true;//retornamos true si se encontro el dato a eliminar
+            }
+            
+        }
+        
+        return false;//retornamos false si no se encontro el id del socio a eliminar
+    }
+        
+    public ArrayList<String> buscarPorNombre(){
+        
+        // Creamos la lista de string para devolver
+        ArrayList<String> listaString = new ArrayList<>();
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+        
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            
+        }
+        
+        
+    }
 
 }
