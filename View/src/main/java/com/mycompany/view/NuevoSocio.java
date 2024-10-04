@@ -1,8 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.view;
+
+import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.util.Date;
+import javax.swing.JPanel;
 
 /**
  *
@@ -10,11 +14,13 @@ package com.mycompany.view;
  */
 public class NuevoSocio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NuevoSocio
-     */
+    // Agregar el JDateChooser como atributo de la clase
+    private JDateChooser dateChooser;
+    Date fechaLocal;
+
     public NuevoSocio() {
         initComponents();
+
     }
 
     /**
@@ -33,12 +39,12 @@ public class NuevoSocio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        nombreUsuario6 = new javax.swing.JTextField();
-        nombreUsuario7 = new javax.swing.JTextField();
-        nombreUsuario8 = new javax.swing.JTextField();
-        nombreUsuario9 = new javax.swing.JTextField();
+        campApellido = new javax.swing.JTextField();
+        campDni = new javax.swing.JTextField();
+        campMail = new javax.swing.JTextField();
+        campTelefono = new javax.swing.JTextField();
         nombreUsuario10 = new javax.swing.JTextField();
-        nombreUsuario5 = new javax.swing.JTextField();
+        campNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -47,6 +53,8 @@ public class NuevoSocio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        botonCalendario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,33 +110,33 @@ public class NuevoSocio extends javax.swing.JFrame {
         jLabel3.setText(">");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 10, 30));
 
-        nombreUsuario6.addActionListener(new java.awt.event.ActionListener() {
+        campApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario6ActionPerformed(evt);
+                campApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 270, 40));
+        jPanel1.add(campApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 270, 40));
 
-        nombreUsuario7.addActionListener(new java.awt.event.ActionListener() {
+        campDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario7ActionPerformed(evt);
+                campDniActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 270, 40));
+        jPanel1.add(campDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 270, 40));
 
-        nombreUsuario8.addActionListener(new java.awt.event.ActionListener() {
+        campMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario8ActionPerformed(evt);
+                campMailActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 270, 40));
+        jPanel1.add(campMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 270, 40));
 
-        nombreUsuario9.addActionListener(new java.awt.event.ActionListener() {
+        campTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario9ActionPerformed(evt);
+                campTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 270, 40));
+        jPanel1.add(campTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 270, 40));
 
         nombreUsuario10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,12 +145,12 @@ public class NuevoSocio extends javax.swing.JFrame {
         });
         jPanel1.add(nombreUsuario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 270, 40));
 
-        nombreUsuario5.addActionListener(new java.awt.event.ActionListener() {
+        campNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario5ActionPerformed(evt);
+                campNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 270, 40));
+        jPanel1.add(campNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 270, 40));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 2, 12)); // NOI18N
         jLabel5.setText("Nombre:");
@@ -182,6 +190,19 @@ public class NuevoSocio extends javax.swing.JFrame {
         jLabel12.setText("F");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 40, 90, 100));
 
+        jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel13.setText("Fecha de nacimiento:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+
+        botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonCalendario.setText("Calendario");
+        botonCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalendarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 640));
@@ -204,25 +225,25 @@ public class NuevoSocio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreUsuario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario5ActionPerformed
+    private void campNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario5ActionPerformed
+    }//GEN-LAST:event_campNombreActionPerformed
 
-    private void nombreUsuario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario6ActionPerformed
+    private void campApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario6ActionPerformed
+    }//GEN-LAST:event_campApellidoActionPerformed
 
-    private void nombreUsuario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario7ActionPerformed
+    private void campDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campDniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario7ActionPerformed
+    }//GEN-LAST:event_campDniActionPerformed
 
-    private void nombreUsuario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario8ActionPerformed
+    private void campMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campMailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario8ActionPerformed
+    }//GEN-LAST:event_campMailActionPerformed
 
-    private void nombreUsuario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario9ActionPerformed
+    private void campTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario9ActionPerformed
+    }//GEN-LAST:event_campTelefonoActionPerformed
 
     private void nombreUsuario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario10ActionPerformed
         // TODO add your handling code here:
@@ -239,10 +260,65 @@ public class NuevoSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // zona de variable
+        String nombre;
+        String apellido;
+        long dni;
+        String mail;
+        long telefono;
+        String direccion;
 
-        
+        //zona de codigo
+        // obtengo lod datos de los campos de textos
+        nombre = campNombre.getText();
+        apellido = campApellido.getText();
+        mail = campMail.getText();
+        direccion = nombreUsuario10.getText();
+
+        try {
+            // Supongamos que tienes un JTextField llamado jTextField1
+            String texto = campDni.getText();
+
+            // Convertir el texto a long
+            dni = Long.parseLong(texto);
+
+            // Ahora puedes usar el valor 'numero' como un long
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        }
+
+        try {
+            // Supongamos que tienes un JTextField llamado jTextField1
+            String texto1 = campTelefono.getText();
+
+            // Convertir el texto a long
+            telefono = Long.parseLong(texto1);
+
+            // Ahora puedes usar el valor 'numero' como un long
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        }
+
+        if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
+            JOptionPane.showMessageDialog(null, "Campo vacio");
+        } else {
+            this.dispose();
+        }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
+
+        // Crear e invocar el diálogo
+        FechaNacimientoDialog dialog = new FechaNacimientoDialog(NuevoSocio.this);
+        dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
+
+        // Actualizar la variable fechaNacimiento después de cerrar el diálogo
+        fechaLocal = dialog.getFechaNacimiento();
+    }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,14 +353,29 @@ public class NuevoSocio extends javax.swing.JFrame {
                 new NuevoSocio().setVisible(true);
             }
         });
+
     }
 
+    public class MyCalendarExample extends JFrame {
+
+        public MyCalendarExample() {
+            // Crear un JDateChooser
+
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCalendario;
+    private javax.swing.JTextField campApellido;
+    private javax.swing.JTextField campDni;
+    private javax.swing.JTextField campMail;
+    private javax.swing.JTextField campNombre;
+    private javax.swing.JTextField campTelefono;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -297,10 +388,5 @@ public class NuevoSocio extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField nombreUsuario10;
-    private javax.swing.JTextField nombreUsuario5;
-    private javax.swing.JTextField nombreUsuario6;
-    private javax.swing.JTextField nombreUsuario7;
-    private javax.swing.JTextField nombreUsuario8;
-    private javax.swing.JTextField nombreUsuario9;
     // End of variables declaration//GEN-END:variables
 }
