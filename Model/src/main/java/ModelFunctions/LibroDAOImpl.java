@@ -14,8 +14,8 @@ public class LibroDAOImpl implements LibroDAO {
     ConexionDB objetoConexion = new ConexionDB();
 
     @Override
-    public List<Libro> obtenerLibros() {
-        List<Libro> listaLibros = new ArrayList<>();
+    public ArrayList<Libro> obtenerLibros() {
+        ArrayList<Libro> listaLibros = new ArrayList<>();
         Connection conexion = null;
         Statement declaracion = null;
         ResultSet resultado = null;

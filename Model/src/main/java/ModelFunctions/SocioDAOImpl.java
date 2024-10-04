@@ -13,8 +13,8 @@ public class SocioDAOImpl implements SocioDAO {
     ConexionDB objetoConexion = new ConexionDB();
 
     @Override
-    public List<Socio> obtenerSocios() {
-        List<Socio> listaSocios = new ArrayList<>();
+    public ArrayList<Socio> obtenerSocios() {
+        ArrayList<Socio> listaSocios = new ArrayList<>();
         Connection conexion = null;
         PreparedStatement preparacion = null;
         ResultSet resultado = null;

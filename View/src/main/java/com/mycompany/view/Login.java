@@ -1,7 +1,7 @@
 package com.mycompany.view;
 
 import BusinessObjects.UsuarioLocal;
-import BusinessObjects.Usuarios;
+import BusinessObjects.UsuarioBusiness;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -10,9 +10,9 @@ public class Login extends javax.swing.JFrame {
     // Obtener la instancia única de UsuarioLocal
     UsuarioLocal usuario = UsuarioLocal.getInstancia();
 
-    ArrayList<Usuarios> listaUsuarios;
+    ArrayList<UsuarioBusiness> listaUsuarios;
 
-    Usuarios users = new Usuarios();
+    UsuarioBusiness users = new UsuarioBusiness();
 
     public Login() {
         initComponents();
@@ -33,6 +33,7 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         nombreUsuario = new javax.swing.JTextField();
         contrasenia = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
@@ -93,6 +94,17 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 190, 40));
         jPanel1.add(contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 190, 40));
 
+        jButton2.setBackground(new java.awt.Color(255, 0, 0));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("X");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 660));
@@ -119,47 +131,58 @@ public class Login extends javax.swing.JFrame {
     //COMPRUEBA QUE EL USUARIO Y LA CONTRASEÑAS IGRESADOS SEAN VALIDOS
     //AUTOR: JONATAN ZAMORA
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                                         
+    // obtenemos el usuario y la contraseña ingresada
+    String nombre = nombreUsuario.getText();
+    String contraseña = contrasenia.getText();
 
-        //obtenemos el usuario y la contraseña ingresada
-        String nombre = nombreUsuario.getText();
-        String contraseña = contrasenia.getText();
+    // obtenemos la lista de usuarios para chequear
+    listaUsuarios = users.getListaUsuarios();
 
-        //obtenemos la lista de usuarios para chequear
-        listaUsuarios = users.getListaUsuarios();
+    // bandera para verificar si se encontró el usuario
+    boolean encontrado = false;
 
-        if (nombre.equals("admin") && contraseña.equals("admin")) {
+    // Comprobamos si el usuario ingresado es el administrador
+    if (nombre.equals("admin") && contraseña.equals("admin")) {
+        // Guardamos los datos en el objeto UsuarioLocal
+        usuario.setUsuario(nombre);
+        usuario.setContraseña(contraseña);
+        usuario.setNivel(1); // Asignamos nivel de admin
 
-            //la guardamos en el objeto UsuarioLocal
-            usuario.setUsuario(nombre);
-            usuario.setContraseña(contraseña);
-            usuario.setNivel(1);
-
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.setVisible(true);
-
-        }
-
-        //comprobamos que los usuarios ingresados se encuentren en la base de datos
-        for (Usuarios usuarios : listaUsuarios) {
-
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        encontrado = true; // El usuario es admin, no mostrar error
+        this.dispose();
+    } else {
+        // Si no es admin, buscamos en la lista de usuarios
+        for (UsuarioBusiness usuarios : listaUsuarios) {
             if (usuarios.getNombre().equals(nombre) && usuarios.getContraseña().equals(contraseña)) {
-
-                //la guardamos en el objeto UsuarioLocal
+                // Guardamos los datos en el objeto UsuarioLocal
                 usuario.setUsuario(nombre);
                 usuario.setContraseña(contraseña);
                 usuario.setNivel(usuarios.getNivel());
 
                 MenuPrincipal menu = new MenuPrincipal();
                 menu.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectos", "ERROR EN INICIO DE SECIÓN", JOptionPane.INFORMATION_MESSAGE);
+                encontrado = true; // Se encontró el usuario
+                this.dispose();
+                break; // Salimos del bucle una vez encontrado el usuario
             }
-
         }
+    }
+
+    // Si no se encontró ningún usuario ni es admin, mostramos el mensaje de error
+    if (!encontrado) {
+        JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectos", "ERROR EN INICIO DE SESIÓN", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +222,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contrasenia;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
