@@ -1,4 +1,3 @@
-
 package BusinessObjects;
 
 import ModelException.ModelException;
@@ -6,16 +5,14 @@ import ModelFunctions.LibroDAOImpl;
 import java.util.ArrayList;
 import modelObjets.Libro;
 
-
 public class LibrosBusiness {
+
     private String titulo;
     private String autor;
     private String estadoDelLibro = "disponible";
     private String genero;
     private String editorial;
     private long numeroDeIdentificacion;
-
-
 
     public String getTitulo() {
         return titulo;
@@ -64,86 +61,273 @@ public class LibrosBusiness {
     public void setNumeroDeIdentificacion(long numeroDeIdentificacion) {
         this.numeroDeIdentificacion = numeroDeIdentificacion;
     }
-    
-    
-    public static ArrayList<LibrosBusiness> getListaLibros() {
-    
-    // Creamos la lista que devolveremos
-    ArrayList<LibrosBusiness> listaLibros = new ArrayList<>();
-    
-    // Creamos una instancia de LibroDAOImpl para obtener los datos de libros
-    LibroDAOImpl libroModel = new LibroDAOImpl();
-    
-    // Obtenemos la lista de libros desde el DAO
-    ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
 
-    // Recorremos la listaModel y transferimos los datos a la lista de LibrosBusiness
-    for (Libro libro : listaModel) {
-        // Creamos una nueva instancia de LibrosBusiness
-        LibrosBusiness libroBusiness = new LibrosBusiness();
-        
-        // Transferimos los atributos de 'libro' a 'libroBusiness'
-        libroBusiness.setTitulo(libro.getTitulo());
-        libroBusiness.setAutor(libro.getAutor());
-        libroBusiness.setGenero(libro.getGenero());
-        libroBusiness.setEditorial(libro.getEditorial());
-        libroBusiness.setNumeroDeIdentificacion(libro.getNumeroDeIdentificacion());
-        libroBusiness.setEstadoDelLibro(libro.getEstadoDelLibro());
-        
-        // Agregamos el libroBusiness a la lista de LibrosBusiness
-        listaLibros.add(libroBusiness);
+    public ArrayList<LibrosBusiness> getListaLibros() {
+
+        // Creamos la lista que devolveremos
+        ArrayList<LibrosBusiness> listaLibros = new ArrayList<>();
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de LibrosBusiness
+        for (Libro libro : listaModel) {
+            // Creamos una nueva instancia de LibrosBusiness
+            LibrosBusiness libroBusiness = new LibrosBusiness();
+
+            // Transferimos los atributos de 'libro' a 'libroBusiness'
+            libroBusiness.setTitulo(libro.getTitulo());
+            libroBusiness.setAutor(libro.getAutor());
+            libroBusiness.setGenero(libro.getGenero());
+            libroBusiness.setEditorial(libro.getEditorial());
+            libroBusiness.setNumeroDeIdentificacion(libro.getNumeroDeIdentificacion());
+            libroBusiness.setEstadoDelLibro(libro.getEstadoDelLibro());
+
+            // Agregamos el libroBusiness a la lista de LibrosBusiness
+            listaLibros.add(libroBusiness);
+        }
+
+        // Devolvemos la lista de LibrosBusiness
+        return listaLibros;
     }
-    
-    // Devolvemos la lista de LibrosBusiness
-    return listaLibros;
-}
-    
-    
-public boolean guardarLibro(String titulo, String autor, String genero, String editorial, String numIdentificacion, String estado) throws ModelException{
-    Libro libro = new Libro();
-    
-    
-    if(verificarNoVacia(autor)) return false;
-    if(verificarNoVacia(genero)) return false;
-    if(verificarNoVacia(titulo)) return false;
-    if(verificarNoVacia(editorial)) return false;
-    if(verificarNoVacia(numIdentificacion)) return false;
-    
-    if(!soloNumeros(numIdentificacion)) return false;
-    
-     int numIdentificacionInt = Integer.parseInt(numIdentificacion);
-    
-    
-    libro.setAutor(autor);
-    libro.setTitulo(titulo);
-    libro.setGenero(genero);
-    libro.setNumeroDeIdentificacion(numIdentificacionInt);
-    libro.setEstadoDelLibro(estadoDelLibro);
-    libro.setEditorial(editorial);
-    
-    
-    LibroDAOImpl libroGuardar = new LibroDAOImpl();
-    
-    libroGuardar.guardarLibro(libro);
-    
-    
-    
-    return true;
-}
+
+    public boolean guardarLibro(String titulo, String autor, String genero, String editorial, String numIdentificacion, String estado) throws ModelException {
+        Libro libro = new Libro();
+
+        if (verificarNoVacia(autor)) {
+            return false;
+        }
+        if (verificarNoVacia(genero)) {
+            return false;
+        }
+        if (verificarNoVacia(titulo)) {
+            return false;
+        }
+        if (verificarNoVacia(editorial)) {
+            return false;
+        }
+        if (verificarNoVacia(numIdentificacion)) {
+            return false;
+        }
+
+        if (!soloNumeros(numIdentificacion)) {
+            return false;
+        }
+
+        int numIdentificacionInt = Integer.parseInt(numIdentificacion);
+
+        libro.setAutor(autor);
+        libro.setTitulo(titulo);
+        libro.setGenero(genero);
+        libro.setNumeroDeIdentificacion(numIdentificacionInt);
+        libro.setEstadoDelLibro(estadoDelLibro);
+        libro.setEditorial(editorial);
+
+        LibroDAOImpl libroGuardar = new LibroDAOImpl();
+
+        libroGuardar.guardarLibro(libro);
+
+        return true;
+    }
 
 //metodo que comprueba que las variables no esten vacias o sean null
-public boolean verificarNoVacia(String cadena) {
-    if (cadena != null && !cadena.trim().isEmpty()) {
-        return true;
-    } else {
-        return false;
+    public boolean verificarNoVacia(String cadena) {
+        if (cadena != null && !cadena.trim().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
 
 //metodo que comprueba que sean numeros
-public static boolean soloNumeros(String str) {
+    public static boolean soloNumeros(String str) {
         // Verifica si el string no está vacío y si contiene solo números
         return str != null && str.matches("\\d+");
     }
+
+//metodo para enviar la lista como string
+    public ArrayList<String> convertToString() {
+
+        // Creamos la lista de string para devolver
+        ArrayList<String> listaString = new ArrayList<>();
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getEstadoDelLibro(),
+                    libro.getGenero(),
+                    libro.getEditorial(),
+                    libro.getNumeroDeIdentificacion()
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+        }
+
+        // Retornar la lista de descripciones
+        return listaString;
+    }
+
+    //metodo para enviar la lista como string filtrando por autor
+    public ArrayList<String> buscarPorAutor( String autor) {
+
+        // Creamos la lista de string para devolver
+        ArrayList<String> listaString = new ArrayList<>();
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+
+            if(libro.getAutor().equalsIgnoreCase(autor)){
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getEstadoDelLibro(),
+                    libro.getGenero(),
+                    libro.getEditorial(),
+                    libro.getNumeroDeIdentificacion()
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+            
+            }
+        }
+
+        // Retornar la lista de descripciones
+        return listaString;
+    }
     
+    //metodo para enviar la lista como string filtrando por autor
+    public ArrayList<String> buscarPorTitulo( String titulo) {
+
+        // Creamos la lista de string para devolver
+        ArrayList<String> listaString = new ArrayList<>();
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+
+            if(libro.getTitulo().equalsIgnoreCase(titulo)){
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getEstadoDelLibro(),
+                    libro.getGenero(),
+                    libro.getEditorial(),
+                    libro.getNumeroDeIdentificacion()
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+            
+            }
+        }
+
+        // Retornar la lista de descripciones
+        return listaString;
+    }
+    
+    //metodo para enviar la lista como string filtrando por autor
+    public ArrayList<String> buscarPorEditorial( String editorial) {
+
+        // Creamos la lista de string para devolver
+        ArrayList<String> listaString = new ArrayList<>();
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+
+            if(libro.getEditorial().equalsIgnoreCase(editorial)){
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getEstadoDelLibro(),
+                    libro.getGenero(),
+                    libro.getEditorial(),
+                    libro.getNumeroDeIdentificacion()
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+            
+            }
+        }
+
+        // Retornar la lista de descripciones
+        return listaString;
+    }
+    
+    //metodo para enviar la lista como string filtrando por autor
+    public ArrayList<String> buscarPorCDU( String CDU) {
+
+        // Creamos la lista de string para devolver
+        ArrayList<String> listaString = new ArrayList<>();
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+
+            if(libro.getGenero().equalsIgnoreCase(CDU)){
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getEstadoDelLibro(),
+                    libro.getGenero(),
+                    libro.getEditorial(),
+                    libro.getNumeroDeIdentificacion()
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+            
+            }
+        }
+
+        // Retornar la lista de descripciones
+        return listaString;
+    }
+
 }

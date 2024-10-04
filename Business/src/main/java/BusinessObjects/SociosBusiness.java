@@ -1,5 +1,6 @@
 package BusinessObjects;
 
+import ModelException.ModelException;
 import ModelFunctions.SocioDAOImpl;
 import java.util.ArrayList;
 import java.util.Date;
@@ -91,7 +92,7 @@ public class SociosBusiness {
     }
     
     // Método para obtener la lista de SociosBusiness
-    public static ArrayList<SociosBusiness> getListaUsuarios() {
+    public ArrayList<SociosBusiness> getListaUsuarios() {
 
         // Creamos la lista que devolveremos
         ArrayList<SociosBusiness> listaSocios = new ArrayList<>();
@@ -126,10 +127,63 @@ public class SociosBusiness {
         return listaSocios;
     }
     
-    public boolean guardarSocio(String nombre, String apellido, long dni, Date fechaNac, long telefono, String mail, String direccion){
+    public boolean guardarSocio(String nombre, String apellido, long dni, Date fechaNac, long telefono, String mail, String direccion) throws ModelException{
+        
+        if(dni < 1 || telefono < 10000000) return false;
+            
+        if(verificarNoVacia(nombre)) return false;
+        
+        if(verificarNoVacia(apellido)) return false;
+        
+        if(verificarNoVacia(mail)) return false;
+        
+        if(verificarNoVacia(direccion)) return false;
+        
+        if(!soloLetras(nombre)) return false;
+        
+        if(!soloLetras(apellido)) return false;
+        
+        Socio socio = new Socio();
+        
+        socio.setNombre(nombre);
+        socio.setApellido(apellido);
+        socio.setDni(dni);
+        socio.setFechaNacimiento(fechaNacimiento);
+        socio.setTelefono(telefono);
+        socio.setMail(mail);
+        socio.setDireccion(direccion);
+        
+        SocioDAOImpl guardar = new SocioDAOImpl();
+        guardar.guardarSocio(socio);
         
         return true;
     }
     
+    public boolean verificarNoVacia(String cadena) {
+    if (cadena != null && !cadena.trim().isEmpty()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+    
+    public static boolean soloLetras(String cadena) {
+        // Verifica si la cadena no es nula y no está vacía
+        if (cadena == null || cadena.isEmpty()) {
+            return false;
+        }
+
+        // Recorre cada carácter de la cadena
+        for (char c : cadena.toCharArray()) {
+            // Si el carácter no es una letra, retorna false
+            if (!Character.isLetter(c)) {
+                return false;
+            }
+        }
+
+        // Si todos los caracteres son letras, retorna true
+        return true;
+    }
+
     
 }
