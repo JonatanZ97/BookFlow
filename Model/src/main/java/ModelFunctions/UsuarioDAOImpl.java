@@ -13,8 +13,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     ConexionDB objetoConexion = new ConexionDB();
 
     @Override
-    public List<Usuario> obtenerUsuarios() {
-        List<Usuario> listaUsuarios = new ArrayList<>();
+    public ArrayList<Usuario> obtenerUsuarios() {
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         Connection conexion = null;
         PreparedStatement preparacion = null;
         ResultSet resultado = null;
