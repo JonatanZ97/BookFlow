@@ -331,7 +331,7 @@ public class LibrosBusiness {
     }
     
     //metodo para eliminar un libro
-    public boolean eliminarLibro(Long numIdentificacion){
+    public boolean eliminarLibro(Long numIdentificacion) throws ModelException{
         
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
