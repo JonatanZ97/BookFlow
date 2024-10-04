@@ -208,6 +208,7 @@ public class Configuracion extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void devolucion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolucion1ActionPerformed

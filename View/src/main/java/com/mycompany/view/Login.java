@@ -136,6 +136,7 @@ public class Login extends javax.swing.JFrame {
 
             MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
+            this.dispose();
 
         }
 
