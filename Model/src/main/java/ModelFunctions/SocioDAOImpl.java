@@ -24,7 +24,7 @@ public class SocioDAOImpl implements SocioDAO {
             conexion = objetoConexion.establecerConexion();
 
             // Consulta actualizada para incluir penalizado y motivoPenalizado
-            String consulta = "SELECT nombre, apellido, dni, fecha_nac, telefono, mail, direccion, penalizado, motivo_penalizado FROM Personas";
+            String consulta = "SELECT idsocio, nombre, apellido, dni, fecha_nac, telefono, mail, direccion, penalizado, motivo_penalizado FROM Personas";
             preparacion = conexion.prepareStatement(consulta);
             resultado = preparacion.executeQuery();
 
@@ -32,6 +32,7 @@ public class SocioDAOImpl implements SocioDAO {
                 Socio socio = new Socio();
 
                 // Llenar el objeto Socio con los datos obtenidos
+                socio.setId(resultado.getInt("idsocio"));
                 socio.setNombre(resultado.getString("nombre"));
                 socio.setApellido(resultado.getString("apellido"));
                 socio.setDni(resultado.getLong("dni"));
@@ -236,7 +237,7 @@ public class SocioDAOImpl implements SocioDAO {
             System.out.println("Exito al vaciar la lista.");
 
         } catch (Exception e) {
-            throw new ModelException("Error al vaciar la lista de libros: " + e.getMessage());
+            throw new ModelException("Error al vaciar la lista de socios: " + e.getMessage());
         } finally {
             // Cierra la conexión y el PreparedStatement
             try {
@@ -247,12 +248,12 @@ public class SocioDAOImpl implements SocioDAO {
                     conexion.close();
                 }
             } catch (Exception e) {
-                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                System.out.println("Error al cerrar la conexion: " + e.getMessage());
             }
         }
     }
 
-    public void cambiarDatosSocio(Socio socio, int idSocio) throws ModelException {
+    public void cambiarDatosSocio(Socio socio) throws ModelException {
         Connection conexion = null;
         PreparedStatement declaracion = null;
 
@@ -261,7 +262,7 @@ public class SocioDAOImpl implements SocioDAO {
             conexion = objetoConexion.establecerConexion();
 
             // Consulta SQL para actualizar la contraseña de un usuario
-            String consulta = "UPDATE Personas SET nombre = ?, apellido = ?, dni = ?, fecha_nac = ?, telefono = ?, mail = ?, direccion = ?, penalizado = ?, motivo_penalizado = ? WHERE idpersona = ?";
+            String consulta = "UPDATE Personas SET nombre = ?, apellido = ?, dni = ?, fecha_nac = ?, telefono = ?, mail = ?, direccion = ?, penalizado = ?, motivo_penalizado = ? WHERE idsocio = ?";
             declaracion = conexion.prepareStatement(consulta);
 
             // Asignar los valores a los parámetros de la consulta
@@ -274,7 +275,7 @@ public class SocioDAOImpl implements SocioDAO {
             declaracion.setString(7, socio.getDireccion());
             declaracion.setBoolean(8, socio.getPenalizado());
             declaracion.setString(9, socio.getMotivoPenalizado());
-            declaracion.setInt(10, idSocio);
+            declaracion.setInt(10, socio.getId());
 
             // Ejecutar la consulta de actualización
             int filasAfectadas = declaracion.executeUpdate();

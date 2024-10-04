@@ -10,6 +10,7 @@ public class Socio {
     seccion de atributos
     principales atributos que componen al objeto
      */
+    int id;    
     String nombre;
     String apellido;
     long dni;
@@ -28,6 +29,9 @@ public class Socio {
     principales metodos para modificar al ojeto
      */
 
+    public int getId() {
+        return id;
+    }
     
     public String getNombre() {
         return nombre;
@@ -63,6 +67,10 @@ public class Socio {
     
     public String getMotivoPenalizado() {
         return motivoPenalizado;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
