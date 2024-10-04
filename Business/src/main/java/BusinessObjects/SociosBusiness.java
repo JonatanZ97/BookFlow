@@ -125,4 +125,11 @@ public class SociosBusiness {
         // Devolvemos la lista de SociosBusiness
         return listaSocios;
     }
+    
+    public boolean guardarSocio(String nombre, String apellido, long dni, Date fechaNac, long telefono, String mail, String direccion){
+        
+        return true;
+    }
+    
+    
 }
