@@ -281,12 +281,15 @@ public class ModificarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void nombreUsuario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario11ActionPerformed

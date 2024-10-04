@@ -32,19 +32,19 @@ public class NuevoLibro extends javax.swing.JFrame {
         jToggleButton4 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        AutorLibro = new javax.swing.JTextField();
+        EditorialLibro = new javax.swing.JTextField();
+        IdentificadorLibro = new javax.swing.JTextField();
+        CduLibro = new javax.swing.JTextField();
+        TituloLibro = new javax.swing.JTextField();
+        EstadoLibro = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        AceptarLibro = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
@@ -88,14 +88,20 @@ public class NuevoLibro extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel3.setText(">");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 10, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 240, 40));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 240, 40));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 240, 40));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 240, 40));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
+        jPanel1.add(AutorLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 240, 40));
+        jPanel1.add(EditorialLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 240, 40));
+        jPanel1.add(IdentificadorLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 240, 40));
+        jPanel1.add(CduLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 240, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 120, -1));
+        TituloLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TituloLibroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TituloLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
+
+        EstadoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Reservado", "Prestado", "En reparación", "Perdido" }));
+        jPanel1.add(EstadoLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 120, -1));
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
@@ -122,17 +128,17 @@ public class NuevoLibro extends javax.swing.JFrame {
         jLabel11.setText("TITULO:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 100, 20));
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("ACEPTAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AceptarLibro.setBackground(new java.awt.Color(204, 255, 204));
+        AceptarLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        AceptarLibro.setText("ACEPTAR");
+        AceptarLibro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AceptarLibro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AceptarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AceptarLibroActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 110, 40));
+        jPanel1.add(AceptarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 110, 40));
 
         jLabel12.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel12.setText("F");
@@ -165,17 +171,36 @@ public class NuevoLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AceptarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarLibroActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String titulo,autor,editorial,identificador,CDU,estado;
+        
+        titulo = TituloLibro.getText();
+        autor = AutorLibro.getText();
+        editorial = EditorialLibro.getText();
+        identificador = IdentificadorLibro.getText();
+        CDU = CduLibro.getText();
+        estado = EstadoLibro.getSelectedItem().toString();
+        //falta terminar de enviar los datos como parametros. 
+        
+        
+    }//GEN-LAST:event_AceptarLibroActionPerformed
+
+    private void TituloLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TituloLibroActionPerformed
+     
+        
+    }//GEN-LAST:event_TituloLibroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,9 +238,14 @@ public class NuevoLibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AceptarLibro;
+    private javax.swing.JTextField AutorLibro;
+    private javax.swing.JTextField CduLibro;
+    private javax.swing.JTextField EditorialLibro;
+    private javax.swing.JComboBox<String> EstadoLibro;
     private javax.swing.JLabel FONDO;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField IdentificadorLibro;
+    private javax.swing.JTextField TituloLibro;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -228,11 +258,6 @@ public class NuevoLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     // End of variables declaration//GEN-END:variables

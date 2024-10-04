@@ -155,23 +155,35 @@ public class Biblioteca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
-        // TODO add your handling code here:
+        NuevoLibro nuevoLibro = new NuevoLibro();
+        nuevoLibro.setVisible(true);
+        this.dispose();      
     }//GEN-LAST:event_bibliotecaActionPerformed
 
     private void biblioteca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca1ActionPerformed
-        // TODO add your handling code here:
+        ModificarLibro modificarLibro = new ModificarLibro();
+        modificarLibro.setVisible(true);
+        this.dispose();       
     }//GEN-LAST:event_biblioteca1ActionPerformed
 
     private void biblioteca2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca2ActionPerformed
-        // TODO add your handling code here:
+        ModificarEstado modificarEstado = new ModificarEstado();
+        modificarEstado.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_biblioteca2ActionPerformed
 
     private void biblioteca3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca3ActionPerformed
-        // TODO add your handling code here:
+         CatalogoLibros catalogoLibros = new CatalogoLibros();
+        catalogoLibros.setVisible(true);
+        this.dispose();      
+        
     }//GEN-LAST:event_biblioteca3ActionPerformed
 
     private void biblioteca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca4ActionPerformed
-        // TODO add your handling code here:
+        EliminarLibro eliminarLibro = new EliminarLibro();
+        eliminarLibro.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_biblioteca4ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
