@@ -196,44 +196,67 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void devolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolucionActionPerformed
-        // TODO add your handling code here:
+        Devolucion devolucion = new Devolucion();
+        devolucion.setVisible(true);
+        this.dispose();     
     }//GEN-LAST:event_devolucionActionPerformed
 
     private void sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sociosActionPerformed
         Socios socios = new Socios();
         socios.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_sociosActionPerformed
 
     private void renovarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renovarPrestamoActionPerformed
-        // TODO add your handling code here:
+        Renovacion renovacion = new Renovacion();
+        renovacion.setVisible(true);
+        this.dispose();
+            
     }//GEN-LAST:event_renovarPrestamoActionPerformed
 
     private void configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configuracionActionPerformed
-        // TODO add your handling code here:
+        Configuracion configuracion = new Configuracion();
+        configuracion.setVisible(true);
+        this.dispose();    
+        
     }//GEN-LAST:event_configuracionActionPerformed
 
     private void prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestamoActionPerformed
-        // TODO add your handling code here:
+        Prestamo prestamo = new Prestamo();
+        prestamo.setVisible(true);
+        this.dispose();   
     }//GEN-LAST:event_prestamoActionPerformed
 
     private void informesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informesActionPerformed
-        // TODO add your handling code here:
+        Informes informes = new Informes();
+        informes.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_informesActionPerformed
 
     private void historialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialActionPerformed
-        // TODO add your handling code here:
+        HistorialPrestamos historialPrestamos = new HistorialPrestamos();
+        historialPrestamos.setVisible(true);
+        this.dispose();    
     }//GEN-LAST:event_historialActionPerformed
 
     private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
-        // TODO add your handling code here:
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setVisible(true);
+        this.dispose();
+           
     }//GEN-LAST:event_bibliotecaActionPerformed
 
     private void Socios8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Socios8ActionPerformed
-        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_Socios8ActionPerformed
 
     private void reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasActionPerformed
-        // TODO add your handling code here:
+        Reservas reservas = new Reservas();
+        reservas.setVisible(true);
+        this.dispose();      
     }//GEN-LAST:event_reservasActionPerformed
 
     /**

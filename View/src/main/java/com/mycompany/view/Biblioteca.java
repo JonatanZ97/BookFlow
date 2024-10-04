@@ -177,6 +177,7 @@ public class Biblioteca extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
