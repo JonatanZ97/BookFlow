@@ -165,7 +165,7 @@ public class LibrosBusiness {
 
             // Concatenar los valores en un String
             String descripcionLibro = String.format(
-                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
                     libro.getTitulo(),
                     libro.getAutor(),
                     libro.getEstadoDelLibro(),
@@ -200,7 +200,7 @@ public class LibrosBusiness {
             if(libro.getAutor().equalsIgnoreCase(autor)){
             // Concatenar los valores en un String
             String descripcionLibro = String.format(
-                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
                     libro.getTitulo(),
                     libro.getAutor(),
                     libro.getEstadoDelLibro(),
@@ -237,7 +237,7 @@ public class LibrosBusiness {
             if(libro.getTitulo().equalsIgnoreCase(titulo)){
             // Concatenar los valores en un String
             String descripcionLibro = String.format(
-                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
                     libro.getTitulo(),
                     libro.getAutor(),
                     libro.getEstadoDelLibro(),
@@ -274,7 +274,7 @@ public class LibrosBusiness {
             if(libro.getEditorial().equalsIgnoreCase(editorial)){
             // Concatenar los valores en un String
             String descripcionLibro = String.format(
-                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
                     libro.getTitulo(),
                     libro.getAutor(),
                     libro.getEstadoDelLibro(),
@@ -311,7 +311,7 @@ public class LibrosBusiness {
             if(libro.getGenero().equalsIgnoreCase(CDU)){
             // Concatenar los valores en un String
             String descripcionLibro = String.format(
-                    "Título: %s, Autor: %s, Estado: %s, Género: %s, Editorial: %s, ID: %d",
+                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
                     libro.getTitulo(),
                     libro.getAutor(),
                     libro.getEstadoDelLibro(),
@@ -328,6 +328,29 @@ public class LibrosBusiness {
 
         // Retornar la lista de descripciones
         return listaString;
+    }
+    
+    //metodo para eliminar un libro
+    public boolean eliminarLibro(Long numIdentificacion){
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+        
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+            
+            if(libro.getNumeroDeIdentificacion() == numIdentificacion){
+                libroModel.eliminarLibro(numIdentificacion);
+                return true;//devolvemos true para informar que se hizo de manera correcta
+            }
+            
+        }
+        
+        
+        return false;//informamos que el libro no fue enconterado
     }
 
 }
