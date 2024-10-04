@@ -176,12 +176,15 @@ public class CatalogoLibros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -189,7 +192,7 @@ public class CatalogoLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+               
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
