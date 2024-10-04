@@ -4,6 +4,12 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.SociosBusiness;
+import ModelException.ModelException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 54234
@@ -34,10 +40,10 @@ public class EliminarSocio extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        botonDni = new javax.swing.JRadioButton();
+        botonId = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
-        nombreUsuario5 = new javax.swing.JTextField();
+        camp1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -88,25 +94,25 @@ public class EliminarSocio extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 500, 20));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("DNI");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        buttonGroup1.add(botonDni);
+        botonDni.setText("DNI");
+        jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("ID");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
+        buttonGroup1.add(botonId);
+        botonId.setText("ID");
+        jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("ELIMINAR SOCIO");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 110, 30));
 
-        nombreUsuario5.addActionListener(new java.awt.event.ActionListener() {
+        camp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario5ActionPerformed(evt);
+                camp1ActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 270, 40));
+        jPanel1.add(camp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 270, 40));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -149,21 +155,49 @@ public class EliminarSocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+        Socios socios = new Socios();
+        socios.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void nombreUsuario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario5ActionPerformed
+    private void camp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camp1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario5ActionPerformed
+    }//GEN-LAST:event_camp1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            SociosBusiness socios = new SociosBusiness();
+            Socios menuSocio = new Socios();
+            //obtengo los numeros de los campos de textos
+            String texto = camp1.getText();
 
+            if (botonDni.isSelected()) {
+                long dni = Long.parseLong(texto);
+                socios.elinarSocioDNI(dni);
+            } else {
+                if (botonId.isSelected()) {
+                    int id = Integer.parseInt(texto);
+                    socios.elinarSocioID(id);
+                    menuSocio.setVisible(true);
+                    this.dispose();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "seleccione una de las opciones de busqueda");
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        } catch (ModelException ex) {
+            Logger.getLogger(EliminarSocio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -202,7 +236,10 @@ public class EliminarSocio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton botonDni;
+    private javax.swing.JRadioButton botonId;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField camp1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -213,10 +250,7 @@ public class EliminarSocio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JTextField nombreUsuario5;
     // End of variables declaration//GEN-END:variables
 }
