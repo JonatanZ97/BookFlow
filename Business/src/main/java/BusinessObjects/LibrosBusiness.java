@@ -352,5 +352,46 @@ public class LibrosBusiness {
         
         return false;//informamos que el libro no fue enconterado
     }
+    
+    public boolean modificarLibro(long numOriginal, String titulo, String autor, String estado, String CDU, String editorial, String numIdentificacion) throws ModelException{
+        
+        Libro libro = new Libro();
 
+        if (verificarNoVacia(autor)) {
+            return false;
+        }
+        if (verificarNoVacia(genero)) {
+            return false;
+        }
+        if (verificarNoVacia(titulo)) {
+            return false;
+        }
+        if (verificarNoVacia(editorial)) {
+            return false;
+        }
+        if (verificarNoVacia(numIdentificacion)) {
+            return false;
+        }
+
+        if (!soloNumeros(numIdentificacion)) {
+            return false;
+        }
+
+        int numIdentificacionInt = Integer.parseInt(numIdentificacion);
+        
+        libro.setAutor(autor);
+        libro.setTitulo(titulo);
+        libro.setGenero(genero);
+        libro.setNumeroDeIdentificacion(numIdentificacionInt);
+        libro.setEstadoDelLibro(estadoDelLibro);
+        libro.setEditorial(editorial);
+
+        LibroDAOImpl libroMod = new LibroDAOImpl();
+        
+        libroMod.cambiarDatosLibro(libro, numOriginal);
+        
+        return true;
+    }
+
+    
 }
