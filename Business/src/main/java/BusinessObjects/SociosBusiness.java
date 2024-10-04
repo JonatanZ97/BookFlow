@@ -380,9 +380,6 @@ public class SociosBusiness {
         return listaString;
         
     }
-        
-    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado){
-        
-    }
+}
 
 
