@@ -3,8 +3,9 @@ package BusinessObjects;
 
 import ModelException.ModelException;
 import ModelFunctions.HistorialDAOImpl;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import modelObjets.Historial;
 
 
@@ -18,16 +19,20 @@ public class PrestamoBusiness {
         
         LibrosBusiness libroB = new LibrosBusiness();
         
+        //consultamos si el socio existe
         if(!socioB.existeSocioID(numID))return false;
         
+        //consulyamos si el libro existe
         if(!libroB.existeLibro(numID)) return false;
         
+        //obtenemos la fecha actual
         Date fechaActual = new Date(); // Obtener la fecha actual de la PC
         
         // Comparar si la fecha de retorno es anterior a la fecha actual
         if (fechaRetorno.before(fechaActual))return false; // Si la fecha de retorno es anterior, retorna false
         
-        prestamo.setIdLibro(libroB.obtenerID(numID));
+        //guardamos los datos en el objeto
+        prestamo.setIdLibro(libroB.obtenerID(numID));//obtenemos el id del socio
         
         prestamo.setIdSocio(idSocio);
         
@@ -39,11 +44,37 @@ public class PrestamoBusiness {
         
         prestamoModel.agregarHistorial(prestamo);
         
-        
+        libroB.cambiarAprestado(numID);
         
         return true;
         
     }
+    
+    public boolean devolver(long numID){
+        
+        //obtener lista historial
+        HistorialDAOImpl historialM = new HistorialDAOImpl();
+        
+        List<Historial> listaHis;
+        
+        
+        
+        listaHis = historialM.obtenerHistorial();
+        
+        
+        for (Historial his : listaHis){
+        
+            
+    }
+        
+        //buscar la que quenga el numID 
+        
+        
+        
+        return true;
+    }
+    
+    
     
     
 }

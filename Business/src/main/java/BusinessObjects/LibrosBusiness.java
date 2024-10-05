@@ -460,4 +460,35 @@ public class LibrosBusiness {
         
         return libroRetorno;
     }
+    
+    public boolean cambiarEstado(long numID, String nuevoEstado) throws ModelException{
+        
+        LibroDAOImpl libroM = new LibroDAOImpl();
+        
+        libroM.cambiarEstadoLibro(numID, nuevoEstado);
+        
+        return true;
+    }
+    
+    public boolean cambiarAprestado(long numID) throws ModelException{
+        
+        LibroDAOImpl libroM = new LibroDAOImpl();
+        
+        String nuevoEstado = "prestado";
+        
+        libroM.cambiarEstadoLibro(numID, nuevoEstado);
+        
+        return true;
+    }
+    
+        public boolean cambiarAdisponible(long numID) throws ModelException{
+        
+        LibroDAOImpl libroM = new LibroDAOImpl();
+        
+        String nuevoEstado = "disponible";
+        
+        libroM.cambiarEstadoLibro(numID, nuevoEstado);
+        
+        return true;
+    }
 }
