@@ -117,17 +117,15 @@ public class LibrosBusiness {
             return false;
         }
 
-        int numIdentificacionInt = Integer.parseInt(numIdentificacion);
+        long numIdentificacionInt = Long.parseLong(numIdentificacion);
 
         estado = estado.toLowerCase();
-        
-        System.out.print(estado);
         
         libro.setAutor(autor);
         libro.setTitulo(titulo);
         libro.setGenero(genero);
         libro.setNumeroDeIdentificacion(numIdentificacionInt);
-        libro.setEstadoDelLibro(estadoDelLibro);
+        libro.setEstadoDelLibro(estado);
         libro.setEditorial(editorial);
 
         LibroDAOImpl libroGuardar = new LibroDAOImpl();
