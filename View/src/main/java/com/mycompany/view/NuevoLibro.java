@@ -103,7 +103,12 @@ public class NuevoLibro extends javax.swing.JFrame {
         });
         jPanel1.add(TituloLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
 
-        EstadoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Reservado", "Prestado", "En reparación", "Perdido" }));
+        EstadoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Reservado", "Prestado", "En reparacion", "Perdido" }));
+        EstadoLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstadoLibroActionPerformed(evt);
+            }
+        });
         jPanel1.add(EstadoLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 120, -1));
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -186,6 +191,7 @@ public class NuevoLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void AceptarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarLibroActionPerformed
+
         LibrosBusiness datosLibros = new LibrosBusiness();
         String titulo,autor,editorial,identificador,genero,estado; 
         boolean respuestaLibro = false;
@@ -195,6 +201,8 @@ public class NuevoLibro extends javax.swing.JFrame {
         identificador = IdentificadorLibro.getText();
         genero = GeneroLibro.getText();
         estado = EstadoLibro.getSelectedItem().toString();
+        
+        System.out.println(estado);
         //falta terminar de enviar los datos como parametros.
         try {
             respuestaLibro = datosLibros.guardarLibro(titulo, autor, genero, editorial, identificador, estado);
@@ -218,6 +226,10 @@ public class NuevoLibro extends javax.swing.JFrame {
      
         
     }//GEN-LAST:event_TituloLibroActionPerformed
+
+    private void EstadoLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstadoLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EstadoLibroActionPerformed
 
     /**
      * @param args the command line arguments
