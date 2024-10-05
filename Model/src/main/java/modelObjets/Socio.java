@@ -14,7 +14,7 @@ public class Socio {
     String nombre;
     String apellido;
     long dni;
-    Date fechaNacimiento = new Date();
+    Date fechaNacimiento;
     long telefono;
     String mail;
     String direccion;

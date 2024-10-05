@@ -6,7 +6,7 @@ public class Reserva {
 
     int idLibro;
     int idSocio;
-    Date fechaReserva = new Date();
+    Date fechaReserva;
 
     public int getIdLibro() {
         return idLibro;
