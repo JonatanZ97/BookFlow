@@ -186,6 +186,7 @@ public class NuevoLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void AceptarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarLibroActionPerformed
+
         LibrosBusiness datosLibros = new LibrosBusiness();
         String titulo,autor,editorial,identificador,genero,estado; 
         boolean respuestaLibro = false;
