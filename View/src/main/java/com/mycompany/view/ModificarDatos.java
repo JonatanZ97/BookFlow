@@ -4,11 +4,21 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.SocioLocal;
+import BusinessObjects.SociosBusiness;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author 54234
  */
 public class ModificarDatos extends javax.swing.JFrame {
+
+    private JDateChooser dateChooser;
+    Date fechaLocal;
 
     /**
      * Creates new form ModificarDatos
@@ -31,13 +41,13 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        campDni = new javax.swing.JTextField();
+        campMail = new javax.swing.JTextField();
+        campTelefono = new javax.swing.JTextField();
+        campDireccion = new javax.swing.JTextField();
+        campMotivoPenalizacion = new javax.swing.JTextField();
+        campApellido = new javax.swing.JTextField();
+        campNombre = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -46,6 +56,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        campPenalizacion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -54,6 +65,9 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jToggleButton4 = new javax.swing.JToggleButton();
         botonMostrar = new javax.swing.JRadioButton();
+        campFecha = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        botonCalendario = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,19 +105,19 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel11.setText(">");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 10, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 210, 50));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 210, 50));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 210, 50));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 210, 50));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 540, 50));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 210, 50));
+        jPanel1.add(campDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 210, 50));
+        jPanel1.add(campMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 210, 50));
+        jPanel1.add(campTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 210, 50));
+        jPanel1.add(campDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 210, 50));
+        jPanel1.add(campMotivoPenalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 540, 50));
+        jPanel1.add(campApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 210, 50));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        campNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                campNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 50));
+        jPanel1.add(campNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 50));
 
         jToggleButton1.setBackground(new java.awt.Color(217, 217, 217));
         jToggleButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -118,7 +132,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, 30));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENALIZADO", "NO PENALIZADO" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 160, 30));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 160, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel10.setText(">");
@@ -145,13 +159,20 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel7.setText("TELEFONO:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 130, 30));
 
+        campPenalizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campPenalizacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(campPenalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 210, 50));
+
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel8.setText("DIRECCIÓN:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 130, 30));
 
         jLabel9.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel9.setText("RAZON DE PENALIZACIÓN:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 200, 30));
+        jLabel9.setText("Fecha de Nacimiento");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 200, 40));
 
         jLabel12.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel12.setText("NOMBRE:");
@@ -159,7 +180,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel13.setText("PENALIZACIÓN:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 130, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 130, 30));
 
         jLabel14.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel14.setText("B");
@@ -187,6 +208,20 @@ public class ModificarDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 580, -1, -1));
+        jPanel1.add(campFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 210, 50));
+
+        jLabel16.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel16.setText("RAZON DE PENALIZACIÓN:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 200, 30));
+
+        botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonCalendario.setText("Calendario");
+        botonCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalendarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
@@ -224,19 +259,96 @@ public class ModificarDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void campNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_campNombreActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        String nombre;
+        String apellido;
+        long dni;
+        String mail;
+        long telefono;
+        String direccion;
+        boolean penalizado;
+        String motivoPenalizado;
+
+        try {
+            nombre = campNombre.getText();
+            apellido = campApellido.getText();
+            mail = campMail.getText();
+            direccion = campDireccion.getText();
+            motivoPenalizado = campMotivoPenalizacion.getText();
+
+            //obtengo los numeros de los campos de textos
+            String texto = campDni.getText();
+
+            String texto1 = campTelefono.getText();
+
+            // Convierto el texto a long
+            telefono = Long.parseLong(texto1);
+
+            dni = Long.parseLong(texto);
+
+            if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            }else{
+                SociosBusiness socio = new SociosBusiness();
+                boolean resultado = true;//socio.cambiarDatosSocios(nombre, apellido, dni, fechaLocal, telefono, mail, direccion, motivoPenalizado);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(null, "socio guardado correctamente");
+                } else {
+                    if (!resultado) {
+                        JOptionPane.showMessageDialog(null, "no se pudo guardar el socio, verifique los datos ingresados");
+                    }
+                }
+                Socios socio1 = new Socios();
+                socio1.setVisible(true);
+                this.dispose();
+            }
+
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
+        SociosBusiness business = new SociosBusiness();
+        SocioLocal local = SocioLocal.getInstance();
         if (botonMostrar.isSelected()) {
-            
+            business = business.traerDatos(local.getId());
+
+            campNombre.setText(business.getNombre());
+            campApellido.setText(business.getApellido());
+            campDni.setText(Long.toString(business.getDni()));
+            campMail.setText(business.getMail());
+            campTelefono.setText(Long.toString(business.getTelefono()));
+            campDireccion.setText(business.getDireccion());
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
+            campFecha.setText(formato.format(business.getFechaNacimiento()));// convierto el Date en String
+            if (business.getPenalizado()) {
+                campPenalizacion.setText("Penalizado");
+            } else if (!business.getPenalizado()) {
+                campPenalizacion.setText("No Penalizado");
+            }
+            campMotivoPenalizacion.setText(business.getMotivoPenalizado());
         }     // TODO add your handling code here:
     }//GEN-LAST:event_botonMostrarActionPerformed
+
+    private void campPenalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campPenalizacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campPenalizacionActionPerformed
+
+    private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
+        FechaNacimientoDialog dialog = new FechaNacimientoDialog(ModificarDatos.this);
+        dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
+
+        // Actualizar la variable fechaNacimiento después de cerrar el diálogo
+        fechaLocal = dialog.getFechaNacimiento();        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,7 +386,17 @@ public class ModificarDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCalendario;
     private javax.swing.JRadioButton botonMostrar;
+    private javax.swing.JTextField campApellido;
+    private javax.swing.JTextField campDireccion;
+    private javax.swing.JTextField campDni;
+    private javax.swing.JTextField campFecha;
+    private javax.swing.JTextField campMail;
+    private javax.swing.JTextField campMotivoPenalizacion;
+    private javax.swing.JTextField campNombre;
+    private javax.swing.JTextField campPenalizacion;
+    private javax.swing.JTextField campTelefono;
     private javax.swing.JLabel fondo;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
@@ -283,6 +405,7 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -292,13 +415,6 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;

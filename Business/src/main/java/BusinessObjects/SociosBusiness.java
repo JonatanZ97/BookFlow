@@ -432,9 +432,9 @@ public class SociosBusiness {
         return listaString;
 
     }
-    
-    public boolean existeSocioDNI(long dni){
-        
+
+    public boolean existeSocioDNI(long dni) {
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
@@ -443,19 +443,18 @@ public class SociosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            
-            if(socio.getDni() == dni){
+
+            if (socio.getDni() == dni) {
                 return true;
             }
-            
+
         }
-        
-        
+
         return false;
     }
-    
-     public boolean existeSocioID(long id){
-        
+
+    public boolean existeSocioID(long id) {
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
@@ -464,22 +463,19 @@ public class SociosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            
-            if(socio.getId() == id){
+
+            if (socio.getId() == id) {
                 return true;
             }
-            
+
         }
-        
-        
+
         return false;
     }
-     
-     
-     public int buscarID(long dni){
 
-         
-         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+    public int buscarID(long dni) {
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
@@ -487,16 +483,27 @@ public class SociosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
-            if(socio.getDni() == dni){
+            if (socio.getDni() == dni) {
                 return socio.getId();
             }
         }
-         
-         
-         return 0;
-     }
-     
-     public SociosBusiness traerDatos(int id){
-         return null;
-     }
+
+        return 0;
+    }
+
+    public SociosBusiness traerDatos(int id) {
+        // Obtener la lista de usuarios (SociosBusiness)
+        ArrayList<SociosBusiness> lista = getListaUsuarios();
+
+        // Recorrer la lista para buscar el usuario que coincida con el id
+        for (SociosBusiness socio : lista) {
+            if (socio.getIdsocio()== id) {  // Comparamos el id del socio con el id proporcionado
+                return socio;  // Si coinciden, devolvemos el socio
+            }
+        }
+
+        // Si no se encuentra un socio con ese id, devolvemos null o podemos lanzar una excepción
+        return null;
+    }
+
 }
