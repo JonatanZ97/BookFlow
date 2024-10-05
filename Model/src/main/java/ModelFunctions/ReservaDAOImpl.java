@@ -25,7 +25,7 @@ public class ReservaDAOImpl implements ReservaDAO {
             conexion = objetoConexion.establecerConexion();
 
             // Consulta SQL para obtener todas las reservas
-            String consulta = "SELECT idlibro, idsocio, fecha_reserva FROM Reservas";
+            String consulta = "SELECT * FROM Reservas";
             declaracion = conexion.prepareStatement(consulta);
 
             // Ejecutar la consulta
@@ -34,6 +34,7 @@ public class ReservaDAOImpl implements ReservaDAO {
             // Recorrer los resultados y mapearlos a objetos Reserva
             while (resultado.next()) {
                 Reserva reserva = new Reserva();
+                reserva.setIdReserva(resultado.getInt("idreserva"));
                 reserva.setIdLibro(resultado.getInt("idlibro"));
                 reserva.setIdSocio(resultado.getInt("idsocio"));
                 reserva.setFechaReserva(resultado.getDate("fecha_reserva"));
