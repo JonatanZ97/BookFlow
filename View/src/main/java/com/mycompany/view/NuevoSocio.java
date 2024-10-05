@@ -299,7 +299,7 @@ public class NuevoSocio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
                 } else {
                     if (!resultado) {
-                        JOptionPane.showMessageDialog(null, "no se pudo guardar el socio");
+                        JOptionPane.showMessageDialog(null, "no se pudo guardar el socio, verifique los datos ingresados");
                     }
                 }
                 Socios socio = new Socios();
