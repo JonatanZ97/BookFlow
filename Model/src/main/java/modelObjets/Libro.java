@@ -10,7 +10,7 @@ public class Libro {
      */
     private String titulo;
     private String autor;
-    private String estadoDelLibro = "disponible";
+    private String estadoDelLibro;
     private String genero;
     private String editorial;
     private long numeroDeIdentificacion;

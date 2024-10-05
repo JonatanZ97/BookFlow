@@ -179,11 +179,14 @@
                 <StringItem index="0" value="Disponible"/>
                 <StringItem index="1" value="Reservado"/>
                 <StringItem index="2" value="Prestado"/>
-                <StringItem index="3" value="En reparaci&#xf3;n"/>
+                <StringItem index="3" value="En reparacion"/>
                 <StringItem index="4" value="Perdido"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EstadoLibroActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
