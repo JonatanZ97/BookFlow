@@ -4,6 +4,12 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.SocioLocal;
+import BusinessObjects.SociosBusiness;
+import BusinessObjects.UsuarioLocal;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 54234
@@ -30,28 +36,28 @@ public class ModificacionSocio extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        nombreUsuario11 = new javax.swing.JTextField();
+        campDni = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        dniBtn = new javax.swing.JRadioButton();
-        idBtn = new javax.swing.JRadioButton();
+        botonBuscarId = new javax.swing.JButton();
+        botonDni = new javax.swing.JRadioButton();
+        botonId = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        botonDatos = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        nombreUsuario10 = new javax.swing.JTextField();
+        areaTexto = new javax.swing.JTextArea();
+        botonNombre = new javax.swing.JRadioButton();
+        botonApellido = new javax.swing.JRadioButton();
+        campDatos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,12 +68,12 @@ public class ModificacionSocio extends javax.swing.JFrame {
         jLabel6.setText("B");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 90, 100));
 
-        nombreUsuario11.addActionListener(new java.awt.event.ActionListener() {
+        campDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario11ActionPerformed(evt);
+                campDniActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 270, 40));
+        jPanel1.add(campDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 270, 40));
 
         jLabel4.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel4.setText("F");
@@ -110,25 +116,25 @@ public class ModificacionSocio extends javax.swing.JFrame {
         jLabel2.setText("MODIFICAR SOCIO");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, 30));
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscarId.setBackground(new java.awt.Color(204, 255, 204));
+        botonBuscarId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonBuscarId.setText("BUSCAR");
+        botonBuscarId.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonBuscarId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonBuscarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonBuscarIdActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 90, 40));
+        jPanel1.add(botonBuscarId, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 90, 40));
 
-        buttonGroup1.add(dniBtn);
-        dniBtn.setText("DNI");
-        jPanel1.add(dniBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        buttonGroup1.add(botonDni);
+        botonDni.setText("DNI");
+        jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        buttonGroup1.add(idBtn);
-        idBtn.setText("ID");
-        jPanel1.add(idBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        buttonGroup1.add(botonId);
+        botonId.setText("ID");
+        jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(51, 204, 0));
 
@@ -145,14 +151,14 @@ public class ModificacionSocio extends javax.swing.JFrame {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
-        jButton2.setBackground(new java.awt.Color(204, 255, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("BUSCAR");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonDatos.setBackground(new java.awt.Color(204, 255, 204));
+        botonDatos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonDatos.setText("BUSCAR");
+        botonDatos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonDatosActionPerformed(evt);
             }
         });
 
@@ -172,19 +178,19 @@ public class ModificacionSocio extends javax.swing.JFrame {
         jLabel9.setText("Resultado de busqueda:");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaTexto.setColumns(20);
+        areaTexto.setRows(5);
+        jScrollPane1.setViewportView(areaTexto);
 
-        buttonGroup2.add(jRadioButton1);
-        jRadioButton1.setText("NOMBRE");
+        buttonGroup2.add(botonNombre);
+        botonNombre.setText("NOMBRE");
 
-        buttonGroup2.add(jRadioButton2);
-        jRadioButton2.setText("APELLIDO");
+        buttonGroup2.add(botonApellido);
+        botonApellido.setText("APELLIDO");
 
-        nombreUsuario10.addActionListener(new java.awt.event.ActionListener() {
+        campDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario10ActionPerformed(evt);
+                campDatosActionPerformed(evt);
             }
         });
 
@@ -202,16 +208,16 @@ public class ModificacionSocio extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(botonNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nombreUsuario10, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(botonDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(126, 126, 126)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,15 +235,15 @@ public class ModificacionSocio extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton1)
+                .addComponent(botonNombre)
                 .addGap(28, 28, 28)
-                .addComponent(jRadioButton2)
+                .addComponent(botonApellido)
                 .addGap(38, 38, 38)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreUsuario10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
@@ -269,13 +275,62 @@ public class ModificacionSocio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreUsuario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario10ActionPerformed
+    private void campDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campDatosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario10ActionPerformed
+    }//GEN-LAST:event_campDatosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarIdActionPerformed
+        String texto;
+        SociosBusiness socio = new SociosBusiness();
+        if (botonId.isSelected()) {
+            try {
+                //obtengo los numeros de los campos de textos
+                texto = campDni.getText();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+                // Convierto el texto a int
+                int id = Integer.parseInt(texto);
+                boolean respuesta = socio.existeSocioID(id);
+                if (respuesta) {
+                    SocioLocal local = SocioLocal.getInstance();
+                    local.setId(id);
+                    ModificarDatos datos = new ModificarDatos();
+                    datos.setVisible(true);
+                    this.dispose();
+                } else if (!respuesta) {
+                    JOptionPane.showMessageDialog(null, "socio no encontrado");
+                }
+
+            } catch (NumberFormatException e) {
+                // Manejar el error si el texto no es un número válido
+                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+            }
+        } else if (botonDni.isSelected()) {
+            try {
+                //obtengo los numeros de los campos de textos
+                texto = campDni.getText();
+
+                // Convierto el texto a long
+                long dni = Long.parseLong(texto);
+                boolean respuesta = socio.existeSocioDNI(dni);
+                if (respuesta) {
+                    int id = socio.buscarID(dni);
+                    SocioLocal local = SocioLocal.getInstance();
+                    local.setId(id);
+                    ModificarDatos datos = new ModificarDatos();
+                    datos.setVisible(true);
+                    this.dispose();
+                } else if (!respuesta) {
+                    JOptionPane.showMessageDialog(null, "socio no encontrado");
+                }
+
+            } catch (NumberFormatException e) {
+                // Manejar el error si el texto no es un número válido
+                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "seleccione una de las opciones de busqueda");
+        }
+    }//GEN-LAST:event_botonBuscarIdActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
@@ -287,13 +342,43 @@ public class ModificacionSocio extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void nombreUsuario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario11ActionPerformed
+    private void campDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campDniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario11ActionPerformed
+    }//GEN-LAST:event_campDniActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+        String texto;
+        areaTexto.setText("");
+        SociosBusiness socios = new SociosBusiness();
+        if (botonNombre.isSelected()) {
+            texto = campDatos.getText();
+            ArrayList<String> listaString = socios.buscarPorNombre(texto);
+
+            StringBuilder contenido = new StringBuilder();
+            for (String elemento : listaString) {
+                contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
+            }
+
+            // Mostrar el contenido en el TextArea
+            areaTexto.setText(contenido.toString());
+
+        } else {
+            if (botonApellido.isSelected()) {
+                texto = campDatos.getText();
+                ArrayList<String> listaString = socios.buscarPorApellido(texto);
+
+                StringBuilder contenido = new StringBuilder();
+                for (String elemento : listaString) {
+                    contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
+                }
+
+                // Mostrar el contenido en el TextArea
+                areaTexto.setText(contenido.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "seleccione una de las opciones de busqueda");
+            }
+        }   // TODO add your handling code here:
+    }//GEN-LAST:event_botonDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,12 +416,17 @@ public class ModificacionSocio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTexto;
+    private javax.swing.JRadioButton botonApellido;
+    private javax.swing.JButton botonBuscarId;
+    private javax.swing.JButton botonDatos;
+    private javax.swing.JRadioButton botonDni;
+    private javax.swing.JRadioButton botonId;
+    private javax.swing.JRadioButton botonNombre;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JRadioButton dniBtn;
-    private javax.swing.JRadioButton idBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField campDatos;
+    private javax.swing.JTextField campDni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -350,13 +440,8 @@ public class ModificacionSocio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JTextField nombreUsuario10;
-    private javax.swing.JTextField nombreUsuario11;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,7 @@ public class SociosBusiness {
     String nombre;
     String apellido;
     long dni;
-    Date fechaNacimiento = new Date();
+    Date fechaNacimiento;
     long telefono;
     String mail;
     String direccion;
@@ -494,5 +494,9 @@ public class SociosBusiness {
          
          
          return 0;
+     }
+     
+     public SociosBusiness traerDatos(int id){
+         return null;
      }
 }

@@ -4,6 +4,7 @@ import ModelException.ModelException;
 import ModelFunctions.LibroDAOImpl;
 import java.util.ArrayList;
 import modelObjets.Libro;
+import modelObjets.LibroCorto;
 
 public class LibrosBusiness {
 
@@ -420,7 +421,12 @@ public class LibrosBusiness {
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
-        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+        ArrayList<LibroCorto> listaLC = libroModel.obtenerLibrosCortos();
+        
+        for(LibroCorto libro : listaLC){
+            
+            if(libro.getNumeroIdentificacion() == numID) return libro.getId();
+        }
 
         return 0;
 
@@ -440,6 +446,7 @@ public class LibrosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
             if(libro.getNumeroDeIdentificacion() == numIdentificacion){
+                
                 libroRetorno.setAutor(libro.getAutor());
                 libroRetorno.setEditorial(libro.getEditorial());
                 libroRetorno.setEstadoDelLibro(libro.getEstadoDelLibro());

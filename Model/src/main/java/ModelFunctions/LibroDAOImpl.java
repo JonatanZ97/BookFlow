@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelObjets.Libro;
+import modelObjets.LibroCorto;
 
 public class LibroDAOImpl implements LibroDAO {
 
@@ -215,8 +216,8 @@ public class LibroDAOImpl implements LibroDAO {
             declaracion.setString(2, libro.getAutor());
             declaracion.setString(3, libro.getEstadoDelLibro());
             declaracion.setString(4, libro.getEditorial());
-            declaracion.setLong(5,libro.getNumeroDeIdentificacion());
-            declaracion.setString(6,libro.getGenero());
+            declaracion.setLong(5, libro.getNumeroDeIdentificacion());
+            declaracion.setString(6, libro.getGenero());
             declaracion.setLong(7, numIdentificacion);
 
             int filasAfectadas = declaracion.executeUpdate();
@@ -239,5 +240,44 @@ public class LibroDAOImpl implements LibroDAO {
                 System.out.println("Error al cerrar la conexion: " + e.getMessage());
             }
         }
+    }
+
+    public ArrayList<LibroCorto> obtenerLibrosCortos() {
+        ArrayList<LibroCorto> listaLibros = new ArrayList<>();
+        Connection conexion = null;
+        Statement declaracion = null;
+        ResultSet resultado = null;
+
+        try {
+            conexion = objetoConexion.establecerConexion();
+            declaracion = conexion.createStatement();
+            String consulta = "SELECT idlibro, numero_identificacion FROM Libros";
+            resultado = declaracion.executeQuery(consulta);
+
+            while (resultado.next()) {
+                LibroCorto libro = new LibroCorto();
+                libro.setId(resultado.getInt("idlibro"));
+                libro.setNumeroIdentificacion(resultado.getLong("numero_identificacion"));
+
+                listaLibros.add(libro);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener los libros: " + e.toString());
+        } finally {
+            try {
+                if (resultado != null) {
+                    resultado.close();
+                }
+                if (declaracion != null) {
+                    declaracion.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cerrar la conexion: " + e.toString());
+            }
+        }
+        return listaLibros;
     }
 }
