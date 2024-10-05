@@ -309,7 +309,7 @@ public class SociosBusiness {
         }
     }
 
-    public boolean elinarSocioID(int ID) throws ModelException {
+    public boolean eliminarSocioID(int ID) throws ModelException {
 
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
@@ -330,7 +330,7 @@ public class SociosBusiness {
         return false;//retornamos false si no se encontro el id del socio a eliminar
     }
 
-    public boolean elinarSocioDNI(long DNI) throws ModelException {
+    public boolean eliminarSocioDNI(long DNI) throws ModelException {
 
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();

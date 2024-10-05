@@ -294,7 +294,14 @@ public class NuevoSocio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             } else {
                 SociosBusiness socios = new SociosBusiness();
-                socios.guardarSocio(nombre, apellido, dni, fechaLocal, telefono, mail, direccion);
+                boolean resultado = socios.guardarSocio(nombre, apellido, dni, fechaLocal, telefono, mail, direccion);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(null, "socio guardado correctamente");
+                } else {
+                    if (!resultado) {
+                        JOptionPane.showMessageDialog(null, "no se pudo guardar el socio");
+                    }
+                }
                 Socios socio = new Socios();
                 socio.setVisible(true);
                 this.dispose();

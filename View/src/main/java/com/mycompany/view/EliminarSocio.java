@@ -179,13 +179,27 @@ public class EliminarSocio extends javax.swing.JFrame {
 
             if (botonDni.isSelected()) {
                 long dni = Long.parseLong(texto);
-                socios.elinarSocioDNI(dni);
+                boolean resultado = socios.eliminarSocioDNI(dni);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(null, "socio eliminado correctamente");
+                } else {
+                    if (!resultado) {
+                        JOptionPane.showMessageDialog(null, "no se pudo eliminar el socio");
+                    }
+                }
                 menuSocio.setVisible(true);
                 this.dispose();
             } else {
                 if (botonId.isSelected()) {
                     int id = Integer.parseInt(texto);
-                    socios.elinarSocioID(id);
+                    boolean resultado = socios.eliminarSocioID(id);
+                    if (resultado) {
+                        JOptionPane.showMessageDialog(null, "socio eliminado correctamente");
+                    } else {
+                        if (!resultado) {
+                            JOptionPane.showMessageDialog(null, "no se pudo eliminar el socio");
+                        }
+                    }
                     menuSocio.setVisible(true);
                     this.dispose();
                 } else {
