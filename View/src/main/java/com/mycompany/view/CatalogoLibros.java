@@ -181,13 +181,13 @@ public class CatalogoLibros extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         Biblioteca biblioteca = new Biblioteca();
         biblioteca.setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void BuscarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarLibrosActionPerformed
@@ -195,22 +195,16 @@ public class CatalogoLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarLibrosActionPerformed
 
     private void TotalLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalLibrosActionPerformed
-     LibrosBusiness librosRecibidos = new LibrosBusiness();
-       ArrayList<LibrosBusiness> listaLibros = new ArrayList<>();  
-       listaLibros = librosRecibidos.getListaLibros();
-       
-       
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        LibrosBusiness librosRecibidos = new LibrosBusiness();
+        ArrayList<String> listaLibros = new ArrayList<>();
+        listaLibros = librosRecibidos.convertToString();
+
+        AreaLibros.setText("");
+
+        // Luego, agregar el nuevo contenido
+        for (String libro : listaLibros) {
+            AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+        }
     }//GEN-LAST:event_TotalLibrosActionPerformed
 
     /**
