@@ -6,6 +6,7 @@ import ModelFunctions.HistorialDAOImpl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelObjets.Historial;
 
 
@@ -18,6 +19,12 @@ public class PrestamoBusiness {
         SociosBusiness socioB = new SociosBusiness();
         
         LibrosBusiness libroB = new LibrosBusiness();
+        
+        if(libroB.buscarEstado(numID).equalsIgnoreCase("prestado")){
+            
+            JOptionPane.showMessageDialog(null, "Este libro ya se encuentra prestado");
+            return false;
+        }
         
         //consultamos si el socio existe
         if(!socioB.existeSocioID(numID))return false;
@@ -50,7 +57,9 @@ public class PrestamoBusiness {
         
     }
     
-    public boolean devolver(long numID){
+    public boolean devolver(long numID) throws ModelException{
+        
+        boolean resultado = false;
         
         //obtener lista historial
         HistorialDAOImpl historialM = new HistorialDAOImpl();
@@ -64,14 +73,17 @@ public class PrestamoBusiness {
         
         for (Historial his : listaHis){
         
-            
-    }
+            if(his.getFechaReal() == null){
+                //obtener id del istorialint id = 
+                resultado = true;
+            }
+        }
         
-        //buscar la que quenga el numID 
+        Date fechaActual = new Date();
         
+        historialM.agregarRetorno(0, fechaActual);
         
-        
-        return true;
+        return resultado;
     }
     
     
