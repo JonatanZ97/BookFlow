@@ -12,8 +12,8 @@ public class Historial {
     */
     int idLibro;
     int idSocio;
-    Date fechaPrestamo = new Date();
-    Date fechaRetorno = new Date();
+    Date fechaPrestamo;
+    Date fechaRetorno;
     Date fechaReal = null;
 
     /*
