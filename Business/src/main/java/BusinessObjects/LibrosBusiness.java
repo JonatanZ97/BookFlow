@@ -119,6 +119,10 @@ public class LibrosBusiness {
 
         int numIdentificacionInt = Integer.parseInt(numIdentificacion);
 
+        estado = estado.toLowerCase();
+        
+        System.out.print(estado);
+        
         libro.setAutor(autor);
         libro.setTitulo(titulo);
         libro.setGenero(genero);
@@ -393,9 +397,22 @@ public class LibrosBusiness {
         return true;
     }
 
-    public boolean existeLibro(){
+    public boolean existeLibro(long numI){
         
-        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+            
+            if(libro.getNumeroDeIdentificacion() == numI){
+                return true;
+            }
+
+        }
         
         return false;
     }
