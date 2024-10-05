@@ -8,7 +8,7 @@ public class PrestamoBusiness {
     
     public boolean prestar(int idSocio, long numID, Date fechaRetorno){
         
-        
+        return true;
     }
     
     
