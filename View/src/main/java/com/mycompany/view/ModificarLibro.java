@@ -4,10 +4,17 @@
  */
 package com.mycompany.view;
 
-import BusinessObjects.LibroLocal;
 import BusinessObjects.LibrosBusiness;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import BusinessObjects.LibroLocal;
+
+import BusinessObjects.LibrosBusiness;
+
+import BusinessObjects.LibroLocal;
+
+import BusinessObjects.LibrosBusiness;
 
 /**
  *
@@ -304,7 +311,8 @@ public class ModificarLibro extends javax.swing.JFrame {
     private void buscarIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIdentificadorActionPerformed
         LibrosBusiness libros = new LibrosBusiness();   
         String numero = campoIdentificador.getText();
-        long identificador = Long.parseLong(numero);
+
+      long identificador = Long.parseLong(numero);
         
       boolean respuesta = libros.existeLibro(identificador);
       

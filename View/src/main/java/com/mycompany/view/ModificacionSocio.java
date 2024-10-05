@@ -4,7 +4,10 @@
  */
 package com.mycompany.view;
 
+
+import BusinessObjects.SocioLocal;
 import BusinessObjects.SociosBusiness;
+import BusinessObjects.UsuarioLocal;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -290,6 +293,7 @@ public class ModificacionSocio extends javax.swing.JFrame {
                 boolean respuesta = socio.existeSocioID(id);
                 if (respuesta) {
 
+
                 } else if (!respuesta) {
                     JOptionPane.showMessageDialog(null, "socio no encontrado");
                 }
@@ -307,6 +311,34 @@ public class ModificacionSocio extends javax.swing.JFrame {
                 long dni = Long.parseLong(texto);
                 boolean respuesta = socio.existeSocioDNI(dni);
                 if (respuesta) {
+        SocioLocal local = SocioLocal.getInstance();
+                    //local.setId(id);
+                    ModificarDatos datos = new ModificarDatos();
+                    datos.setVisible(true);
+                    this.dispose();
+                } else if (!respuesta) {
+                    JOptionPane.showMessageDialog(null, "socio no encontrado");
+                }
+
+            } catch (NumberFormatException e) {
+                // Manejar el error si el texto no es un número válido
+                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+            }
+        } else if (botonDni.isSelected()) {
+            try {
+                //obtengo los numeros de los campos de textos
+                texto = campDni.getText();
+
+                // Convierto el texto a long
+                long dni = Long.parseLong(texto);
+                boolean respuesta = socio.existeSocioDNI(dni);
+                if (respuesta) {
+                    int id = socio.buscarID(dni);
+                    SocioLocal local = SocioLocal.getInstance();
+                    local.setId(id);
+                    ModificarDatos datos = new ModificarDatos();
+                    datos.setVisible(true);
+                    this.dispose();
 
                 } else if (!respuesta) {
                     JOptionPane.showMessageDialog(null, "socio no encontrado");

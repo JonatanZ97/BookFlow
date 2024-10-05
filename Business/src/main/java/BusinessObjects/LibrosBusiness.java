@@ -4,6 +4,7 @@ import ModelException.ModelException;
 import ModelFunctions.LibroDAOImpl;
 import java.util.ArrayList;
 import modelObjets.Libro;
+import modelObjets.LibroCorto;
 
 public class LibrosBusiness {
 
@@ -413,5 +414,50 @@ public class LibrosBusiness {
         }
         
         return false;
+    }
+    
+    public int obtenerID(long numID){
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<LibroCorto> listaLC = libroModel.obtenerLibrosCortos();
+        
+        for(LibroCorto libro : listaLC){
+            
+            if(libro.getNumeroIdentificacion() == numID) return libro.getId();
+        }
+
+        return 0;
+
+        }
+    
+    public LibrosBusiness obtenerDatos(long numIdentificacion){
+        
+        
+        LibrosBusiness libroRetorno = new LibrosBusiness();
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+            if(libro.getNumeroDeIdentificacion() == numIdentificacion){
+                
+                libroRetorno.setAutor(libro.getAutor());
+                libroRetorno.setEditorial(libro.getEditorial());
+                libroRetorno.setEstadoDelLibro(libro.getEstadoDelLibro());
+                libroRetorno.setGenero(libro.getGenero());
+                libroRetorno.setNumeroDeIdentificacion(libro.getNumeroDeIdentificacion());
+                libroRetorno.setTitulo(libro.getTitulo());
+                
+                
+            }
+        }
+        
+        return libroRetorno;
     }
 }
