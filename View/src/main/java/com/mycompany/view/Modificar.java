@@ -34,13 +34,13 @@ public class Modificar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        botonEditorial = new javax.swing.JTextField();
+        botonIdentificador = new javax.swing.JTextField();
+        botonGenero = new javax.swing.JTextField();
+        botonAutor = new javax.swing.JTextField();
+        botonTitulo = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        botonEstado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -49,12 +49,11 @@ public class Modificar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonMostrar = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,17 +90,17 @@ public class Modificar extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel11.setText(">");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 10, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 210, 50));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 210, 50));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 210, 50));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 210, 50));
+        jPanel1.add(botonEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 210, 50));
+        jPanel1.add(botonIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 210, 50));
+        jPanel1.add(botonGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 210, 50));
+        jPanel1.add(botonAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 210, 50));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        botonTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                botonTituloActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 50));
+        jPanel1.add(botonTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 50));
 
         jToggleButton1.setBackground(new java.awt.Color(217, 217, 217));
         jToggleButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -115,8 +114,8 @@ public class Modificar extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENALIZADO", "NO PENALIZADO" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 160, 30));
+        botonEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENALIZADO", "NO PENALIZADO" }));
+        jPanel1.add(botonEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 160, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel10.setText(">");
@@ -151,29 +150,29 @@ public class Modificar extends javax.swing.JFrame {
         jLabel13.setText("ESTADO DEL LIBRO:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 130, 30));
 
-        jButton2.setBackground(new java.awt.Color(102, 255, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("MOSTRAR DATOS");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonMostrar.setBackground(new java.awt.Color(102, 255, 0));
+        botonMostrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonMostrar.setText("MOSTRAR DATOS");
+        botonMostrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonMostrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 130, 60));
+        jPanel1.add(botonMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 130, 60));
 
-        jButton1.setBackground(new java.awt.Color(51, 204, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("GUARDAR CAMBIOS");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonGuardar.setBackground(new java.awt.Color(51, 204, 255));
+        botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonGuardar.setText("GUARDAR CAMBIOS");
+        botonGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 130, 70));
+        jPanel1.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 130, 70));
 
         jLabel16.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel16.setText("B");
@@ -186,18 +185,6 @@ public class Modificar extends javax.swing.JFrame {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 50, 1010, 640));
-
-        jButton6.setBackground(new java.awt.Color(204, 255, 204));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton6.setText("GUARDAR");
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,30 +218,49 @@ public class Modificar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
+
          LibrosBusiness libros = new LibrosBusiness();
          LibroLocal singleton = LibroLocal.getInstance();
-         singleton.getNumIdentificacion();
-         //libros. continuar escribiendo 
+         long numero = singleton.getNumIdentificacion();
+         libros = libros.obtenerDatos(numero);
+         
+         botonGenero.setText(libros.getGenero());
+         
+         System.out.println(libros.getGenero() + "ddddddddddddddddddddddddddddd");
+         
+         botonAutor.setText(libros.getAutor());
+         
+         botonEditorial.setText(libros.getEditorial());
+        
+         botonTitulo.setText( libros.getTitulo());
+        
+        // libros.getEstadoDelLibro();
+        
+         
+     
+         
+         
+         
+         
+         
+         
+         
      
 
 
 
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonMostrarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void botonTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_botonTituloActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,11 +299,15 @@ public class Modificar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField botonAutor;
+    private javax.swing.JTextField botonEditorial;
+    private javax.swing.JComboBox<String> botonEstado;
+    private javax.swing.JTextField botonGenero;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JTextField botonIdentificador;
+    private javax.swing.JButton botonMostrar;
+    private javax.swing.JTextField botonTitulo;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -311,11 +321,6 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
