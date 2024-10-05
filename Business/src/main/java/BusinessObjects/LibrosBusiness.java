@@ -121,6 +121,8 @@ public class LibrosBusiness {
 
         estado = estado.toLowerCase();
         
+        System.out.print(estado);
+        
         libro.setAutor(autor);
         libro.setTitulo(titulo);
         libro.setGenero(genero);
