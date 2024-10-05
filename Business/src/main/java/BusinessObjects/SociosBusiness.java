@@ -432,4 +432,46 @@ public class SociosBusiness {
         return listaString;
 
     }
+    
+    public boolean existeSocioDNI(long dni){
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            
+            if(socio.getDni() == dni){
+                return true;
+            }
+            
+        }
+        
+        
+        return false;
+    }
+    
+     public boolean existeSocioID(long id){
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            
+            if(socio.getId() == id){
+                return true;
+            }
+            
+        }
+        
+        
+        return false;
+    }
 }
