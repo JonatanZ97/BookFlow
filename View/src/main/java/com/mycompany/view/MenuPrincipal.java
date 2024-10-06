@@ -256,7 +256,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasActionPerformed
         Reservas reservas = new Reservas();
         reservas.setVisible(true);
-        this.dispose();      
+        this.dispose();     
     }//GEN-LAST:event_reservasActionPerformed
 
     /**
