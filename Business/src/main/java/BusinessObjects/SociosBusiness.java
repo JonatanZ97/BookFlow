@@ -204,13 +204,13 @@ public class SociosBusiness {
 
         // Recorre cada carácter de la cadena
         for (char c : cadena.toCharArray()) {
-            // Si el carácter no es una letra, retorna false
-            if (!Character.isLetter(c)) {
+            // Si el carácter no es una letra y no es un espacio, retorna false
+            if (!Character.isLetter(c) && c != ' ') {
                 return false;
             }
         }
 
-        // Si todos los caracteres son letras, retorna true
+        // Si todos los caracteres son letras o espacios, retorna true
         return true;
     }
 
@@ -546,10 +546,10 @@ public class SociosBusiness {
 
         return respuesta;
     }
-    
-    public void vaciarLista() throws ModelException{
+
+    public void vaciarLista() throws ModelException {
         SocioDAOImpl socios = new SocioDAOImpl();
-        
+
         socios.vaciarLista();
     }
 }
