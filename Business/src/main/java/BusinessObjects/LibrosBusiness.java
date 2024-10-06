@@ -560,4 +560,14 @@ public class LibrosBusiness {
         return titulo;
         }
         
+        
+        public void vaciarLista() throws ModelException{
+            
+            LibroDAOImpl libros = new LibroDAOImpl();
+            
+            libros.vaciarLista();
+            
+            
+        }
+        
 }

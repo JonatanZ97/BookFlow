@@ -546,4 +546,10 @@ public class SociosBusiness {
 
         return respuesta;
     }
+    
+    public void vaciarLista() throws ModelException{
+        SocioDAOImpl socios = new SocioDAOImpl();
+        
+        socios.vaciarLista();
+    }
 }

@@ -164,11 +164,13 @@ public class PrestamoBusiness {
         return resultado;
     }
     
-    public boolean borrarHistorialPrestamos (){
+    public void borrarHistorialPrestamos () throws ModelException{
+        
+        HistorialDAOImpl prestamos = new HistorialDAOImpl();
+        
+        prestamos.vaciarLista();
         
         
-        
-        return true;
     }
     
     
