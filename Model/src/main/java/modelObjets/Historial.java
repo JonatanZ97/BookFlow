@@ -10,6 +10,7 @@ public class Historial {
     seccion de atributos
     principales atributos que componen al objeto
     */
+    int idHistorial;
     int idLibro;
     int idSocio;
     Date fechaPrestamo;
@@ -22,6 +23,11 @@ public class Historial {
     seccion de getters and setters
     para obtener y modificar los datos
      */
+    
+    public int getIdHistorial() {
+        return idHistorial;
+    }
+    
     public int getIdLibro() {
         return idLibro;
     }
@@ -41,7 +47,11 @@ public class Historial {
     public Date getFechaReal() {
         return fechaReal;
     }
-
+    
+    public void setIdHistorial(int idHistorial) {
+        this.idHistorial = idHistorial;
+    }
+    
     public void setIdLibro(int idLibro) {
         this.idLibro = idLibro;
     }

@@ -23,12 +23,13 @@ public class HistorialDAOImpl implements HistorialDAO {
         try {
             conexion = objetoConexion.establecerConexion();
             // Incluye la columna fechaReal en la consulta
-            String consulta = "SELECT idlibro, idsocio, fecha_prestamo, fecha_retiro, fechareal FROM Historialprestamos";
+            String consulta = "SELECT * FROM Historialprestamos";
             declaracion = conexion.prepareStatement(consulta);
             resultado = declaracion.executeQuery();
 
             while (resultado.next()) {
                 Historial historial = new Historial();
+                historial.setIdHistorial(resultado.getInt("idhistorial"));
                 historial.setIdLibro(resultado.getInt("idlibro"));
                 historial.setIdSocio(resultado.getInt("idsocio"));
                 historial.setFechaPrestamo(resultado.getDate("fecha_prestamo"));

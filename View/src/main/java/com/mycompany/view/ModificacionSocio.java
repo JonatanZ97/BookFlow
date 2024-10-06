@@ -4,7 +4,6 @@
  */
 package com.mycompany.view;
 
-
 import BusinessObjects.SocioLocal;
 import BusinessObjects.SociosBusiness;
 import BusinessObjects.UsuarioLocal;
@@ -292,54 +291,34 @@ public class ModificacionSocio extends javax.swing.JFrame {
                 int id = Integer.parseInt(texto);
                 boolean respuesta = socio.existeSocioID(id);
                 if (respuesta) {
-
-
-                } else if (!respuesta) {
-                    JOptionPane.showMessageDialog(null, "socio no encontrado");
-                }
-
-            } catch (NumberFormatException e) {
-                // Manejar el error si el texto no es un número válido
-                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
-            }
-        } else if (botonDni.isSelected()) {
-            try {
-                //obtengo los numeros de los campos de textos
-                texto = campDni.getText();
-
-                // Convierto el texto a long
-                long dni = Long.parseLong(texto);
-                boolean respuesta = socio.existeSocioDNI(dni);
-                if (respuesta) {
-        SocioLocal local = SocioLocal.getInstance();
-                    //local.setId(id);
-                    ModificarDatos datos = new ModificarDatos();
-                    datos.setVisible(true);
-                    this.dispose();
-                } else if (!respuesta) {
-                    JOptionPane.showMessageDialog(null, "socio no encontrado");
-                }
-
-            } catch (NumberFormatException e) {
-                // Manejar el error si el texto no es un número válido
-                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
-            }
-        } else if (botonDni.isSelected()) {
-            try {
-                //obtengo los numeros de los campos de textos
-                texto = campDni.getText();
-
-                // Convierto el texto a long
-                long dni = Long.parseLong(texto);
-                boolean respuesta = socio.existeSocioDNI(dni);
-                if (respuesta) {
-                    int id = socio.buscarID(dni);
                     SocioLocal local = SocioLocal.getInstance();
                     local.setId(id);
                     ModificarDatos datos = new ModificarDatos();
                     datos.setVisible(true);
                     this.dispose();
+                } else if (!respuesta) {
+                    JOptionPane.showMessageDialog(null, "socio no encontrado");
+                }
 
+            } catch (NumberFormatException e) {
+                // Manejar el error si el texto no es un número válido
+                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+            }
+        } else if (botonDni.isSelected()) {
+            try {
+                //obtengo los numeros de los campos de textos
+                texto = campDni.getText();
+
+                // Convierto el texto a long
+                long dni = Long.parseLong(texto);
+                boolean respuesta = socio.existeSocioDNI(dni);
+                if (respuesta) {
+                    SocioLocal local = SocioLocal.getInstance();
+                    int id = socio.buscarID(dni);
+                    local.setId(id);
+                    ModificarDatos datos = new ModificarDatos();
+                    datos.setVisible(true);
+                    this.dispose();
                 } else if (!respuesta) {
                     JOptionPane.showMessageDialog(null, "socio no encontrado");
                 }
@@ -351,6 +330,7 @@ public class ModificacionSocio extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "seleccione una de las opciones de busqueda");
         }
+
     }//GEN-LAST:event_botonBuscarIdActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
