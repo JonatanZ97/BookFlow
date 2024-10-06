@@ -66,7 +66,7 @@ public class PrestamoBusiness {
         
         List<Historial> listaHis;
         
-        
+        int idHis = 0;
         
         listaHis = historialM.obtenerHistorial();
         
@@ -74,14 +74,16 @@ public class PrestamoBusiness {
         for (Historial his : listaHis){
         
             if(his.getFechaReal() == null){
-                //aca
+                
+                idHis = his.getIdHistorial();
+                
                 resultado = true;
             }
         }
         
         Date fechaActual = new Date();
         
-        historialM.agregarRetorno(0, fechaActual);
+        historialM.agregarRetorno(idHis, fechaActual);
         
         return resultado;
     }
