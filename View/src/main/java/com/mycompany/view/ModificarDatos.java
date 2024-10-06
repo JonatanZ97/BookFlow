@@ -24,6 +24,8 @@ public class ModificarDatos extends javax.swing.JFrame {
     Date fechaLocal;
     int id;
     long dniOriginal;
+    String fechaOriginalString;
+    Date fechaOriginal;
 
     /**
      * Creates new form ModificarDatos
@@ -252,6 +254,7 @@ public class ModificarDatos extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -307,10 +310,13 @@ public class ModificarDatos extends javax.swing.JFrame {
 
             dni = Long.parseLong(texto);
 
-            if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
+            if (nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             } else {
                 SociosBusiness socio = new SociosBusiness();
+                if (fechaOriginalString.equalsIgnoreCase(labelFecha.getText())) {
+                    fechaLocal = fechaOriginal;
+                }
                 boolean resultado = socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado, dniOriginal);
                 if (resultado) {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
@@ -348,8 +354,10 @@ public class ModificarDatos extends javax.swing.JFrame {
             campMail.setText(business.getMail());
             campTelefono.setText(Long.toString(business.getTelefono()));
             campDireccion.setText(business.getDireccion());
+            fechaOriginal = business.getFechaNacimiento();
             SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
             labelFecha.setText(formato.format(business.getFechaNacimiento()));// convierto el Date en String
+            fechaOriginalString = formato.format(business.getFechaNacimiento());
             if (business.getPenalizado()) {
                 labelPenalizado.setText("Penalizado");
             } else if (!business.getPenalizado()) {
