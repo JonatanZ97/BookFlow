@@ -1,6 +1,7 @@
 
 package BusinessObjects;
 
+import ModelException.ModelException;
 import ModelFunctions.UsuarioDAOImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,18 @@ import modelObjets.Usuario;
 //autor jonatan zamora
 public class UsuarioBusiness {
     
+    private int idUsuario;
     private String nombre;
     private String contraseña;
     private int nivel;
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public int getNivel() {
         return nivel;
@@ -59,8 +69,9 @@ public class UsuarioBusiness {
         
         // Copiamos los datos de Usuario a UsuarioBusiness
         usuarioBusiness.setNombre(usuario.getNombre());
-        usuarioBusiness.setContraseña(usuario.getContrasenia()); // Asegúrate de que el método se llame así
+        usuarioBusiness.setContraseña(usuario.getContrasenia());
         usuarioBusiness.setNivel(usuario.getNivel());
+        usuarioBusiness.setIdUsuario(usuario.getIdUsuario());
         
         // Agregamos el objeto convertido a la lista de usuarios de negocio
         listaUsuarios.add(usuarioBusiness);
@@ -70,7 +81,28 @@ public class UsuarioBusiness {
     return listaUsuarios;
 }
 
+    //metodo para cambiar contraseña
+    public void cambiarContrasenia(int idUsu, String nuevaContrasenia) throws ModelException{
+        
+        UsuarioDAOImpl usuarios = new UsuarioDAOImpl();
+        
+        usuarios.cambiarContrasenia(nuevaContrasenia, idUsu);
+        
+        }
     
+    public void nuevoUsuario(String nombre, String contrasenia, int nivel) throws ModelException{
+        
+        Usuario user = new Usuario();
+        
+        user.setNivel(nivel);
+        user.setNombre(nombre);
+        user.setContrasenia(contrasenia);
+        
+        UsuarioDAOImpl usuarios = new UsuarioDAOImpl();
+        
+        usuarios.guardarUsuario(user);
+        
+    }
     
     
 }
