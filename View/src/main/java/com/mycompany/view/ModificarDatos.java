@@ -6,10 +6,13 @@ package com.mycompany.view;
 
 import BusinessObjects.SocioLocal;
 import BusinessObjects.SociosBusiness;
+import ModelException.ModelException;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -276,7 +279,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         String mail;
         long telefono;
         String direccion;
-        boolean penalizado;
+        boolean penalizado = false;
         String motivoPenalizado;
         
 
@@ -308,7 +311,7 @@ public class ModificarDatos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             }else{
                 SociosBusiness socio = new SociosBusiness();
-                boolean resultado = true;// socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado);
+                boolean resultado = socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado);
                 if (resultado) {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
                 } else {
@@ -324,6 +327,8 @@ public class ModificarDatos extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             // Manejar el error si el texto no es un número válido
             JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        } catch (ModelException ex) {
+            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // TODO add your handling code here:
