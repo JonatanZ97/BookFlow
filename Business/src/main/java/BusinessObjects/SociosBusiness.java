@@ -505,5 +505,44 @@ public class SociosBusiness {
         // Si no se encuentra un socio con ese id, devolvemos null o podemos lanzar una excepción
         return null;
     }
+    
+    public String obtenerNombre(int idSocio){
+        String respuesta = " ";
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
 
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            if (socio.getId() == idSocio) {
+                
+                respuesta = socio.getNombre();
+            }
+        }
+        
+        return respuesta;
+    }
+
+        public String obtenerApellido(int idSocio){
+        String respuesta = " ";
+        
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        SocioDAOImpl socioModel = new SocioDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Socio> listaModel = socioModel.obtenerSocios(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Socio socio : listaModel) {
+            if (socio.getId() == idSocio) {
+                
+                respuesta = socio.getApellido();
+            }
+        }
+        
+        return respuesta;
+    }
 }

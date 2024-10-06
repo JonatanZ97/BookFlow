@@ -319,14 +319,15 @@ public class ModificarDatos extends javax.swing.JFrame {
                 boolean resultado = socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado);
                 if (resultado) {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
+                    Socios socio1 = new Socios();
+                    socio1.setVisible(true);
+                    this.dispose();
                 } else {
                     if (!resultado) {
                         JOptionPane.showMessageDialog(null, "no se pudo guardar el socio, verifique los datos ingresados");
                     }
                 }
-                Socios socio1 = new Socios();
-                socio1.setVisible(true);
-                this.dispose();
+
             }
 
         } catch (NumberFormatException e) {
@@ -371,7 +372,10 @@ public class ModificarDatos extends javax.swing.JFrame {
         dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
-        fechaLocal = dialog.getFechaNacimiento();        // TODO add your handling code here:
+        fechaLocal = dialog.getFechaNacimiento();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
+        campFecha.setText(formato.format(fechaLocal));// convierto el Date en String
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonCalendarioActionPerformed
 
     private void penalizadoCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_penalizadoCajaActionPerformed

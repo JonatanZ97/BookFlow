@@ -297,14 +297,15 @@ public class NuevoSocio extends javax.swing.JFrame {
                 boolean resultado = socios.guardarSocio(nombre, apellido, dni, fechaLocal, telefono, mail, direccion);
                 if (resultado) {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
+                    Socios socio = new Socios();
+                    socio.setVisible(true);
+                    this.dispose();
                 } else {
                     if (!resultado) {
                         JOptionPane.showMessageDialog(null, "no se pudo guardar el socio, verifique los datos ingresados");
                     }
                 }
-                Socios socio = new Socios();
-                socio.setVisible(true);
-                this.dispose();
+
             }
 
         } catch (NumberFormatException e) {
