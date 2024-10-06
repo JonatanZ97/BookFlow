@@ -74,7 +74,7 @@ public class PrestamoBusiness {
         for (Historial his : listaHis){
         
             if(his.getFechaReal() == null){
-                //obtener id del istorialint id = 
+                //aca
                 resultado = true;
             }
         }
@@ -85,6 +85,8 @@ public class PrestamoBusiness {
         
         return resultado;
     }
+    
+    
     
     
     
