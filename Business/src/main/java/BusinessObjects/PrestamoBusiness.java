@@ -70,10 +70,14 @@ public class PrestamoBusiness {
         
         listaHis = historialM.obtenerHistorial();
         
+        LibrosBusiness libroB = new LibrosBusiness();
+        
+        int idDB = libroB.obtenerID(numID);
+        
         
         for (Historial his : listaHis){
         
-            if(his.getFechaReal() == null){
+            if(his.getFechaReal() == null && idDB == his.getIdLibro()){
                 
                 idHis = his.getIdHistorial();
                 
