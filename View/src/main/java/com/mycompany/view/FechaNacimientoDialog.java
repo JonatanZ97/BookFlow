@@ -36,7 +36,6 @@ public class FechaNacimientoDialog extends JDialog {
                 // Obtener la fecha seleccionada
                 fechaNacimiento = dateChooser.getDate();
                 if (fechaNacimiento != null) {
-                    JOptionPane.showMessageDialog(parentFrame, "Fecha seleccionada: " + fechaNacimiento);
                     dispose();  // Cerrar la ventana
                 } else {
                     JOptionPane.showMessageDialog(parentFrame, "Por favor, selecciona una fecha.");
