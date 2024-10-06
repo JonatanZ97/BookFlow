@@ -128,6 +128,50 @@ public class PrestamoBusiness {
         
     }
     
+    public boolean renovarPrestamo(long numIdentificacion, Date nuevaFecha){
+        //variable a retornar
+        boolean resultado = false;
+        
+        //obtener lista historial
+        HistorialDAOImpl historialM = new HistorialDAOImpl();
+        
+        //creamos la lista de los prestamos
+        List<Historial> listaHis;
+        
+
+        
+        //obtenemos desde la DB el historial de prestamos
+        listaHis = historialM.obtenerHistorial();
+        
+        //instanciamos libroBusiness para usar sus metodos
+        LibrosBusiness libroB = new LibrosBusiness();
+        
+        //apartir del numero de identificacion obtenemos el id del libro
+        int idDB = libroB.obtenerID(numIdentificacion);
+        
+        //recorremos la lista en busca de un libro que no halla sido devuelto y su id coinsida con el del libro ingresado
+        for (Historial his : listaHis){
+        
+            if(his.getFechaReal() == null && idDB == his.getIdLibro()){
+                
+                //le asignamos la nueva fecha de retorno
+                his.setFechaRetorno(nuevaFecha);
+                
+                resultado = true;
+            }
+        }
+        
+        return resultado;
+    }
+    
+    public void borrarHistorialPrestamos () throws ModelException{
+        
+        HistorialDAOImpl prestamos = new HistorialDAOImpl();
+        
+        prestamos.vaciarLista();
+        
+        
+    }
     
     
     
