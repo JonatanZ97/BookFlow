@@ -27,7 +27,7 @@ public class PrestamoBusiness {
         }
         
         //consultamos si el socio existe
-        if(!socioB.existeSocioID(numID))return false;
+        //if(!socioB.existeSocioID(numID))return false;
         
         //consulyamos si el libro existe
         if(!libroB.existeLibro(numID)) return false;

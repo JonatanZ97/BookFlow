@@ -260,11 +260,15 @@ public class ModificarDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+        Socios socio = new Socios();
+        socio.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        ModificacionSocio socio = new ModificacionSocio();
+        socio.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
@@ -281,7 +285,6 @@ public class ModificarDatos extends javax.swing.JFrame {
         String direccion;
         boolean penalizado;
         String motivoPenalizado;
-        
 
         try {
             nombre = campNombre.getText();
@@ -290,12 +293,12 @@ public class ModificarDatos extends javax.swing.JFrame {
             direccion = campDireccion.getText();
             motivoPenalizado = campMotivoPenalizacion.getText();
             String temporal = penalizadoCaja.getSelectedItem().toString();
-            
-            if(temporal.equalsIgnoreCase("penalizado")){
+
+            if (temporal.equalsIgnoreCase("penalizado")) {
                 penalizado = true;
-            }else if(temporal.equalsIgnoreCase("no penalizado")){
+            } else if (temporal.equalsIgnoreCase("no penalizado")) {
                 penalizado = false;
-            }else{
+            } else {
                 penalizado = true;
             }
 
@@ -311,7 +314,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
             if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
                 JOptionPane.showMessageDialog(null, "Campo vacio");
-            }else{
+            } else {
                 SociosBusiness socio = new SociosBusiness();
                 boolean resultado = socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado);
                 if (resultado) {

@@ -453,7 +453,7 @@ public class SociosBusiness {
         return false;
     }
 
-    public boolean existeSocioID(long id) {
+    public boolean existeSocioID(int id) {
 
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
