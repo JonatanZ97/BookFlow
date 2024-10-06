@@ -491,4 +491,28 @@ public class LibrosBusiness {
         
         return true;
     }
+        
+        
+        public String buscarEstado(long numID){
+        
+            String estado = "";
+            
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libro : listaModel) {
+            
+            if(libro.getNumeroDeIdentificacion() == numID){
+                estado = libro.getEstadoDelLibro();
+            }
+
+        }
+           
+        return estado;
+        
+        }
 }
