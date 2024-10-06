@@ -74,7 +74,6 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         botonCalendario = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
-        campFecha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -237,7 +236,6 @@ public class ModificarDatos extends javax.swing.JFrame {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1010, 640));
-        jPanel1.add(campFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 210, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -427,7 +425,6 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField campApellido;
     private javax.swing.JTextField campDireccion;
     private javax.swing.JTextField campDni;
-    private javax.swing.JTextField campFecha;
     private javax.swing.JTextField campMail;
     private javax.swing.JTextField campMotivoPenalizacion;
     private javax.swing.JTextField campNombre;
