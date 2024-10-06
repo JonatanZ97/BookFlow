@@ -4,6 +4,11 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.LibroLocal;
+import BusinessObjects.LibrosBusiness;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 54234
@@ -34,7 +39,7 @@ public class ModificarEstado extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        nombreUsuario11 = new javax.swing.JTextField();
+        campoIdentificador = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -45,12 +50,12 @@ public class ModificarEstado extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        nombreUsuario10 = new javax.swing.JTextField();
-        idBtn = new javax.swing.JRadioButton();
-        dniBtn = new javax.swing.JRadioButton();
+        AreaLibros = new javax.swing.JTextArea();
+        BotonTitulo = new javax.swing.JRadioButton();
+        BotonAutor = new javax.swing.JRadioButton();
+        CampoBusqueda = new javax.swing.JTextField();
+        BotonEditorial = new javax.swing.JRadioButton();
+        BotonCdu = new javax.swing.JRadioButton();
         jLabel12 = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
 
@@ -99,12 +104,12 @@ public class ModificarEstado extends javax.swing.JFrame {
         jLabel6.setText("B");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 90, 100));
 
-        nombreUsuario11.addActionListener(new java.awt.event.ActionListener() {
+        campoIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario11ActionPerformed(evt);
+                campoIdentificadorActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreUsuario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 270, 40));
+        jPanel1.add(campoIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 270, 40));
 
         jLabel7.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel7.setText("F");
@@ -164,27 +169,27 @@ public class ModificarEstado extends javax.swing.JFrame {
         jLabel11.setText("Resultado de busqueda:");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        AreaLibros.setColumns(20);
+        AreaLibros.setRows(5);
+        jScrollPane1.setViewportView(AreaLibros);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("TITULO");
+        buttonGroup1.add(BotonTitulo);
+        BotonTitulo.setText("TITULO");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("AUTOR");
+        buttonGroup1.add(BotonAutor);
+        BotonAutor.setText("AUTOR");
 
-        nombreUsuario10.addActionListener(new java.awt.event.ActionListener() {
+        CampoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreUsuario10ActionPerformed(evt);
+                CampoBusquedaActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(idBtn);
-        idBtn.setText("EDITORIAL");
+        buttonGroup1.add(BotonEditorial);
+        BotonEditorial.setText("EDITORIAL");
 
-        buttonGroup1.add(dniBtn);
-        dniBtn.setText("CDU");
+        buttonGroup1.add(BotonCdu);
+        BotonCdu.setText("CDU");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -200,12 +205,12 @@ public class ModificarEstado extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(BotonTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BotonAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dniBtn)
-                                    .addComponent(idBtn)))))
+                                    .addComponent(BotonCdu)
+                                    .addComponent(BotonEditorial)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +218,7 @@ public class ModificarEstado extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nombreUsuario10, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(CampoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(126, 126, 126)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,16 +237,16 @@ public class ModificarEstado extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(idBtn))
+                    .addComponent(BotonTitulo)
+                    .addComponent(BotonEditorial))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(dniBtn))
+                    .addComponent(BotonAutor)
+                    .addComponent(BotonCdu))
                 .addGap(38, 38, 38)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreUsuario10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -292,21 +297,94 @@ public class ModificarEstado extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
-    private void nombreUsuario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario11ActionPerformed
+    private void campoIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIdentificadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario11ActionPerformed
+    }//GEN-LAST:event_campoIdentificadorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         LibrosBusiness libros = new LibrosBusiness();   
+        String numero = campoIdentificador.getText();
 
+      long identificador = Long.parseLong(numero);
+        
+      boolean respuesta = libros.existeLibro(identificador);
+      
+      if(respuesta == true){
+          
+          LibroLocal singleton = LibroLocal.getInstance();
+          singleton.setNumIdentificacion(identificador);
+          NuevoEstado nuevoEstado = new NuevoEstado();
+          nuevoEstado.setVisible(true);
+          this.dispose();
+          
+      }else{
+      campoIdentificador.setText(" ");
+      campoIdentificador.setText("No hay coincidencia."); 
+      }    
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+         LibrosBusiness libros = new LibrosBusiness();
+        ArrayList<String> listaLibros = new ArrayList<>();
+
+        // Verificar cuál de los botones está seleccionado
+        if (BotonTitulo.isSelected()) {
+            String titulo = CampoBusqueda.getText();
+            listaLibros = libros.buscarPorTitulo(titulo);
+            AreaLibros.setText("");
+            for (String libro : listaLibros) {
+                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            }
+             if(listaLibros.isEmpty()){
+             AreaLibros.setText("No hay coincidencia.");          
+        }
+
+        } else if (BotonAutor.isSelected()) {
+            String autor = CampoBusqueda.getText();
+            listaLibros = libros.buscarPorAutor(autor);
+            AreaLibros.setText("");
+            for (String libro : listaLibros) {
+                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            }
+             if(listaLibros.isEmpty()){
+             AreaLibros.setText("No hay coincidencia.");          
+        }
+
+        } else if (BotonEditorial.isSelected()) {
+            String editorial = CampoBusqueda.getText();
+            listaLibros = libros.buscarPorEditorial(editorial);
+            AreaLibros.setText("");
+            for (String libro : listaLibros) {
+            AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            }
+            if(listaLibros.isEmpty()){
+            AreaLibros.setText("No hay coincidencia.");
+            }
+
+        } else if (BotonCdu.isSelected()) {
+            String cdu = CampoBusqueda.getText();
+            listaLibros = libros.buscarPorCDU(cdu);
+            AreaLibros.setText("");
+            for (String libro : listaLibros) {
+                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            }
+             if(listaLibros.isEmpty()){
+            AreaLibros.setText("No hay coincidencia.");
+            }
+
+        } else {
+            // Si ningún botón está seleccionado
+             JOptionPane.showMessageDialog(null, "Ingrese una opción de búsqueda por favor.");
+        }
+           
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void nombreUsuario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuario10ActionPerformed
+    private void CampoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoBusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreUsuario10ActionPerformed
+    }//GEN-LAST:event_CampoBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,10 +423,15 @@ public class ModificarEstado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AreaLibros;
+    private javax.swing.JRadioButton BotonAutor;
+    private javax.swing.JRadioButton BotonCdu;
+    private javax.swing.JRadioButton BotonEditorial;
+    private javax.swing.JRadioButton BotonTitulo;
+    private javax.swing.JTextField CampoBusqueda;
     private javax.swing.JLabel FONDO;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton dniBtn;
-    private javax.swing.JRadioButton idBtn;
+    private javax.swing.JTextField campoIdentificador;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
@@ -364,13 +447,8 @@ public class ModificarEstado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JTextField nombreUsuario10;
-    private javax.swing.JTextField nombreUsuario11;
     // End of variables declaration//GEN-END:variables
 }

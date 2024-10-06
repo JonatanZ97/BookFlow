@@ -6,6 +6,10 @@ package com.mycompany.view;
 
 import BusinessObjects.LibroLocal;
 import BusinessObjects.LibrosBusiness;
+import ModelException.ModelException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,11 +52,12 @@ public class Modificar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        estadoActual = new javax.swing.JLabel();
         botonMostrar = new javax.swing.JButton();
         botonGuardar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,8 +119,13 @@ public class Modificar extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, 30));
 
-        botonEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENALIZADO", "NO PENALIZADO" }));
-        jPanel1.add(botonEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 160, 30));
+        botonEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Prestado", "En reparacion", "Reservado", "Perdido" }));
+        botonEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEstadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 160, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel10.setText(">");
@@ -146,9 +156,9 @@ public class Modificar extends javax.swing.JFrame {
         jLabel12.setText("TITULO:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 130, 30));
 
-        jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel13.setText("ESTADO DEL LIBRO:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 130, 30));
+        estadoActual.setBackground(new java.awt.Color(255, 255, 255));
+        estadoActual.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jPanel1.add(estadoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 230, 40));
 
         botonMostrar.setBackground(new java.awt.Color(102, 255, 0));
         botonMostrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -160,7 +170,7 @@ public class Modificar extends javax.swing.JFrame {
                 botonMostrarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 130, 60));
+        jPanel1.add(botonMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 130, 60));
 
         botonGuardar.setBackground(new java.awt.Color(51, 204, 255));
         botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -172,7 +182,7 @@ public class Modificar extends javax.swing.JFrame {
                 botonGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 130, 70));
+        jPanel1.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 510, 130, 70));
 
         jLabel16.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel16.setText("B");
@@ -181,6 +191,10 @@ public class Modificar extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel17.setText("F");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 260, 190));
+
+        jLabel14.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel14.setText("CAMBIAR ESTADO:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 130, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
@@ -220,36 +234,17 @@ public class Modificar extends javax.swing.JFrame {
 
     private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
 
-         LibrosBusiness libros = new LibrosBusiness();
-         LibroLocal singleton = LibroLocal.getInstance();
-         long numero = singleton.getNumIdentificacion();
-         libros = libros.obtenerDatos(numero);
-         
-         botonGenero.setText(libros.getGenero());
-         
-         System.out.println(libros.getGenero() + "ddddddddddddddddddddddddddddd");
-         
-         botonAutor.setText(libros.getAutor());
-         
-         botonEditorial.setText(libros.getEditorial());
-        
-         botonTitulo.setText( libros.getTitulo());
-        
-        // libros.getEstadoDelLibro();
-        
-         
-     
-         
-         
-         
-         
-         
-         
-         
-     
+        LibrosBusiness libros = new LibrosBusiness();
+        LibroLocal singleton = LibroLocal.getInstance();
+        long numero = singleton.getNumIdentificacion();
+        libros = libros.obtenerDatos(numero);
 
-
-
+        botonGenero.setText(libros.getGenero());
+        botonIdentificador.setText("" + numero);
+        botonAutor.setText(libros.getAutor());
+        botonEditorial.setText(libros.getEditorial());
+        botonTitulo.setText(libros.getTitulo());
+        estadoActual.setText("Estado actual: " + libros.getEstadoDelLibro());
 
 
     }//GEN-LAST:event_botonMostrarActionPerformed
@@ -260,7 +255,45 @@ public class Modificar extends javax.swing.JFrame {
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
 
+        LibrosBusiness libros = new LibrosBusiness();
+        String autor, estado, titulo, editorial, CDU, numIdentificacion;;
+        LibroLocal singleton = LibroLocal.getInstance();
+        long numOriginal = singleton.getNumIdentificacion();
+
+        autor = botonAutor.getText();
+        
+        titulo = botonTitulo.getText();
+        CDU = botonGenero.getText();
+        editorial = botonEditorial.getText();
+        estado = botonEstado.getSelectedItem().toString();
+        numIdentificacion = botonIdentificador.getText();
+
+        
+        System.out.println("aaaaaaaaaaaaaaaaaaaa" + CDU);
+            
+        try {
+            boolean respuesta = libros.modificarLibro(numOriginal, titulo, autor, estado, CDU, editorial, numIdentificacion);
+
+            if (respuesta == true) {
+                JOptionPane.showMessageDialog(null, "Los datos han sido modificados.");
+                Biblioteca biblioteca = new Biblioteca();
+                biblioteca.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al modificar.Verifique los campos por favor.");
+            }
+
+        } catch (ModelException ex) {
+            Logger.getLogger(Modificar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstadoActionPerformed
+
+
+    }//GEN-LAST:event_botonEstadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,11 +340,12 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JTextField botonIdentificador;
     private javax.swing.JButton botonMostrar;
     private javax.swing.JTextField botonTitulo;
+    private javax.swing.JLabel estadoActual;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;

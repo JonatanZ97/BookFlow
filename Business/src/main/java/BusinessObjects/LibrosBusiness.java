@@ -363,7 +363,7 @@ public class LibrosBusiness {
         if (verificarNoVacia(autor)) {
             return false;
         }
-        if (verificarNoVacia(genero)) {
+        if (verificarNoVacia(CDU)) {
             return false;
         }
         if (verificarNoVacia(titulo)) {
@@ -384,9 +384,9 @@ public class LibrosBusiness {
         
         libro.setAutor(autor);
         libro.setTitulo(titulo);
-        libro.setGenero(genero);
+        libro.setGenero(CDU);
         libro.setNumeroDeIdentificacion(numIdentificacionInt);
-        libro.setEstadoDelLibro(estadoDelLibro);
+        libro.setEstadoDelLibro(estado);
         libro.setEditorial(editorial);
 
         LibroDAOImpl libroMod = new LibroDAOImpl();
