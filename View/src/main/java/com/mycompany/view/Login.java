@@ -161,6 +161,7 @@ public class Login extends javax.swing.JFrame {
                 usuario.setUsuario(nombre);
                 usuario.setContraseña(contraseña);
                 usuario.setNivel(usuarios.getNivel());
+                usuario.setId(usuarios.getIdUsuario());
 
                 MenuPrincipal menu = new MenuPrincipal();
                 menu.setVisible(true);
