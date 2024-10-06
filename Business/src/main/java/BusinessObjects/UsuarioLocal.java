@@ -9,6 +9,7 @@ public class UsuarioLocal {
     private String usuario;
     private String contraseña;
     private int nivel;
+    private int id;
 
     // Constructor privado para evitar instanciación externa
     private UsuarioLocal() {}
@@ -41,9 +42,17 @@ public class UsuarioLocal {
     public int getNivel() {
         return nivel;
     }
+    
+    public int getId() {
+        return id;
+    }
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
     
     
