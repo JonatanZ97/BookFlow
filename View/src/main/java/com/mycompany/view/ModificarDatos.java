@@ -19,6 +19,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
     private JDateChooser dateChooser;
     Date fechaLocal;
+    int id;
 
     /**
      * Creates new form ModificarDatos
@@ -49,7 +50,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         campApellido = new javax.swing.JTextField();
         campNombre = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        penalizadoCaja = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -131,8 +132,13 @@ public class ModificarDatos extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENALIZADO", "NO PENALIZADO" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 160, 30));
+        penalizadoCaja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENALIZADO", "NO PENALIZADO" }));
+        penalizadoCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                penalizadoCajaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(penalizadoCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 160, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel10.setText(">");
@@ -272,6 +278,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         String direccion;
         boolean penalizado;
         String motivoPenalizado;
+        
 
         try {
             nombre = campNombre.getText();
@@ -279,6 +286,13 @@ public class ModificarDatos extends javax.swing.JFrame {
             mail = campMail.getText();
             direccion = campDireccion.getText();
             motivoPenalizado = campMotivoPenalizacion.getText();
+            String temporal = penalizadoCaja.getSelectedItem().toString();
+            
+            if(temporal.equalsIgnoreCase("penalizado")){
+                penalizado = true;
+            }else if(temporal.equalsIgnoreCase("no penalizado")){
+                penalizado = false;
+            }
 
             //obtengo los numeros de los campos de textos
             String texto = campDni.getText();
@@ -294,7 +308,7 @@ public class ModificarDatos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             }else{
                 SociosBusiness socio = new SociosBusiness();
-                boolean resultado = true;//socio.cambiarDatosSocios(nombre, apellido, dni, fechaLocal, telefono, mail, direccion, motivoPenalizado);
+                boolean resultado = true;// socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado);
                 if (resultado) {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
                 } else {
@@ -320,7 +334,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         SocioLocal local = SocioLocal.getInstance();
         if (botonMostrar.isSelected()) {
             business = business.traerDatos(local.getId());
-
+            id = business.getIdsocio();
             campNombre.setText(business.getNombre());
             campApellido.setText(business.getApellido());
             campDni.setText(Long.toString(business.getDni()));
@@ -349,6 +363,10 @@ public class ModificarDatos extends javax.swing.JFrame {
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
         fechaLocal = dialog.getFechaNacimiento();        // TODO add your handling code here:
     }//GEN-LAST:event_botonCalendarioActionPerformed
+
+    private void penalizadoCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_penalizadoCajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_penalizadoCajaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,7 +416,6 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField campPenalizacion;
     private javax.swing.JTextField campTelefono;
     private javax.swing.JLabel fondo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -419,5 +436,6 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JComboBox<String> penalizadoCaja;
     // End of variables declaration//GEN-END:variables
 }
