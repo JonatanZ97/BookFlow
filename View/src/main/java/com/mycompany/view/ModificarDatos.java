@@ -279,7 +279,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         String mail;
         long telefono;
         String direccion;
-        boolean penalizado = false;
+        boolean penalizado;
         String motivoPenalizado;
         
 
@@ -295,6 +295,8 @@ public class ModificarDatos extends javax.swing.JFrame {
                 penalizado = true;
             }else if(temporal.equalsIgnoreCase("no penalizado")){
                 penalizado = false;
+            }else{
+                penalizado = true;
             }
 
             //obtengo los numeros de los campos de textos
