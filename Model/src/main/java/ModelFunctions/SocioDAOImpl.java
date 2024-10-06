@@ -267,7 +267,7 @@ public class SocioDAOImpl implements SocioDAO {
 
             // Asignar los valores a los parámetros de la consulta
             declaracion.setString(1, socio.getNombre());
-            declaracion.setString(2, socio.getNombre());
+            declaracion.setString(2, socio.getApellido());
             declaracion.setLong(3, socio.getDni());
             declaracion.setDate(4, new java.sql.Date(socio.getFechaNacimiento().getTime()));
             declaracion.setLong(5, socio.getTelefono());

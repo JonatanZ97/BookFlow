@@ -61,7 +61,6 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        campPenalizacion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         labelFecha = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -73,6 +72,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         botonMostrar = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         botonCalendario = new javax.swing.JButton();
+        labelPenalizado = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,7 +142,7 @@ public class ModificarDatos extends javax.swing.JFrame {
                 penalizadoCajaActionPerformed(evt);
             }
         });
-        jPanel1.add(penalizadoCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 160, 30));
+        jPanel1.add(penalizadoCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 160, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel10.setText(">");
@@ -169,13 +169,6 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel7.setText("TELEFONO:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 130, 30));
 
-        campPenalizacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campPenalizacionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(campPenalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 210, 50));
-
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel8.setText("DIRECCIÓN:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 130, 30));
@@ -191,7 +184,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel13.setText("PENALIZACIÓN:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 130, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, 30));
 
         jLabel14.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel14.setText("B");
@@ -232,6 +225,7 @@ public class ModificarDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, -1));
+        jPanel1.add(labelPenalizado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 150, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
@@ -357,17 +351,13 @@ public class ModificarDatos extends javax.swing.JFrame {
             SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
             labelFecha.setText(formato.format(business.getFechaNacimiento()));// convierto el Date en String
             if (business.getPenalizado()) {
-                campPenalizacion.setText("Penalizado");
+                labelPenalizado.setText("Penalizado");
             } else if (!business.getPenalizado()) {
-                campPenalizacion.setText("No Penalizado");
+                labelPenalizado.setText("No Penalizado");
             }
             campMotivoPenalizacion.setText(business.getMotivoPenalizado());
         }     // TODO add your handling code here:
     }//GEN-LAST:event_botonMostrarActionPerformed
-
-    private void campPenalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campPenalizacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campPenalizacionActionPerformed
 
     private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
         FechaNacimientoDialog dialog = new FechaNacimientoDialog(ModificarDatos.this);
@@ -428,7 +418,6 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField campMail;
     private javax.swing.JTextField campMotivoPenalizacion;
     private javax.swing.JTextField campNombre;
-    private javax.swing.JTextField campPenalizacion;
     private javax.swing.JTextField campTelefono;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel10;
@@ -452,6 +441,7 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelPenalizado;
     private javax.swing.JComboBox<String> penalizadoCaja;
     // End of variables declaration//GEN-END:variables
 }
