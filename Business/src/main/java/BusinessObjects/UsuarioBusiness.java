@@ -104,5 +104,10 @@ public class UsuarioBusiness {
         
     }
     
-    
+    public void eliminarUsuario(int idUser) throws ModelException{
+        
+        UsuarioDAOImpl usuarios = new UsuarioDAOImpl();
+        usuarios.eliminarUsuario(idUser);
+        
+    }
 }
