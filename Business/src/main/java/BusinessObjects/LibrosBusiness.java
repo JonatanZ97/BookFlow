@@ -515,4 +515,49 @@ public class LibrosBusiness {
         return estado;
         
         }
+        
+        
+        public long obtenerNumID(int idLibro){
+            
+            // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<LibroCorto> listaLC = libroModel.obtenerLibrosCortos();
+        
+        for(LibroCorto libro : listaLC){
+            
+            if(libro.getId() == idLibro) return libro.getNumeroIdentificacion();
+        }
+
+        return 0;
+            
+        }
+        
+        public String obtenerTitulo(int idLibro){
+            
+            String titulo = "";
+            
+            LibrosBusiness libro = new LibrosBusiness();
+            
+            long numID = libro.obtenerNumID(idLibro);
+            
+         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
+        
+        // Recorremos la listaModel y transferimos los datos a la lista de String
+        for (Libro libros : listaModel) {
+            
+            if(libros.getNumeroDeIdentificacion() == numID){
+                titulo = libros.getTitulo();
+            }
+          
+            
+        }
+        return titulo;
+        }
+        
 }
