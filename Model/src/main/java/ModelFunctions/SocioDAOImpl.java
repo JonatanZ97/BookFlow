@@ -262,12 +262,12 @@ public class SocioDAOImpl implements SocioDAO {
             conexion = objetoConexion.establecerConexion();
 
             // Consulta SQL para actualizar la contraseña de un usuario
-            String consulta = "UPDATE Personas SET nombre = ?, apellido = ?, dni = ?, fecha_nac = ?, telefono = ?, mail = ?, direccion = ?, penalizado = ?, motivo_penalizado = ? WHERE idsocio = ?";
+            String consulta = "UPDATE Socios SET nombre = ?, apellido = ?, dni = ?, fecha_nac = ?, telefono = ?, mail = ?, direccion = ?, penalizado = ?, motivo_penalizado = ? WHERE idsocio = ?";
             declaracion = conexion.prepareStatement(consulta);
 
             // Asignar los valores a los parámetros de la consulta
             declaracion.setString(1, socio.getNombre());
-            declaracion.setString(2, socio.getNombre());
+            declaracion.setString(2, socio.getApellido());
             declaracion.setLong(3, socio.getDni());
             declaracion.setDate(4, new java.sql.Date(socio.getFechaNacimiento().getTime()));
             declaracion.setLong(5, socio.getTelefono());
@@ -312,7 +312,7 @@ public class SocioDAOImpl implements SocioDAO {
             conexion = objetoConexion.establecerConexion();
 
             // Consulta SQL para actualizar la contraseña de un usuario
-            String consulta = "UPDATE Personas SET penalizado = ?, motivo_penalizado = ? WHERE idpersona = ?";
+            String consulta = "UPDATE Socios SET penalizado = ?, motivo_penalizado = ? WHERE idpersona = ?";
             declaracion = conexion.prepareStatement(consulta);
 
             // Asignar los valores a los parámetros de la consulta

@@ -257,7 +257,7 @@ public class SociosBusiness {
         return listaString;
     }
 
-    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado) throws ModelException {
+    public boolean cambiarDatosSocios(int id, String nombre, String apellido, long dni, Date fechaNacimiento, long telefono, String mail, String direccion, boolean penalizado, String motivoPenalizado, long dniOriginal) throws ModelException {
         if (dni < 1 || telefono < 10000000 || id < 1) {
             return false;
         }
@@ -302,11 +302,12 @@ public class SociosBusiness {
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
         if (socioModel.verificarSocio(socio.getDni())) {//compruebo que no exista un socio con ese dni en la base de datos
-            return false;
-        } else {
-            socioModel.cambiarDatosSocio(socio);
-            return true;
+            if (socio.getDni() != dniOriginal) {
+                return false;
+            }
         }
+        socioModel.cambiarDatosSocio(socio);
+        return true;
     }
 
     public boolean eliminarSocioID(int ID) throws ModelException {
@@ -497,7 +498,7 @@ public class SociosBusiness {
 
         // Recorrer la lista para buscar el usuario que coincida con el id
         for (SociosBusiness socio : lista) {
-            if (socio.getIdsocio()== id) {  // Comparamos el id del socio con el id proporcionado
+            if (socio.getIdsocio() == id) {  // Comparamos el id del socio con el id proporcionado
                 return socio;  // Si coinciden, devolvemos el socio
             }
         }
@@ -505,10 +506,10 @@ public class SociosBusiness {
         // Si no se encuentra un socio con ese id, devolvemos null o podemos lanzar una excepción
         return null;
     }
-    
-    public String obtenerNombre(int idSocio){
+
+    public String obtenerNombre(int idSocio) {
         String respuesta = " ";
-        
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
@@ -518,17 +519,17 @@ public class SociosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
             if (socio.getId() == idSocio) {
-                
+
                 respuesta = socio.getNombre();
             }
         }
-        
+
         return respuesta;
     }
 
-        public String obtenerApellido(int idSocio){
+    public String obtenerApellido(int idSocio) {
         String respuesta = " ";
-        
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         SocioDAOImpl socioModel = new SocioDAOImpl();
 
@@ -538,11 +539,11 @@ public class SociosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Socio socio : listaModel) {
             if (socio.getId() == idSocio) {
-                
+
                 respuesta = socio.getApellido();
             }
         }
-        
+
         return respuesta;
     }
 }

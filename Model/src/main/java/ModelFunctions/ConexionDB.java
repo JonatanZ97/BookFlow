@@ -13,7 +13,7 @@ public class ConexionDB {
     Connection conectar = null;
     //guardo los datos para luego unirlo en la variable cadena
     final String usuario = "postgres";
-    final String contrasenia = "1234";
+    final String contrasenia = "424320";
     final String DB = "Libreria";
     final String ip = "localhost";
     final String puerto = "5432";
