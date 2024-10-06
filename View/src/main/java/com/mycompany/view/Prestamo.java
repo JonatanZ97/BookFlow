@@ -4,11 +4,18 @@
  */
 package com.mycompany.view;
 
+import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author 54234
  */
 public class Prestamo extends javax.swing.JFrame {
+
+    private JDateChooser dateChooser;
+    Date fechaLocal;
 
     /**
      * Creates new form MenuPrincipal
@@ -41,6 +48,8 @@ public class Prestamo extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        labelFecha = new javax.swing.JLabel();
+        botonCalendario = new javax.swing.JButton();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,7 +92,7 @@ public class Prestamo extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel7.setText("FECHA DE DEVOLUCIÓN:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 180, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 170, 30));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 40));
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
@@ -109,6 +118,18 @@ public class Prestamo extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel8.setText("INGRESE NUMERO DE IDENTIFICACIÓN DEL LIBRO:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 30));
+
+        labelFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel1.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 150, 30));
+
+        botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonCalendario.setText("Calendario");
+        botonCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalendarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         FONDO.setText("jLabel1");
@@ -141,10 +162,20 @@ public class Prestamo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         //Obtener lista de socios
-        
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
+        // Crear e invocar el diálogo
+        FechaNacimientoDialog dialog = new FechaNacimientoDialog(Prestamo.this);
+        dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
+
+        // Actualizar la variable fechaNacimiento después de cerrar el diálogo
+        fechaLocal = dialog.getFechaNacimiento();
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
+        labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +215,7 @@ public class Prestamo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
+    private javax.swing.JButton botonCalendario;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel16;
@@ -199,5 +231,6 @@ public class Prestamo extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel labelFecha;
     // End of variables declaration//GEN-END:variables
 }
