@@ -23,6 +23,7 @@ public class ModificarDatos extends javax.swing.JFrame {
     private JDateChooser dateChooser;
     Date fechaLocal;
     int id;
+    long dniOriginal;
 
     /**
      * Creates new form ModificarDatos
@@ -62,6 +63,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         campPenalizacion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        labelFecha = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -69,10 +71,10 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jToggleButton4 = new javax.swing.JToggleButton();
         botonMostrar = new javax.swing.JRadioButton();
-        campFecha = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         botonCalendario = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
+        campFecha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,7 +112,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel11.setText(">");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 10, 30));
         jPanel1.add(campDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 210, 50));
-        jPanel1.add(campMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 210, 50));
+        jPanel1.add(campMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 270, 50));
         jPanel1.add(campTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 210, 50));
         jPanel1.add(campDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 210, 50));
         jPanel1.add(campMotivoPenalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 540, 50));
@@ -178,10 +180,11 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel8.setText("DIRECCIÓN:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 130, 30));
+        jPanel1.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 170, 40));
 
         jLabel9.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel9.setText("Fecha de Nacimiento");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 200, 40));
+        jLabel9.setText("Fecha de Nacimiento:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 150, 40));
 
         jLabel12.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel12.setText("NOMBRE:");
@@ -217,7 +220,6 @@ public class ModificarDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 580, -1, -1));
-        jPanel1.add(campFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 210, 50));
 
         jLabel16.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel16.setText("RAZON DE PENALIZACIÓN:");
@@ -230,11 +232,12 @@ public class ModificarDatos extends javax.swing.JFrame {
                 botonCalendarioActionPerformed(evt);
             }
         });
-        jPanel1.add(botonCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
+        jPanel1.add(botonCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1010, 640));
+        jPanel1.add(campFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 210, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -316,7 +319,7 @@ public class ModificarDatos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             } else {
                 SociosBusiness socio = new SociosBusiness();
-                boolean resultado = socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado);
+                boolean resultado = socio.cambiarDatosSocios(id, nombre, apellido, dni, fechaLocal, telefono, mail, direccion, penalizado, motivoPenalizado, dniOriginal);
                 if (resultado) {
                     JOptionPane.showMessageDialog(null, "socio guardado correctamente");
                     Socios socio1 = new Socios();
@@ -348,12 +351,13 @@ public class ModificarDatos extends javax.swing.JFrame {
             id = business.getIdsocio();
             campNombre.setText(business.getNombre());
             campApellido.setText(business.getApellido());
+            dniOriginal = business.getDni();
             campDni.setText(Long.toString(business.getDni()));
             campMail.setText(business.getMail());
             campTelefono.setText(Long.toString(business.getTelefono()));
             campDireccion.setText(business.getDireccion());
             SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-            campFecha.setText(formato.format(business.getFechaNacimiento()));// convierto el Date en String
+            labelFecha.setText(formato.format(business.getFechaNacimiento()));// convierto el Date en String
             if (business.getPenalizado()) {
                 campPenalizacion.setText("Penalizado");
             } else if (!business.getPenalizado()) {
@@ -374,7 +378,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
         fechaLocal = dialog.getFechaNacimiento();
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        campFecha.setText(formato.format(fechaLocal));// convierto el Date en String
+        labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String
         // TODO add your handling code here:
     }//GEN-LAST:event_botonCalendarioActionPerformed
 
@@ -450,6 +454,7 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JLabel labelFecha;
     private javax.swing.JComboBox<String> penalizadoCaja;
     // End of variables declaration//GEN-END:variables
 }
