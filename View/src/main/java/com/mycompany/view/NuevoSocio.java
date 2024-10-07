@@ -2,9 +2,11 @@ package com.mycompany.view;
 
 import BusinessObjects.SociosBusiness;
 import ModelException.ModelException;
+import com.mycompany.view.FechaNacimientoDialog;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.util.Date;
@@ -57,6 +59,7 @@ public class NuevoSocio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        labelFecha = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         botonCalendario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -194,6 +197,9 @@ public class NuevoSocio extends javax.swing.JFrame {
         jLabel12.setText("F");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 40, 90, 100));
 
+        labelFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel1.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 120, 30));
+
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel13.setText("Fecha de nacimiento:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
@@ -317,13 +323,19 @@ public class NuevoSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
-
-        // Crear e invocar el diálogo
+// Crear e invocar el diálogo
         FechaNacimientoDialog dialog = new FechaNacimientoDialog(NuevoSocio.this);
         dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
         fechaLocal = dialog.getFechaNacimiento();
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
+        if (fechaLocal != null) {
+            labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String
+        } else {
+            labelFecha.setText("");
+        }
     }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
@@ -393,6 +405,7 @@ public class NuevoSocio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel labelFecha;
     private javax.swing.JTextField nombreUsuario10;
     // End of variables declaration//GEN-END:variables
 }

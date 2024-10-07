@@ -172,7 +172,7 @@ public class SociosBusiness {
         socio.setNombre(nombre);
         socio.setApellido(apellido);
         socio.setDni(dni);
-        socio.setFechaNacimiento(fechaNacimiento);
+        socio.setFechaNacimiento(fechaNac);
         socio.setTelefono(telefono);
         socio.setMail(mail);
         socio.setDireccion(direccion);
