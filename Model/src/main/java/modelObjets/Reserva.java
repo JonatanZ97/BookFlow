@@ -9,6 +9,8 @@ public class Reserva {
     int idSocio;
     Date fechaReserva;
     
+    
+    
     public int getIdReserva() {
         return idReserva;
     }
