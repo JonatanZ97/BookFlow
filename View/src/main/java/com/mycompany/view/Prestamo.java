@@ -4,9 +4,12 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.SocioLocal;
+import BusinessObjects.SociosBusiness;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,12 +42,12 @@ public class Prestamo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        campDni = new javax.swing.JTextField();
+        botonId = new javax.swing.JRadioButton();
+        botonDni = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        campIdentificacion = new javax.swing.JTextField();
+        botonPrestar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -80,32 +83,32 @@ public class Prestamo extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("PRESTAMO");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 80, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 200, 40));
+        jPanel1.add(campDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 200, 40));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("ID");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        buttonGroup1.add(botonId);
+        botonId.setText("ID");
+        jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("DNI");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        buttonGroup1.add(botonDni);
+        botonDni.setText("DNI");
+        jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel7.setText("FECHA DE DEVOLUCIÓN:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 170, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 40));
+        jPanel1.add(campIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 40));
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("PRESTAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonPrestar.setBackground(new java.awt.Color(204, 255, 204));
+        botonPrestar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonPrestar.setText("PRESTAR");
+        botonPrestar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonPrestar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonPrestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonPrestarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 90, 40));
+        jPanel1.add(botonPrestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 90, 40));
 
         jLabel16.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel16.setText("B");
@@ -159,11 +162,36 @@ public class Prestamo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonPrestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestarActionPerformed
+        String texto;
+        String texto1;
+        SociosBusiness socio = new SociosBusiness();
+        if (botonId.isSelected()) {
+            try {
+                //obtengo los numeros de los campos de textos
+                texto = campDni.getText();
 
+                // Convierto el texto a int
+                int id = Integer.parseInt(texto);
+                boolean respuesta = socio.existeSocioID(id);
+                if (respuesta) {
+                    SocioLocal local = SocioLocal.getInstance();
+                    local.setId(id);
+                    ModificarDatos datos = new ModificarDatos();
+                    datos.setVisible(true);
+                    this.dispose();
+                } else if (!respuesta) {
+                    JOptionPane.showMessageDialog(null, "socio no encontrado");
+                }
+
+            } catch (NumberFormatException e) {
+                // Manejar el error si el texto no es un número válido
+                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+            }
+        }
         //Obtener lista de socios
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonPrestarActionPerformed
 
     private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
         // Crear e invocar el diálogo
@@ -216,8 +244,12 @@ public class Prestamo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JButton botonCalendario;
+    private javax.swing.JRadioButton botonDni;
+    private javax.swing.JRadioButton botonId;
+    private javax.swing.JButton botonPrestar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField campDni;
+    private javax.swing.JTextField campIdentificacion;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -226,10 +258,6 @@ public class Prestamo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelFecha;
     // End of variables declaration//GEN-END:variables
