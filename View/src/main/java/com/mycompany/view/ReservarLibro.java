@@ -106,7 +106,7 @@ public class ReservarLibro extends javax.swing.JFrame {
         jButton1.setText("RESERVAR");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 543, 130, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 130, 40));
 
         jLabel14.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel14.setText("B");
@@ -118,7 +118,7 @@ public class ReservarLibro extends javax.swing.JFrame {
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         FONDO.setText("jLabel1");
-        jPanel1.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 620));
+        jPanel1.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 990, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
