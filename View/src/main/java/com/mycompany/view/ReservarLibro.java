@@ -103,9 +103,11 @@ public class ReservarLibro extends javax.swing.JFrame {
         jLabel6.setText("Datos del socio:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 130, 30));
 
+        buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
 
+        buttonGroup1.add(botonId);
         botonId.setText("ID");
         botonId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

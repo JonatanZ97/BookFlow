@@ -183,6 +183,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonDni">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="DNI"/>
           </Properties>
           <Constraints>
@@ -193,6 +196,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonId">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="ID"/>
           </Properties>
           <Events>
