@@ -121,7 +121,7 @@ public class NuevoLibro extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 100, 20));
 
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel8.setText("NUMEO DE IDENTIFICACIÓN:");
+        jLabel8.setText("NUMErO DE IDENTIFICACIÓN:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 200, 20));
 
         jLabel9.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N

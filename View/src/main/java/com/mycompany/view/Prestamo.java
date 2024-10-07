@@ -189,7 +189,7 @@ public class Prestamo extends javax.swing.JFrame {
                     boolean respuestaL = libro.existeLibro(identificacion);
                     if (respuestaL) {
                         if (fechaLocal == null) {
-                            JOptionPane.showMessageDialog(null, "Ingrese la fecha de retorno");
+                            JOptionPane.showMessageDialog(null, "Ingrese la fecha de devolucion");
                         } else {
                             PrestamoBusiness prestamo = new PrestamoBusiness();
                             boolean respuestaP = prestamo.prestar(id, identificacion, fechaLocal);
@@ -232,7 +232,7 @@ public class Prestamo extends javax.swing.JFrame {
                     boolean respuestaL = libro.existeLibro(identificacion);
                     if (respuestaL) {
                         if (fechaLocal == null) {
-                            JOptionPane.showMessageDialog(null, "Ingrese la fecha de retorno");
+                            JOptionPane.showMessageDialog(null, "Ingrese la fecha de devolucion");
                         } else {
                             PrestamoBusiness prestamo = new PrestamoBusiness();
                             boolean respuestaP = prestamo.prestar(dniConvertido, identificacion, fechaLocal);
@@ -271,7 +271,11 @@ public class Prestamo extends javax.swing.JFrame {
         fechaLocal = dialog.getFechaNacimiento();
 
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String        // TODO add your handling code here:
+        if (fechaLocal != null) {
+            labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String
+        } else {
+            labelFecha.setText("");
+        }
     }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
