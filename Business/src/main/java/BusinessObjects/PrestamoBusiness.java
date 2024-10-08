@@ -216,6 +216,7 @@ public class PrestamoBusiness {
     }
 
     // Método de conversión de Date a LocalDate
+    //paso por aqui 2 ====================
     public static LocalDate convertirDateALocalDate(Date fecha) {
         return fecha.toInstant()
                 .atZone(ZoneId.of("America/Argentina/Buenos_Aires")) // Definir la zona horaria de Buenos Aires
@@ -319,7 +320,7 @@ public class PrestamoBusiness {
         //retornamos la loista con los libros 
         return listaString;
     }
-
+//por aca va 1 ==========================
     public List<Integer> librosMasPrestadosEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
 
         // Instanciación correcta de la lista

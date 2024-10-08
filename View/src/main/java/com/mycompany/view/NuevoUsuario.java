@@ -118,7 +118,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel15.setText("F");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 260, 190));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", " " }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 110, 30));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
