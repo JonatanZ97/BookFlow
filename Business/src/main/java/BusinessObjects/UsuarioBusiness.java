@@ -144,11 +144,29 @@ public class UsuarioBusiness {
         return listaString;
     }
     
-    public boolean modificarContraseñaOtro(int idUsuario, String nuevaContraseña){
+    public boolean modificarContraseñaOtro(int idUsuario, String nuevaContraseña) throws ModelException{
         
+        boolean respuesta = false;
         
+
+        // Creamos una instancia de UsuarioDAOImpl para obtener los datos de los socios desde la DB 
+        UsuarioDAOImpl usuarioModel = new UsuarioDAOImpl();
+
+        // Obtenemos la lista de socios desde el DAO
+        List<Usuario> listaModel = usuarioModel.obtenerUsuarios();
+
+        // Verificamos si la lista de socios no es nula o vacía
+        if (listaModel != null || !listaModel.isEmpty()) {
+            // Recorremos la listaModel y transferimos los datos a la lista de String
+            for (Usuario usuario : listaModel) {
+                if(usuario.getIdUsuario() == idUsuario){
+                    
+                    usuarioModel.cambiarContrasenia(nuevaContraseña, idUsuario);
+                    respuesta = true;
+                }
+            }
         
-        
-        return true;
+        }
+        return respuesta;
     }
 }

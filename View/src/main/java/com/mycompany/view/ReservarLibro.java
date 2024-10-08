@@ -200,7 +200,7 @@ public class ReservarLibro extends javax.swing.JFrame {
                         boolean respuestaR = reserva.agregarReserva(id, identificacion);
                         if (respuestaR) {
                             JOptionPane.showMessageDialog(null, "Reserva exitosa");
-                            MenuPrincipal menu = new MenuPrincipal();
+                            Reservas menu = new Reservas();
                             menu.setVisible(true);
                             this.dispose();
                         } else if (!respuestaR) {
@@ -239,7 +239,7 @@ public class ReservarLibro extends javax.swing.JFrame {
                         boolean respuestaR = reserva.agregarReserva(dniConvertido, identificacion);
                         if (respuestaR) {
                             JOptionPane.showMessageDialog(null, "Reserva exitosa");
-                            MenuPrincipal menu = new MenuPrincipal();
+                            Reservas menu = new Reservas();
                             menu.setVisible(true);
                             this.dispose();
                         } else if (!respuestaR) {
