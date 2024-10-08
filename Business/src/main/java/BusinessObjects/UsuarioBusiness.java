@@ -78,12 +78,13 @@ public class UsuarioBusiness {
     }
 
     //metodo para cambiar contraseña
-    public void cambiarContrasenia(int idUsu, String nuevaContrasenia) throws ModelException {
+    public boolean cambiarContrasenia(int idUsu, String nuevaContrasenia) throws ModelException {
 
         UsuarioDAOImpl usuarios = new UsuarioDAOImpl();
 
         usuarios.cambiarContrasenia(nuevaContrasenia, idUsu);
 
+        return true;
     }
 
     public void nuevoUsuario(String nombre, String contrasenia, int nivel) throws ModelException {
@@ -112,14 +113,14 @@ public class UsuarioBusiness {
         // Creamos la lista de string para devolver
         List<String> listaString = new ArrayList<>();
 
-        // Creamos una instancia de SocioDAOImpl para obtener los datos de los socios desde la DB 
-        UsuarioDAOImpl socioModel = new UsuarioDAOImpl();
+        // Creamos una instancia de UsuarioDAOImpl para obtener los datos de los socios desde la DB 
+        UsuarioDAOImpl usuarioModel = new UsuarioDAOImpl();
 
         // Obtenemos la lista de socios desde el DAO
-        List<Usuario> listaModel = socioModel.obtenerUsuarios();
+        List<Usuario> listaModel = usuarioModel.obtenerUsuarios();
 
         // Verificamos si la lista de socios no es nula o vacía
-        if (listaModel != null && !listaModel.isEmpty()) {
+        if (listaModel != null || !listaModel.isEmpty()) {
             // Recorremos la listaModel y transferimos los datos a la lista de String
             for (Usuario usuario : listaModel) {
 
@@ -143,4 +144,29 @@ public class UsuarioBusiness {
         return listaString;
     }
     
+    public boolean modificarContraseñaOtro(int idUsuario, String nuevaContraseña) throws ModelException{
+        
+        boolean respuesta = false;
+        
+
+        // Creamos una instancia de UsuarioDAOImpl para obtener los datos de los socios desde la DB 
+        UsuarioDAOImpl usuarioModel = new UsuarioDAOImpl();
+
+        // Obtenemos la lista de socios desde el DAO
+        List<Usuario> listaModel = usuarioModel.obtenerUsuarios();
+
+        // Verificamos si la lista de socios no es nula o vacía
+        if (listaModel != null || !listaModel.isEmpty()) {
+            // Recorremos la listaModel y transferimos los datos a la lista de String
+            for (Usuario usuario : listaModel) {
+                if(usuario.getIdUsuario() == idUsuario){
+                    
+                    usuarioModel.cambiarContrasenia(nuevaContraseña, idUsuario);
+                    respuesta = true;
+                }
+            }
+        
+        }
+        return respuesta;
+    }
 }
