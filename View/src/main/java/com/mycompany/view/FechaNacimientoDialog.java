@@ -14,7 +14,7 @@ public class FechaNacimientoDialog extends JDialog {
 
     public FechaNacimientoDialog(JFrame parentFrame) {
         // Configuración del diálogo
-        super(parentFrame, "Seleccionar Fecha de Nacimiento", true);  // Modal true
+        super(parentFrame, "Seleccionar Fecha", true);  // Modal true
         setSize(300, 200);
         setLayout(null);
         setLocationRelativeTo(parentFrame);  // Centrar la ventana respecto al frame principal

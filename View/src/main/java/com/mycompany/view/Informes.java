@@ -119,7 +119,7 @@ public class Informes extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel5.setText("F");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, 90, 100));
-        jPanel1.add(labelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 110, 30));
+        jPanel1.add(labelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 110, 30));
         jPanel1.add(labelFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 216, 100, 30));
 
         botonCalendario1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
