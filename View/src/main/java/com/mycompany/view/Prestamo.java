@@ -4,11 +4,16 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.LibrosBusiness;
+import BusinessObjects.PrestamoBusiness;
 import BusinessObjects.SocioLocal;
 import BusinessObjects.SociosBusiness;
+import ModelException.ModelException;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,31 +171,95 @@ public class Prestamo extends javax.swing.JFrame {
         String texto;
         String texto1;
         SociosBusiness socio = new SociosBusiness();
-        if (botonId.isSelected()) {
+        LibrosBusiness libro = new LibrosBusiness();
+        if (botonId.isSelected()) {//boton id
             try {
                 //obtengo los numeros de los campos de textos
                 texto = campDni.getText();
 
+                texto1 = campIdentificacion.getText();
+
                 // Convierto el texto a int
                 int id = Integer.parseInt(texto);
-                boolean respuesta = socio.existeSocioID(id);
-                if (respuesta) {
-                    SocioLocal local = SocioLocal.getInstance();
-                    local.setId(id);
-                    ModificarDatos datos = new ModificarDatos();
-                    datos.setVisible(true);
-                    this.dispose();
-                } else if (!respuesta) {
-                    JOptionPane.showMessageDialog(null, "socio no encontrado");
-                }
+                // Convierto el texto a long
+                long identificacion = Long.parseLong(texto1);
 
+                boolean respuestaS = socio.existeSocioID(id);
+                if (respuestaS) {
+                    boolean respuestaL = libro.existeLibro(identificacion);
+                    if (respuestaL) {
+                        if (fechaLocal == null) {
+                            JOptionPane.showMessageDialog(null, "Ingrese la fecha de devolucion");
+                        } else {
+                            PrestamoBusiness prestamo = new PrestamoBusiness();
+                            boolean respuestaP = prestamo.prestar(id, identificacion, fechaLocal);
+                            if (respuestaP) {
+                                JOptionPane.showMessageDialog(null, "Prestamo exitoso");
+                                MenuPrincipal menu = new MenuPrincipal();
+                                menu.setVisible(true);
+                                this.dispose();
+                            } else if (!respuestaP) {
+                                JOptionPane.showMessageDialog(null, "Fallo al realizar el prestamo");
+                            }
+                        }
+                    } else if (!respuestaL) {
+                        JOptionPane.showMessageDialog(null, "Libro no encontrado");
+                    }
+                } else if (!respuestaS) {
+                    JOptionPane.showMessageDialog(null, "Socio no encontrado");
+                }
             } catch (NumberFormatException e) {
                 // Manejar el error si el texto no es un número válido
-                JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+                JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
+            } catch (ModelException ex) {
+                Logger.getLogger(Prestamo.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        //Obtener lista de socios
+        } else if (botonDni.isSelected()) {//boton dni
+            try {
+                //obtengo los numeros de los campos de textos
+                texto = campDni.getText();
 
+                texto1 = campIdentificacion.getText();
+
+                // Convierto el texto a int
+                long dni = Long.parseLong(texto);
+                // Convierto el texto a long
+                long identificacion = Long.parseLong(texto1);
+
+                boolean respuestaS = socio.existeSocioDNI(dni);
+                if (respuestaS) {
+                    int dniConvertido = socio.buscarID(dni);
+                    boolean respuestaL = libro.existeLibro(identificacion);
+                    if (respuestaL) {
+                        if (fechaLocal == null) {
+                            JOptionPane.showMessageDialog(null, "Ingrese la fecha de devolucion");
+                        } else {
+                            PrestamoBusiness prestamo = new PrestamoBusiness();
+                            boolean respuestaP = prestamo.prestar(dniConvertido, identificacion, fechaLocal);
+                            if (respuestaP) {
+                                JOptionPane.showMessageDialog(null, "Prestamo exitoso");
+                                MenuPrincipal menu = new MenuPrincipal();
+                                menu.setVisible(true);
+                                this.dispose();
+                            } else if (!respuestaP) {
+                                JOptionPane.showMessageDialog(null, "Fallo al realizar el prestamo");
+                            }
+                        }
+                    } else if (!respuestaL) {
+                        JOptionPane.showMessageDialog(null, "Libro no encontrado");
+                    }
+                } else if (!respuestaS) {
+                    JOptionPane.showMessageDialog(null, "Socio no encontrado");
+                }
+            } catch (NumberFormatException e) {
+                // Manejar el error si el texto no es un número válido
+                JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
+            } catch (ModelException ex) {
+                Logger.getLogger(Prestamo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion de busqueda");
+        }
     }//GEN-LAST:event_botonPrestarActionPerformed
 
     private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
@@ -202,7 +271,11 @@ public class Prestamo extends javax.swing.JFrame {
         fechaLocal = dialog.getFechaNacimiento();
 
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String        // TODO add your handling code here:
+        if (fechaLocal != null) {
+            labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String
+        } else {
+            labelFecha.setText("");
+        }
     }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
