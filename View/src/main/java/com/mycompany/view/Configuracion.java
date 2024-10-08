@@ -41,6 +41,7 @@ public class Configuracion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         devolucion1 = new javax.swing.JButton();
+        biblioteca1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,7 +106,7 @@ public class Configuracion extends javax.swing.JFrame {
 
         biblioteca.setBackground(new java.awt.Color(153, 153, 153));
         biblioteca.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
-        biblioteca.setText("Eliminar usuario");
+        biblioteca.setText("Mostrar usuarios");
         biblioteca.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         biblioteca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         biblioteca.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +114,7 @@ public class Configuracion extends javax.swing.JFrame {
                 bibliotecaActionPerformed(evt);
             }
         });
-        jPanel1.add(biblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 330, 70));
+        jPanel1.add(biblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 330, 70));
 
         reservas.setBackground(new java.awt.Color(153, 153, 153));
         reservas.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
@@ -160,6 +161,18 @@ public class Configuracion extends javax.swing.JFrame {
         });
         jPanel1.add(devolucion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 400, 70));
 
+        biblioteca1.setBackground(new java.awt.Color(153, 153, 153));
+        biblioteca1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
+        biblioteca1.setText("Eliminar usuario");
+        biblioteca1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        biblioteca1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        biblioteca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biblioteca1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(biblioteca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 330, 70));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
@@ -204,8 +217,8 @@ public class Configuracion extends javax.swing.JFrame {
     }//GEN-LAST:event_prestamoActionPerformed
 
     private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
-        EliminarUsuario eliminarUsuario = new EliminarUsuario();
-        eliminarUsuario.setVisible(true);
+        MostrarUsuarios mostrar = new MostrarUsuarios();
+        mostrar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bibliotecaActionPerformed
 
@@ -225,6 +238,10 @@ public class Configuracion extends javax.swing.JFrame {
     private void devolucion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolucion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_devolucion1ActionPerformed
+
+    private void biblioteca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_biblioteca1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +281,7 @@ public class Configuracion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton biblioteca;
+    private javax.swing.JButton biblioteca1;
     private javax.swing.JButton configuracion;
     private javax.swing.JButton devolucion;
     private javax.swing.JButton devolucion1;
