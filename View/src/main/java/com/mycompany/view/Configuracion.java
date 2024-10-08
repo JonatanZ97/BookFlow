@@ -39,6 +39,7 @@ public class Configuracion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         devolucion1 = new javax.swing.JButton();
+        prestamo1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +92,7 @@ public class Configuracion extends javax.swing.JFrame {
 
         prestamo.setBackground(new java.awt.Color(153, 153, 153));
         prestamo.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
-        prestamo.setText("Vaciar lista de reservas");
+        prestamo.setText("Mostrar usuarios");
         prestamo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         prestamo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         prestamo.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +100,7 @@ public class Configuracion extends javax.swing.JFrame {
                 prestamoActionPerformed(evt);
             }
         });
-        jPanel1.add(prestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 400, 70));
+        jPanel1.add(prestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 330, 70));
 
         biblioteca.setBackground(new java.awt.Color(153, 153, 153));
         biblioteca.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
@@ -158,6 +159,18 @@ public class Configuracion extends javax.swing.JFrame {
         });
         jPanel1.add(devolucion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 400, 70));
 
+        prestamo1.setBackground(new java.awt.Color(153, 153, 153));
+        prestamo1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
+        prestamo1.setText("Vaciar lista de reservas");
+        prestamo1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        prestamo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        prestamo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prestamo1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(prestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 400, 70));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
@@ -215,6 +228,10 @@ public class Configuracion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_devolucion1ActionPerformed
 
+    private void prestamo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestamo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prestamo1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,6 +281,7 @@ public class Configuracion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JButton prestamo;
+    private javax.swing.JButton prestamo1;
     private javax.swing.JButton reservas;
     private javax.swing.JButton socios;
     // End of variables declaration//GEN-END:variables
