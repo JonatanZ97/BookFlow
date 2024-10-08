@@ -359,4 +359,81 @@ public class PrestamoBusiness {
                 .collect(Collectors.toList());  // Devolver la lista de IDs
     }
 
+    
+    public ArrayList<String> buscarPorIdSocio(int idSocio) {
+
+        ArrayList<String> listaString = new ArrayList<>();
+
+        List<Historial> listaM = new ArrayList<>();
+
+        HistorialDAOImpl historialM = new HistorialDAOImpl();
+
+        listaM = historialM.obtenerHistorial();
+
+        LibrosBusiness libroB = new LibrosBusiness();
+
+        SociosBusiness socio = new SociosBusiness();
+
+        for (Historial his : listaM) {
+
+            if(idSocio == his.getIdSocio()){
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Libro: %s, Nombre: %s, apellido: %d Fecha de prestamo: %s, Fecha de rotorno pactada: %s, Fecha de retorno real: %s",
+                    libroB.obtenerTitulo(his.getIdLibro()),
+                    socio.obtenerNombre(his.getIdSocio()),
+                    socio.obtenerApellido(his.getIdSocio()),
+                    his.getFechaPrestamo(),
+                    his.getFechaRetorno() != null ? socio.getMotivoPenalizado() : "N/A",
+                    his.getFechaReal() != null ? socio.getMotivoPenalizado() : "N/A"
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+            }
+        }
+
+        return listaString;
+
+    }
+        
+    public ArrayList<String> buscarPorNumID(long numID) {
+
+        ArrayList<String> listaString = new ArrayList<>();
+
+        List<Historial> listaM = new ArrayList<>();
+
+        HistorialDAOImpl historialM = new HistorialDAOImpl();
+
+        listaM = historialM.obtenerHistorial();
+
+        LibrosBusiness libroB = new LibrosBusiness();
+        
+        int idLibro = libroB.obtenerID(numID);
+
+        SociosBusiness socio = new SociosBusiness();
+
+        for (Historial his : listaM) {
+
+            if(idLibro == his.getIdLibro()){
+            // Concatenar los valores en un String
+            String descripcionLibro = String.format(
+                    "Libro: %s, Nombre: %s, apellido: %d Fecha de prestamo: %s, Fecha de rotorno pactada: %s, Fecha de retorno real: %s",
+                    libroB.obtenerTitulo(his.getIdLibro()),
+                    socio.obtenerNombre(his.getIdSocio()),
+                    socio.obtenerApellido(his.getIdSocio()),
+                    his.getFechaPrestamo(),
+                    his.getFechaRetorno() != null ? socio.getMotivoPenalizado() : "N/A",
+                    his.getFechaReal() != null ? socio.getMotivoPenalizado() : "N/A"
+            );
+
+            // Añadir el String a la lista
+            listaString.add(descripcionLibro);
+            }
+        }
+
+        return listaString;
+
+    }
+    
 }
