@@ -239,6 +239,7 @@ public class HistorialPrestamos extends javax.swing.JFrame {
 
                 if (respuestaS) {
                     areaTexto.setText("");
+                    int id = socio.buscarID(dni);
                     ReservaBusiness reserva = new ReservaBusiness();
                     ArrayList<String> listaString = reserva.buscarPorDNI(dni);
                     StringBuilder contenido = new StringBuilder();
