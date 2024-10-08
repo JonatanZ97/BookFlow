@@ -4,15 +4,9 @@
  */
 package com.mycompany.view;
 
-import BusinessObjects.LibrosBusiness;
-import BusinessObjects.PrestamoBusiness;
-import ModelException.ModelException;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,7 +41,7 @@ public class Renovacion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        campIdentificacion = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         botonCalendario = new javax.swing.JButton();
         labelFecha = new javax.swing.JLabel();
@@ -102,12 +96,12 @@ public class Renovacion extends javax.swing.JFrame {
         jLabel17.setText("F");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 260, 190));
 
-        campIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campIdentificacionActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(campIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 250, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 250, 30));
 
         jLabel14.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel14.setText("INGRESE EL ID DEL LIBRO:");
@@ -154,46 +148,12 @@ public class Renovacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String texto;
-        LibrosBusiness libro = new LibrosBusiness();
-        try {
-            //obtengo los numeros de los campos de textos
-            texto = campIdentificacion.getText();
 
-            // Convierto el texto a long
-            Long identificacion = Long.parseLong(texto);
-
-            boolean respuestaL = libro.existeLibro(identificacion);
-
-            if (respuestaL) {
-                if (fechaLocal != null) {
-                    PrestamoBusiness prestamo = new PrestamoBusiness();
-                    boolean respuestaP = prestamo.renovarPrestamo(identificacion, fechaLocal);
-                    if (respuestaP) {
-                        JOptionPane.showMessageDialog(null, "Renovacion realizada con exito");
-                        MenuPrincipal menu = new MenuPrincipal();
-                        menu.setVisible(true);
-                        this.dispose();
-                    } else if (!respuestaP) {
-                        JOptionPane.showMessageDialog(null, "Fallo en la renovacion");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ingrese la nueva fecha");
-                }
-            } else if (!respuestaL) {
-                JOptionPane.showMessageDialog(null, "No existe un libro con ese numero de identificacion");
-            }
-        } catch (NumberFormatException e) {
-            // Manejar el error si el texto no es un número válido
-            JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
-        } catch (ModelException ex) {
-            Logger.getLogger(Renovacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void campIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campIdentificacionActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campIdentificacionActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void botonCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
         // Crear e invocar el diálogo
@@ -204,11 +164,8 @@ public class Renovacion extends javax.swing.JFrame {
         fechaLocal = dialog.getFechaNacimiento();
 
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        if (fechaLocal != null) {
-            labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String
-        } else {
-            labelFecha.setText("");
-        }
+        labelFecha.setText(formato.format(fechaLocal));// convierto el Date en String
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonCalendarioActionPerformed
 
     /**
@@ -263,7 +220,6 @@ public class Renovacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCalendario;
-    private javax.swing.JTextField campIdentificacion;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel13;
@@ -273,6 +229,7 @@ public class Renovacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel labelFecha;
     // End of variables declaration//GEN-END:variables
