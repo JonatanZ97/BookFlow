@@ -4,8 +4,11 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.PrestamoBusiness;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,9 +16,11 @@ import java.util.Date;
  * @author 54234
  */
 public class Informes extends javax.swing.JFrame {
+    
     private JDateChooser dateChooser;
     Date fechaLocal1;
     Date fechaLocal2;
+
     /**
      * Creates new form ModificarDatos
      */
@@ -40,7 +45,7 @@ public class Informes extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areaTexto = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -84,9 +89,9 @@ public class Informes extends javax.swing.JFrame {
         jLabel14.setText("RESULTADO DE BUSQUEDA:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 240, 30));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaTexto.setColumns(20);
+        areaTexto.setRows(5);
+        jScrollPane1.setViewportView(areaTexto);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 610, 560));
 
@@ -167,7 +172,17 @@ public class Informes extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if (fechaLocal1 != null && fechaLocal2 != null) {
+            areaTexto.setText("");
+            PrestamoBusiness prestamo = new PrestamoBusiness();
+            ArrayList<String> listaString = prestamo.obtenerEstadisticas(fechaLocal1, fechaLocal2);
+            StringBuilder contenido = new StringBuilder();
+            for (String elemento : listaString) {
+                contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
+            }
+            // Mostrar el contenido en el TextArea
+            areaTexto.setText(contenido.toString());
+        }  // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonCalendario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendario2ActionPerformed
@@ -177,7 +192,7 @@ public class Informes extends javax.swing.JFrame {
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
         fechaLocal1 = dialog.getFechaNacimiento();
-
+        
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
         if (fechaLocal1 != null) {
             labelFecha1.setText(formato.format(fechaLocal1));// convierto el Date en String
@@ -193,7 +208,7 @@ public class Informes extends javax.swing.JFrame {
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
         fechaLocal2 = dialog.getFechaNacimiento();
-
+        
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
         if (fechaLocal2 != null) {
             labelFecha2.setText(formato.format(fechaLocal2));// convierto el Date en String
@@ -365,6 +380,7 @@ public class Informes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTexto;
     private javax.swing.JButton botonCalendario1;
     private javax.swing.JButton botonCalendario2;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -379,7 +395,6 @@ public class Informes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel labelFecha1;
     private javax.swing.JLabel labelFecha2;
