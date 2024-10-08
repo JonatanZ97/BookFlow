@@ -5,6 +5,7 @@
 package com.mycompany.view;
 
 import BusinessObjects.PrestamoBusiness;
+import com.mycompany.view.FechaNacimientoDialog;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -16,7 +17,7 @@ import java.util.Date;
  * @author 54234
  */
 public class Informes extends javax.swing.JFrame {
-    
+
     private JDateChooser dateChooser;
     Date fechaLocal1;
     Date fechaLocal2;
@@ -50,6 +51,10 @@ public class Informes extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        labelFecha1 = new javax.swing.JLabel();
+        labelFecha2 = new javax.swing.JLabel();
+        botonCalendario1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,7 +84,7 @@ public class Informes extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel13.setText("FECHA INICIAL:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 240, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 110, 30));
 
         jLabel14.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel14.setText("RESULTADO DE BUSQUEDA:");
@@ -93,7 +98,7 @@ public class Informes extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel15.setText("FECHA FINAL:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 240, 30));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 100, 30));
 
         jButton2.setBackground(new java.awt.Color(204, 255, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -114,6 +119,26 @@ public class Informes extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Edwardian Script ITC", 1, 70)); // NOI18N
         jLabel5.setText("F");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, 90, 100));
+        jPanel1.add(labelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 110, 30));
+        jPanel1.add(labelFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 216, 100, 30));
+
+        botonCalendario1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonCalendario1.setText("Calendario");
+        botonCalendario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalendario1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonCalendario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setText("Calendario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 90, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
@@ -157,22 +182,6 @@ public class Informes extends javax.swing.JFrame {
         }  // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void botonCalendario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendario2ActionPerformed
-        // Crear e invocar el diálogo
-        FechaNacimientoDialog dialog = new FechaNacimientoDialog(Informes.this);
-        dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
-
-        // Actualizar la variable fechaNacimiento después de cerrar el diálogo
-        fechaLocal2 = dialog.getFechaNacimiento();
-        
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        if (fechaLocal2 != null) {
-            labelFecha2.setText(formato.format(fechaLocal2));// convierto el Date en String
-        } else {
-            labelFecha2.setText("");
-        }
-    }//GEN-LAST:event_botonCalendario2ActionPerformed
-
     private void botonCalendario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendario1ActionPerformed
         // Crear e invocar el diálogo
         FechaNacimientoDialog dialog = new FechaNacimientoDialog(Informes.this);
@@ -180,7 +189,7 @@ public class Informes extends javax.swing.JFrame {
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
         fechaLocal1 = dialog.getFechaNacimiento();
-        
+
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
         if (fechaLocal1 != null) {
             labelFecha1.setText(formato.format(fechaLocal1));// convierto el Date en String
@@ -188,162 +197,35 @@ public class Informes extends javax.swing.JFrame {
             labelFecha1.setText("");
         }
     }//GEN-LAST:event_botonCalendario1ActionPerformed
+/*
+    private void botonCalendario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalendarioActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCalendarioActionPerformed
+*/
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Crear e invocar el diálogo
+        FechaNacimientoDialog dialog = new FechaNacimientoDialog(Informes.this);
+        dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
+
+        // Actualizar la variable fechaNacimiento después de cerrar el diálogo
+        fechaLocal2 = dialog.getFechaNacimiento();
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
+        if (fechaLocal2 != null) {
+            labelFecha2.setText(formato.format(fechaLocal2));// convierto el Date en String
+        } else {
+            labelFecha2.setText("");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Informes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Informes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Informes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Informes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+ /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Informes().setVisible(true);
@@ -354,9 +236,9 @@ public class Informes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTexto;
     private javax.swing.JButton botonCalendario1;
-    private javax.swing.JButton botonCalendario2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -368,5 +250,7 @@ public class Informes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel labelFecha1;
+    private javax.swing.JLabel labelFecha2;
     // End of variables declaration//GEN-END:variables
 }
