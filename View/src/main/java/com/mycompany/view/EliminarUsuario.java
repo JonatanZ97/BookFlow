@@ -1,13 +1,13 @@
-
 package com.mycompany.view;
 
 import BusinessObjects.UsuarioBusiness;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author 54234
  */
-
 public class EliminarUsuario extends javax.swing.JFrame {
 
     /**
@@ -31,12 +31,12 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jToggleButton4 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        campNombre = new javax.swing.JTextField();
+        campId = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         botonMostrar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaTexto = new javax.swing.JTextArea();
@@ -77,7 +77,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel3.setText(">");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 30));
-        jPanel1.add(campNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
+        jPanel1.add(campId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
@@ -85,7 +85,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 170, 30));
 
         jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel11.setText("NOMBRE:");
+        jLabel11.setText("ID DEL USUARIO:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 180, 20));
 
         botonMostrar.setBackground(new java.awt.Color(204, 255, 204));
@@ -104,17 +104,17 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jLabel14.setText("B");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 260, 190));
 
-        jButton2.setBackground(new java.awt.Color(204, 255, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("ELIMINAR");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminar.setBackground(new java.awt.Color(204, 255, 204));
+        botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonEliminar.setText("ELIMINAR");
+        botonEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 110, 40));
+        jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 110, 40));
 
         jLabel15.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel15.setText("F");
@@ -166,8 +166,8 @@ public class EliminarUsuario extends javax.swing.JFrame {
         areaTexto.setText("");
         String texto;
         texto = areaTexto.getText();
-        //ArrayList<String> listaString = reserva.obtenerListaReservas();
-        /*
+        List<String> listaString = usuario.convertToString();
+
         StringBuilder contenido = new StringBuilder();
         for (String elemento : listaString) {
             contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
@@ -176,61 +176,71 @@ public class EliminarUsuario extends javax.swing.JFrame {
         // Mostrar el contenido en el TextArea
         areaTexto.setText(contenido.toString());
 
-    */
+
     }//GEN-LAST:event_botonMostrarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        String texto;
+        int id;
+        try {
+            texto = campId.getText();
+            
+            id = Integer.parseInt(texto);
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        }
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(EliminarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new EliminarUsuario().setVisible(true);
-        }
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EliminarUsuario().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JTextArea areaTexto;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonMostrar;
-    private javax.swing.JTextField campNombre;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField campId;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
