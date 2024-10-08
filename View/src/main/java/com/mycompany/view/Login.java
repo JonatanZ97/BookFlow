@@ -147,7 +147,7 @@ public class Login extends javax.swing.JFrame {
         // Guardamos los datos en el objeto UsuarioLocal
         usuario.setUsuario(nombre);
         usuario.setContraseña(contraseña);
-        usuario.setNivel(0); // Asignamos nivel de admin
+        usuario.setNivel(1); // Asignamos nivel de admin
 
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);

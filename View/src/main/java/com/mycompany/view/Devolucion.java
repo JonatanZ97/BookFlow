@@ -1,4 +1,3 @@
-
 package com.mycompany.view;
 
 import BusinessObjects.LibroLocal;
@@ -8,15 +7,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 public class Devolucion extends javax.swing.JFrame {
 
-   
     public Devolucion() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,7 +53,7 @@ public class Devolucion extends javax.swing.JFrame {
         jLabel4.setText("DEVOLUCIÓN");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 130, 30));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel13.setText("Ingrese número de identificacion :");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 270, 40));
 
@@ -117,9 +113,18 @@ public class Devolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-    PrestamoBusiness prestamo = new PrestamoBusiness();
-    LibroLocal singleton = LibroLocal.getInstance();
-    long numeroIdent = singleton.getNumIdentificacion();
+        PrestamoBusiness prestamo = new PrestamoBusiness();
+
+        long numeroIdent = 0;
+
+        try {
+            numeroIdent = Long.parseLong(campoNumero.getText());
+        } catch (NumberFormatException e) {
+            // Manejo del error si el texto no es un número válido
+            System.out.println("El valor ingresado no es un número válido.");
+
+        }
+
         try {
             boolean respuesta = prestamo.devolver(numeroIdent);
             if (respuesta == true) {
@@ -128,22 +133,21 @@ public class Devolucion extends javax.swing.JFrame {
                 menuPrincipal.setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "El libro no se ha podido devolver. Ingrese un ID correcto.");
-            }        
+                JOptionPane.showMessageDialog(null, "El libro no se ha podido devolver. Verifique el ID o que el libro esté prestado.");
+            }
         } catch (ModelException ex) {
             Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
         }
-               
-        
+
+
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void campoNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNumeroActionPerformed
 
-    
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Devolucion().setVisible(true);
