@@ -191,13 +191,13 @@ public class Informes extends javax.swing.JFrame {
         dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
-        fechaLocal1 = dialog.getFechaNacimiento();
+        fechaLocal2 = dialog.getFechaNacimiento();
         
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        if (fechaLocal1 != null) {
-            labelFecha1.setText(formato.format(fechaLocal1));// convierto el Date en String
+        if (fechaLocal2 != null) {
+            labelFecha2.setText(formato.format(fechaLocal2));// convierto el Date en String
         } else {
-            labelFecha1.setText("");
+            labelFecha2.setText("");
         }
     }//GEN-LAST:event_botonCalendario2ActionPerformed
 
@@ -207,13 +207,13 @@ public class Informes extends javax.swing.JFrame {
         dialog.setVisible(true);  // Al ser modal, el programa se "pausa" aquí hasta que se cierre el diálogo
 
         // Actualizar la variable fechaNacimiento después de cerrar el diálogo
-        fechaLocal2 = dialog.getFechaNacimiento();
+        fechaLocal1 = dialog.getFechaNacimiento();
         
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  // Formato deseado
-        if (fechaLocal2 != null) {
-            labelFecha2.setText(formato.format(fechaLocal2));// convierto el Date en String
+        if (fechaLocal1 != null) {
+            labelFecha1.setText(formato.format(fechaLocal1));// convierto el Date en String
         } else {
-            labelFecha2.setText("");
+            labelFecha1.setText("");
         }
     }//GEN-LAST:event_botonCalendario1ActionPerformed
 
