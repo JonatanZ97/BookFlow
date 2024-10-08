@@ -192,6 +192,46 @@ public class HistorialDAOImpl implements HistorialDAO {
         }
     }
 
+    public void cambiarFechaRetorno(int idHistorial, Date fechaRetorno) throws ModelException {
+        Connection conexion = null;
+        PreparedStatement declaracion = null;
+
+        try {
+            // Establece la conexión con la base de datos
+            conexion = objetoConexion.establecerConexion();
+
+            // Prepara la consulta SQL para actualizar la fecha de retorno en un historial por su ID
+            String consulta = "UPDATE Historialprestamos SET fecha_retiro = ? WHERE idhistorial = ?";
+
+            declaracion = conexion.prepareStatement(consulta);
+            declaracion.setDate(1, new java.sql.Date(fechaRetorno.getTime()));
+            declaracion.setInt(2, idHistorial);
+
+            // Ejecuta la consulta
+            int filasAfectadas = declaracion.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("Fecha de retorno se cambio exitosamente.");
+            } else {
+                System.out.println("No se encontro ningún historial con el ID especificado.");
+            }
+
+        } catch (Exception e) {
+            throw new ModelException("Error al cambiar la fecha de retorno: " + e.getMessage());
+        } finally {
+            // Cierra la conexión y el statement
+            try {
+                if (declaracion != null) {
+                    declaracion.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cerrar la conexion: " + e.getMessage());
+            }
+        }
+    }
+
     public void vaciarLista() throws ModelException {
         Connection conexion = null;
         PreparedStatement declaracion = null;

@@ -170,7 +170,7 @@ public class PrestamoBusiness {
 
     }
 
-    public boolean renovarPrestamo(long numIdentificacion, Date nuevaFecha) {
+    public boolean renovarPrestamo(long numIdentificacion, Date nuevaFecha) throws ModelException {
         //variable a retornar
         boolean resultado = false;
 
@@ -196,6 +196,8 @@ public class PrestamoBusiness {
 
                 //le asignamos la nueva fecha de retorno
                 his.setFechaRetorno(nuevaFecha);
+                
+                historialM.cambiarFechaRetorno(idDB, nuevaFecha);
 
                 resultado = true;
             }

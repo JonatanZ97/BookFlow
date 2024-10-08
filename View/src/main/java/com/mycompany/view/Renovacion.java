@@ -6,9 +6,12 @@ package com.mycompany.view;
 
 import BusinessObjects.LibrosBusiness;
 import BusinessObjects.PrestamoBusiness;
+import ModelException.ModelException;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,12 +169,12 @@ public class Renovacion extends javax.swing.JFrame {
                 if (fechaLocal != null) {
                     PrestamoBusiness prestamo = new PrestamoBusiness();
                     boolean respuestaP = prestamo.renovarPrestamo(identificacion, fechaLocal);
-                    if(respuestaP){
+                    if (respuestaP) {
                         JOptionPane.showMessageDialog(null, "Renovacion realizada con exito");
                         MenuPrincipal menu = new MenuPrincipal();
                         menu.setVisible(true);
                         this.dispose();
-                    }else if(!respuestaP){
+                    } else if (!respuestaP) {
                         JOptionPane.showMessageDialog(null, "Fallo en la renovacion");
                     }
                 } else {
@@ -183,6 +186,8 @@ public class Renovacion extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             // Manejar el error si el texto no es un número válido
             JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
+        } catch (ModelException ex) {
+            Logger.getLogger(Renovacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
