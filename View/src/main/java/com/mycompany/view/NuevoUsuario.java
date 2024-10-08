@@ -185,6 +185,9 @@ public class NuevoUsuario extends javax.swing.JFrame {
             if(contrasenia != null && nombre != null && nivel != 0){
                 usuario.nuevoUsuario(nombre, contrasenia, nivel);
                 JOptionPane.showMessageDialog(null, "Usuario creado con exito");
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+                this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             }

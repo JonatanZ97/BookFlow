@@ -1,7 +1,10 @@
 package com.mycompany.view;
 
 import BusinessObjects.UsuarioBusiness;
+import ModelException.ModelException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -186,9 +189,20 @@ public class EliminarUsuario extends javax.swing.JFrame {
             texto = campId.getText();
             
             id = Integer.parseInt(texto);
+            
+            UsuarioBusiness usuario = new UsuarioBusiness();
+            
+            usuario.eliminarUsuario(id);
+            
+            JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);
+            this.dispose();
         } catch (NumberFormatException e) {
             // Manejar el error si el texto no es un número válido
             JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        } catch (ModelException ex) {
+            Logger.getLogger(EliminarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_botonEliminarActionPerformed
