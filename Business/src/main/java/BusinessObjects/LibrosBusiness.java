@@ -121,7 +121,7 @@ public class LibrosBusiness {
         long numIdentificacionInt = Long.parseLong(numIdentificacion);
 
         estado = estado.toLowerCase();
-        
+
         libro.setAutor(autor);
         libro.setTitulo(titulo);
         libro.setGenero(genero);
@@ -186,7 +186,7 @@ public class LibrosBusiness {
     }
 
     //metodo para enviar la lista como string filtrando por autor
-    public ArrayList<String> buscarPorAutor( String autor) {
+    public ArrayList<String> buscarPorAutor(String autor) {
 
         // Creamos la lista de string para devolver
         ArrayList<String> listaString = new ArrayList<>();
@@ -200,30 +200,30 @@ public class LibrosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
 
-            if(libro.getAutor().equalsIgnoreCase(autor)){
-            // Concatenar los valores en un String
-            String descripcionLibro = String.format(
-                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
-                    libro.getTitulo(),
-                    libro.getAutor(),
-                    libro.getEstadoDelLibro(),
-                    libro.getGenero(),
-                    libro.getEditorial(),
-                    libro.getNumeroDeIdentificacion()
-            );
+            if (libro.getAutor().equalsIgnoreCase(autor)) {
+                // Concatenar los valores en un String
+                String descripcionLibro = String.format(
+                        "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
+                        libro.getTitulo(),
+                        libro.getAutor(),
+                        libro.getEstadoDelLibro(),
+                        libro.getGenero(),
+                        libro.getEditorial(),
+                        libro.getNumeroDeIdentificacion()
+                );
 
-            // Añadir el String a la lista
-            listaString.add(descripcionLibro);
-            
+                // Añadir el String a la lista
+                listaString.add(descripcionLibro);
+
             }
         }
 
         // Retornar la lista de descripciones
         return listaString;
     }
-    
+
     //metodo para enviar la lista como string filtrando por autor
-    public ArrayList<String> buscarPorTitulo( String titulo) {
+    public ArrayList<String> buscarPorTitulo(String titulo) {
 
         // Creamos la lista de string para devolver
         ArrayList<String> listaString = new ArrayList<>();
@@ -237,30 +237,30 @@ public class LibrosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
 
-            if(libro.getTitulo().equalsIgnoreCase(titulo)){
-            // Concatenar los valores en un String
-            String descripcionLibro = String.format(
-                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
-                    libro.getTitulo(),
-                    libro.getAutor(),
-                    libro.getEstadoDelLibro(),
-                    libro.getGenero(),
-                    libro.getEditorial(),
-                    libro.getNumeroDeIdentificacion()
-            );
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                // Concatenar los valores en un String
+                String descripcionLibro = String.format(
+                        "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
+                        libro.getTitulo(),
+                        libro.getAutor(),
+                        libro.getEstadoDelLibro(),
+                        libro.getGenero(),
+                        libro.getEditorial(),
+                        libro.getNumeroDeIdentificacion()
+                );
 
-            // Añadir el String a la lista
-            listaString.add(descripcionLibro);
-            
+                // Añadir el String a la lista
+                listaString.add(descripcionLibro);
+
             }
         }
 
         // Retornar la lista de descripciones
         return listaString;
     }
-    
+
     //metodo para enviar la lista como string filtrando por autor
-    public ArrayList<String> buscarPorEditorial( String editorial) {
+    public ArrayList<String> buscarPorEditorial(String editorial) {
 
         // Creamos la lista de string para devolver
         ArrayList<String> listaString = new ArrayList<>();
@@ -274,30 +274,30 @@ public class LibrosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
 
-            if(libro.getEditorial().equalsIgnoreCase(editorial)){
-            // Concatenar los valores en un String
-            String descripcionLibro = String.format(
-                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
-                    libro.getTitulo(),
-                    libro.getAutor(),
-                    libro.getEstadoDelLibro(),
-                    libro.getGenero(),
-                    libro.getEditorial(),
-                    libro.getNumeroDeIdentificacion()
-            );
+            if (libro.getEditorial().equalsIgnoreCase(editorial)) {
+                // Concatenar los valores en un String
+                String descripcionLibro = String.format(
+                        "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
+                        libro.getTitulo(),
+                        libro.getAutor(),
+                        libro.getEstadoDelLibro(),
+                        libro.getGenero(),
+                        libro.getEditorial(),
+                        libro.getNumeroDeIdentificacion()
+                );
 
-            // Añadir el String a la lista
-            listaString.add(descripcionLibro);
-            
+                // Añadir el String a la lista
+                listaString.add(descripcionLibro);
+
             }
         }
 
         // Retornar la lista de descripciones
         return listaString;
     }
-    
+
     //metodo para enviar la lista como string filtrando por autor
-    public ArrayList<String> buscarPorCDU( String CDU) {
+    public ArrayList<String> buscarPorCDU(String CDU) {
 
         // Creamos la lista de string para devolver
         ArrayList<String> listaString = new ArrayList<>();
@@ -311,53 +311,52 @@ public class LibrosBusiness {
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
 
-            if(libro.getGenero().equalsIgnoreCase(CDU)){
-            // Concatenar los valores en un String
-            String descripcionLibro = String.format(
-                    "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
-                    libro.getTitulo(),
-                    libro.getAutor(),
-                    libro.getEstadoDelLibro(),
-                    libro.getGenero(),
-                    libro.getEditorial(),
-                    libro.getNumeroDeIdentificacion()
-            );
+            if (libro.getGenero().equalsIgnoreCase(CDU)) {
+                // Concatenar los valores en un String
+                String descripcionLibro = String.format(
+                        "Titulo: %s, Autor: %s, Estado: %s, Genero: %s, Editorial: %s, ID: %d",
+                        libro.getTitulo(),
+                        libro.getAutor(),
+                        libro.getEstadoDelLibro(),
+                        libro.getGenero(),
+                        libro.getEditorial(),
+                        libro.getNumeroDeIdentificacion()
+                );
 
-            // Añadir el String a la lista
-            listaString.add(descripcionLibro);
-            
+                // Añadir el String a la lista
+                listaString.add(descripcionLibro);
+
             }
         }
 
         // Retornar la lista de descripciones
         return listaString;
     }
-    
+
     //metodo para eliminar un libro
-    public boolean eliminarLibro(Long numIdentificacion) throws ModelException{
-        
+    public boolean eliminarLibro(Long numIdentificacion) throws ModelException {
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
         ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
-        
+
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
-            
-            if(libro.getNumeroDeIdentificacion() == numIdentificacion){
+
+            if (libro.getNumeroDeIdentificacion() == numIdentificacion) {
                 libroModel.eliminarLibro(numIdentificacion);
                 return true;//devolvemos true para informar que se hizo de manera correcta
             }
-            
+
         }
-        
-        
+
         return false;//informamos que el libro no fue enconterado
     }
-    
-    public boolean modificarLibro(long numOriginal, String titulo, String autor, String estado, String CDU, String editorial, String numIdentificacion) throws ModelException{
-        
+
+    public boolean modificarLibro(long numOriginal, String titulo, String autor, String estado, String CDU, String editorial, String numIdentificacion) throws ModelException {
+
         Libro libro = new Libro();
 
         if (verificarNoVacia(autor)) {
@@ -381,7 +380,7 @@ public class LibrosBusiness {
         }
 
         int numIdentificacionInt = Integer.parseInt(numIdentificacion);
-        
+
         libro.setAutor(autor);
         libro.setTitulo(titulo);
         libro.setGenero(CDU);
@@ -390,14 +389,14 @@ public class LibrosBusiness {
         libro.setEditorial(editorial);
 
         LibroDAOImpl libroMod = new LibroDAOImpl();
-        
+
         libroMod.cambiarDatosLibro(libro, numOriginal);
-        
+
         return true;
     }
 
-    public boolean existeLibro(long numI){
-        
+    public boolean existeLibro(long numI) {
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
@@ -406,37 +405,38 @@ public class LibrosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
-            
-            if(libro.getNumeroDeIdentificacion() == numI){
+
+            if (libro.getNumeroDeIdentificacion() == numI) {
                 return true;
             }
 
         }
-        
+
         return false;
     }
-    
-    public int obtenerID(long numID){
+
+    public int obtenerID(long numID) {
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
         ArrayList<LibroCorto> listaLC = libroModel.obtenerLibrosCortos();
-        
-        for(LibroCorto libro : listaLC){
-            
-            if(libro.getNumeroIdentificacion() == numID) return libro.getId();
+
+        for (LibroCorto libro : listaLC) {
+
+            if (libro.getNumeroIdentificacion() == numID) {
+                return libro.getId();
+            }
         }
 
         return 0;
 
-        }
-    
-    public LibrosBusiness obtenerDatos(long numIdentificacion){
-        
-        
+    }
+
+    public LibrosBusiness obtenerDatos(long numIdentificacion) {
+
         LibrosBusiness libroRetorno = new LibrosBusiness();
-        
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
@@ -445,58 +445,56 @@ public class LibrosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
-            if(libro.getNumeroDeIdentificacion() == numIdentificacion){
-                
+            if (libro.getNumeroDeIdentificacion() == numIdentificacion) {
+
                 libroRetorno.setAutor(libro.getAutor());
                 libroRetorno.setEditorial(libro.getEditorial());
                 libroRetorno.setEstadoDelLibro(libro.getEstadoDelLibro());
                 libroRetorno.setGenero(libro.getGenero());
                 libroRetorno.setNumeroDeIdentificacion(libro.getNumeroDeIdentificacion());
                 libroRetorno.setTitulo(libro.getTitulo());
-                
-                
+
             }
         }
-        
+
         return libroRetorno;
     }
-    
-    public boolean cambiarEstado(long numID, String nuevoEstado) throws ModelException{
-        
+
+    public boolean cambiarEstado(long numID, String nuevoEstado) throws ModelException {
+
         LibroDAOImpl libroM = new LibroDAOImpl();
-        
+
         libroM.cambiarEstadoLibro(numID, nuevoEstado);
-        
+
         return true;
     }
-    
-    public boolean cambiarAprestado(long numID) throws ModelException{
-        
+
+    public boolean cambiarAprestado(long numID) throws ModelException {
+
         LibroDAOImpl libroM = new LibroDAOImpl();
-        
+
         String nuevoEstado = "prestado";
-        
+
         libroM.cambiarEstadoLibro(numID, nuevoEstado);
-        
+
         return true;
     }
-    
-        public boolean cambiarAdisponible(long numID) throws ModelException{
-        
+
+    public boolean cambiarAdisponible(long numID) throws ModelException {
+
         LibroDAOImpl libroM = new LibroDAOImpl();
-        
+
         String nuevoEstado = "disponible";
-        
+
         libroM.cambiarEstadoLibro(numID, nuevoEstado);
-        
+
         return true;
     }
-        
-        
-        public String buscarEstado(long numID){
-        
-            String estado = "";
-            
+
+    public String buscarEstado(long numID) {
+
+        String estado = "";
+
         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
@@ -505,69 +503,83 @@ public class LibrosBusiness {
 
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libro : listaModel) {
-            
-            if(libro.getNumeroDeIdentificacion() == numID){
+
+            if (libro.getNumeroDeIdentificacion() == numID) {
                 estado = libro.getEstadoDelLibro();
             }
 
         }
-           
+
         return estado;
-        
-        }
-        
-        
-        public long obtenerNumID(int idLibro){
-            
-            // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+
+    }
+
+    public long obtenerNumID(int idLibro) {
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
         ArrayList<LibroCorto> listaLC = libroModel.obtenerLibrosCortos();
-        
-        for(LibroCorto libro : listaLC){
-            
-            if(libro.getId() == idLibro) return libro.getNumeroIdentificacion();
+
+        for (LibroCorto libro : listaLC) {
+
+            if (libro.getId() == idLibro) {
+                return libro.getNumeroIdentificacion();
+            }
         }
 
         return 0;
-            
-        }
-        
-        public String obtenerTitulo(int idLibro){
-            
-            String titulo = "";
-            
-            LibrosBusiness libro = new LibrosBusiness();
-            
-            long numID = libro.obtenerNumID(idLibro);
-            
-         // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+
+    }
+
+    public String obtenerTitulo(int idLibro) {
+
+        String titulo = "";
+
+        LibrosBusiness libro = new LibrosBusiness();
+
+        long numID = libro.obtenerNumID(idLibro);
+
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
         LibroDAOImpl libroModel = new LibroDAOImpl();
 
         // Obtenemos la lista de libros desde el DAO
         ArrayList<Libro> listaModel = libroModel.obtenerLibros(); // Llenamos la listaModel con datos
-        
+
         // Recorremos la listaModel y transferimos los datos a la lista de String
         for (Libro libros : listaModel) {
-            
-            if(libros.getNumeroDeIdentificacion() == numID){
+
+            if (libros.getNumeroDeIdentificacion() == numID) {
                 titulo = libros.getTitulo();
             }
-          
-            
+
         }
         return titulo;
+    }
+
+    public void vaciarLista() throws ModelException {
+
+        LibroDAOImpl libros = new LibroDAOImpl();
+
+        libros.vaciarLista();
+
+    }
+
+    public String obtenerEstado(long id) {
+        // Creamos una instancia de LibroDAOImpl para obtener los datos de libros desde la DB
+        LibroDAOImpl libroModel = new LibroDAOImpl();
+
+        // Obtenemos la lista de libros desde el DAO
+        ArrayList<Libro> lista = libroModel.obtenerLibros();
+
+        for (Libro libro : lista) {
+
+            if (libro.getNumeroDeIdentificacion() == id) {
+                return libro.getEstadoDelLibro();
+            }
         }
-        
-        
-        public void vaciarLista() throws ModelException{
-            
-            LibroDAOImpl libros = new LibroDAOImpl();
-            
-            libros.vaciarLista();
-            
-            
-        }
-        
+
+        return null;
+    }
 }
