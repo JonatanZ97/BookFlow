@@ -47,7 +47,7 @@ public class UsuarioBusiness {
     }
 
     // Método para obtener la lista de usuarios
-    public static ArrayList<UsuarioBusiness> getListaUsuarios() {
+    public ArrayList<UsuarioBusiness> getListaUsuarios() {
 
         // Creamos la lista que devolveremos
         ArrayList<UsuarioBusiness> listaUsuarios = new ArrayList<>();
