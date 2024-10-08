@@ -4,6 +4,10 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.UsuarioBusiness;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author 54234
@@ -33,7 +37,7 @@ public class MostrarUsuarios extends javax.swing.JFrame {
         configuracion = new javax.swing.JButton();
         biblioteca = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areaTexto = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         reservas = new javax.swing.JButton();
         jToggleButton3 = new javax.swing.JToggleButton();
@@ -89,9 +93,9 @@ public class MostrarUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(biblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 250, 30));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaTexto.setColumns(20);
+        areaTexto.setRows(5);
+        jScrollPane1.setViewportView(areaTexto);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 960, 470));
 
@@ -162,19 +166,43 @@ public class MostrarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+       List<String> lista = new ArrayList<>();
+        
+        UsuarioBusiness usuario = new UsuarioBusiness();
+        
+        lista = usuario.convertToString();
+        
+        areaTexto.setText("");
+        String texto;
+        texto = areaTexto.getText();
+        
+        StringBuilder contenido = new StringBuilder();
+        
+        for (String elemento : lista) {
+            contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
+        }
+
+        // Mostrar el contenido en el TextArea
+        areaTexto.setText(contenido.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasActionPerformed
-        // TODO add your handling code here:
+        NuevoUsuario usuario = new NuevoUsuario();
+        usuario.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_reservasActionPerformed
 
     private void configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configuracionActionPerformed
-        // TODO add your handling code here:
+        CambiarContrasenia cambiar = new CambiarContrasenia();
+        cambiar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_configuracionActionPerformed
 
     private void bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bibliotecaActionPerformed
-        // TODO add your handling code here:
+        EliminarUsuario eliminar = new EliminarUsuario();
+        eliminar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bibliotecaActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
@@ -217,6 +245,7 @@ public class MostrarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTexto;
     private javax.swing.JButton biblioteca;
     private javax.swing.JButton configuracion;
     private javax.swing.JLabel fondo;
@@ -226,7 +255,6 @@ public class MostrarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JButton reservas;
