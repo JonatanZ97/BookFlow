@@ -119,13 +119,7 @@ public class Devolucion extends javax.swing.JFrame {
 
         try {
             numeroIdent = Long.parseLong(campoNumero.getText());
-        } catch (NumberFormatException e) {
-            // Manejo del error si el texto no es un número válido
-            System.out.println("El valor ingresado no es un número válido.");
 
-        }
-
-        try {
             boolean respuesta = prestamo.devolver(numeroIdent);
             if (respuesta == true) {
                 JOptionPane.showMessageDialog(null, "El libro se ha devuelto con éxito.");
@@ -135,11 +129,12 @@ public class Devolucion extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "El libro no se ha podido devolver. Verifique el ID o que el libro esté prestado.");
             }
+        } catch (NumberFormatException e) {
+            // Manejo del error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "El valor ingresado no es un número válido");
         } catch (ModelException ex) {
             Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void campoNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumeroActionPerformed

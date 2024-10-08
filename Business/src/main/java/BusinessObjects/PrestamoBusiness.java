@@ -122,7 +122,8 @@ public class PrestamoBusiness {
             if (his.getFechaReal() == null && idDB == his.getIdLibro()) {
 
                 idHis = his.getIdHistorial();
-
+                
+                libroB.cambiarAdisponible(numID);
                 resultado = true;
             }
         }
