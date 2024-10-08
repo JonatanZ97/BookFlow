@@ -4,6 +4,13 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.SociosBusiness;
+import BusinessObjects.UsuarioBusiness;
+import ModelException.ModelException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 54234
@@ -32,15 +39,15 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jToggleButton4 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        campContrasenia = new javax.swing.JTextField();
+        campNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BotonAceptar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cajaNivel = new javax.swing.JComboBox<>();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,8 +89,8 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel3.setText(">");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 240, 40));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
+        jPanel1.add(campContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 240, 40));
+        jPanel1.add(campNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 240, 40));
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
@@ -98,17 +105,17 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel11.setText("NOMBRE:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 180, 20));
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("ACEPTAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonAceptar.setBackground(new java.awt.Color(204, 255, 204));
+        BotonAceptar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BotonAceptar.setText("ACEPTAR");
+        BotonAceptar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 110, 40));
+        jPanel1.add(BotonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 110, 40));
 
         jLabel14.setFont(new java.awt.Font("Edwardian Script ITC", 1, 200)); // NOI18N
         jLabel14.setText("B");
@@ -118,8 +125,8 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel15.setText("F");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 260, 190));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", " " }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 110, 30));
+        cajaNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", " " }));
+        jPanel1.add(cajaNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 110, 30));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         FONDO.setText("jLabel1");
@@ -144,17 +151,51 @@ public class NuevoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
+        Configuracion menu = new Configuracion();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAceptarActionPerformed
+        String nombre;
+        String contrasenia;
+        int nivel;
+        
+        try {
+            nombre = campNombre.getText();
+            contrasenia = campContrasenia.getText();
+            String temporal = cajaNivel.getSelectedItem().toString();
+            
+            if (temporal.equalsIgnoreCase("1")) {
+                nivel = 1;
+            } else if (temporal.equalsIgnoreCase("2")) {
+                nivel = 2;
+            } else {
+                nivel = 1;
+            }           
+            
+            
+            UsuarioBusiness usuario = new UsuarioBusiness();
+            if(contrasenia != null && nombre != null && nivel != 0){
+                usuario.nuevoUsuario(nombre, contrasenia, nivel);
+                JOptionPane.showMessageDialog(null, "Usuario creado con exito");
+            }else{
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        } catch (ModelException ex) {
+            Logger.getLogger(NuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BotonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,9 +236,11 @@ public class NuevoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAceptar;
     private javax.swing.JLabel FONDO;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cajaNivel;
+    private javax.swing.JTextField campContrasenia;
+    private javax.swing.JTextField campNombre;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -207,8 +250,6 @@ public class NuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     // End of variables declaration//GEN-END:variables
