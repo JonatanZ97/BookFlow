@@ -296,7 +296,9 @@ public class CambiarContrasenia extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void BotonPropiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPropiaActionPerformed

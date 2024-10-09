@@ -7,6 +7,7 @@ package com.mycompany.view;
 import BusinessObjects.LibrosBusiness;
 import BusinessObjects.PrestamoBusiness;
 import BusinessObjects.ReservaBusiness;
+import BusinessObjects.SociosBusiness;
 import BusinessObjects.UsuarioLocal;
 import ModelException.ModelException;
 import java.util.logging.Level;
@@ -203,7 +204,18 @@ public class Configuracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void devolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolucionActionPerformed
-        // TODO add your handling code here:
+        SociosBusiness socio = new SociosBusiness();
+        UsuarioLocal usuario = UsuarioLocal.getInstancia();
+        if (usuario.getNivel() == 0 || usuario.getNivel() == 1) {
+            try {
+                socio.vaciarLista();
+                JOptionPane.showMessageDialog(null, "Lista de socios vaciada con exito");
+            } catch (ModelException ex) {
+                Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tienes el nivel requerido para hacer esto");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_devolucionActionPerformed
 
     private void sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sociosActionPerformed
@@ -281,6 +293,9 @@ public class Configuracion extends javax.swing.JFrame {
     }//GEN-LAST:event_devolucion1ActionPerformed
 
     private void biblioteca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca1ActionPerformed
+        EliminarUsuario usuario = new EliminarUsuario();
+        usuario.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_biblioteca1ActionPerformed
 
