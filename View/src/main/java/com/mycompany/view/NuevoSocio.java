@@ -206,6 +206,7 @@ public class NuevoSocio extends javax.swing.JFrame {
 
         botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonCalendario.setText("Calendario");
+        botonCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCalendarioActionPerformed(evt);
@@ -260,13 +261,15 @@ public class NuevoSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreUsuario10ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+        Socios socio = new Socios();
+        socio.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

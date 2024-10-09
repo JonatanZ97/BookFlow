@@ -169,4 +169,23 @@ public class UsuarioBusiness {
         }
         return respuesta;
     }
+    
+    public boolean existeUsuario(int idUser){
+        boolean respuesta = false;
+        
+        UsuarioBusiness user = new UsuarioBusiness();
+        
+        ArrayList <UsuarioBusiness> listaUser = new ArrayList<>();
+        
+        listaUser = user.getListaUsuarios();
+        
+        for(UsuarioBusiness usuario : listaUser){
+            if(usuario.getIdUsuario() == idUser){
+                respuesta = true;
+            }
+        }
+
+        
+        return respuesta;
+    }
 }

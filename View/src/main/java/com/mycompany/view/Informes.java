@@ -124,6 +124,7 @@ public class Informes extends javax.swing.JFrame {
 
         botonCalendario1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonCalendario1.setText("Calendario");
+        botonCalendario1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCalendario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCalendario1ActionPerformed(evt);
@@ -133,6 +134,7 @@ public class Informes extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Calendario");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

@@ -92,10 +92,12 @@ public class Prestamo extends javax.swing.JFrame {
 
         buttonGroup1.add(botonId);
         botonId.setText("ID");
+        botonId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
+        botonDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -132,6 +134,7 @@ public class Prestamo extends javax.swing.JFrame {
 
         botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonCalendario.setText("Calendario");
+        botonCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCalendarioActionPerformed(evt);

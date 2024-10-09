@@ -4,6 +4,8 @@
  */
 package com.mycompany.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 54234
@@ -228,9 +230,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_prestamoActionPerformed
 
     private void informesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informesActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "EN DESARROLLO");
+        
+        /*
         Informes informes = new Informes();
         informes.setVisible(true);
         this.dispose();
+        */
+        
     }//GEN-LAST:event_informesActionPerformed
 
     private void historialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialActionPerformed

@@ -199,6 +199,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         jToggleButton4.setBackground(new java.awt.Color(102, 255, 102));
         jToggleButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jToggleButton4.setText("Guardar");
+        jToggleButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton4ActionPerformed(evt);
@@ -208,6 +209,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
         botonMostrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonMostrar.setText("Mostrar datos");
+        botonMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMostrarActionPerformed(evt);
@@ -221,6 +223,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
         botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonCalendario.setText("Calendario");
+        botonCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCalendarioActionPerformed(evt);
@@ -231,7 +234,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
         fondo.setText("jLabel1");
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1010, 640));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

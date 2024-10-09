@@ -109,6 +109,7 @@ public class Renovacion extends javax.swing.JFrame {
 
         botonCalendario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonCalendario.setText("Calendario");
+        botonCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCalendarioActionPerformed(evt);
