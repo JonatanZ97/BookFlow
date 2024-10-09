@@ -355,7 +355,14 @@ public class CambiarContrasenia extends javax.swing.JFrame {
             UsuarioBusiness userM = new UsuarioBusiness();
             
                 try {
-                    userM.cambiarContrasenia(idInt, contra1);
+                    boolean respuesta = userM.modificarContraseñaOtro(idInt, contra1);
+                    
+                    if(!respuesta){
+                        JOptionPane.showMessageDialog(null, "El usuario no fue encontrado");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "CONTRASEÑA MODIFICADA");
+                    } 
+                    
                 } catch (ModelException ex) {
                     JOptionPane.showMessageDialog(null, "ERROR EN LOS DATOS INGRESADOS");
                 }
@@ -367,7 +374,7 @@ public class CambiarContrasenia extends javax.swing.JFrame {
             }
         } else {
 
-            JOptionPane.showMessageDialog(null, "Solo el usuario Administrador puedo modificar la contraseña de otro perfil.");
+            JOptionPane.showMessageDialog(null, "Permisos insuficientes para realizar esta accion");
         }
         }
         
