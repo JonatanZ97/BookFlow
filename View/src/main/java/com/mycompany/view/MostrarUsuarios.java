@@ -160,25 +160,25 @@ public class MostrarUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
+        Configuracion menu = new Configuracion();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-       List<String> lista = new ArrayList<>();
-        
+
+        List<String> lista = new ArrayList<>();
+
         UsuarioBusiness usuario = new UsuarioBusiness();
-        
+
         lista = usuario.convertToString();
-        
+
         areaTexto.setText("");
         String texto;
         texto = areaTexto.getText();
-        
+
         StringBuilder contenido = new StringBuilder();
-        
+
         for (String elemento : lista) {
             contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
         }
@@ -206,6 +206,9 @@ public class MostrarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_bibliotecaActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
