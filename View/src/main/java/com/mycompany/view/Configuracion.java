@@ -4,6 +4,7 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.LibrosBusiness;
 import BusinessObjects.PrestamoBusiness;
 import BusinessObjects.ReservaBusiness;
 import BusinessObjects.UsuarioLocal;
@@ -265,7 +266,18 @@ public class Configuracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void devolucion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolucion1ActionPerformed
-        // TODO add your handling code here:
+        LibrosBusiness libro = new LibrosBusiness();
+        UsuarioLocal usuario = UsuarioLocal.getInstancia();
+        if (usuario.getNivel() == 0 || usuario.getNivel() == 1) {
+            try {
+                libro.vaciarLista();
+                JOptionPane.showMessageDialog(null, "Lista de libros vaciada con exito");
+            } catch (ModelException ex) {
+                Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tienes el nivel requerido para hacer esto");
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_devolucion1ActionPerformed
 
     private void biblioteca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioteca1ActionPerformed
