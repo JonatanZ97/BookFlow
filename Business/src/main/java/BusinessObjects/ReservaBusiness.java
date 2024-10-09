@@ -239,4 +239,10 @@ public class ReservaBusiness {
         return true;
 
     }
+
+    public void vaciarListaReservas() throws ModelException {
+        ReservaDAOImpl reserva = new ReservaDAOImpl();
+
+        reserva.vaciarLista();
+    }
 }

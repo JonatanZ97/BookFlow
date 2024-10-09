@@ -4,7 +4,13 @@
  */
 package com.mycompany.view;
 
+import BusinessObjects.PrestamoBusiness;
+import BusinessObjects.ReservaBusiness;
 import BusinessObjects.UsuarioLocal;
+import ModelException.ModelException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -200,8 +206,18 @@ public class Configuracion extends javax.swing.JFrame {
     }//GEN-LAST:event_devolucionActionPerformed
 
     private void sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sociosActionPerformed
-        Socios socios = new Socios();
-        socios.setVisible(true);
+        PrestamoBusiness prestamo = new PrestamoBusiness();
+        UsuarioLocal usuario = UsuarioLocal.getInstancia();
+        if (usuario.getNivel() == 0 || usuario.getNivel() == 1) {
+            try {
+                prestamo.borrarHistorialPrestamos();
+                JOptionPane.showMessageDialog(null, "Historial de prestamos borrada con exito");
+            } catch (ModelException ex) {
+                Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tienes el nivel requerido para hacer esto");
+        }
     }//GEN-LAST:event_sociosActionPerformed
 
     private void configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configuracionActionPerformed
@@ -209,10 +225,23 @@ public class Configuracion extends javax.swing.JFrame {
         CambiarContrasenia contrasenia = new CambiarContrasenia();
         contrasenia.setVisible(true);
         this.dispose();
-       
+
     }//GEN-LAST:event_configuracionActionPerformed
 
     private void prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestamoActionPerformed
+        ReservaBusiness reserva = new ReservaBusiness();
+        UsuarioLocal usuario = UsuarioLocal.getInstancia();
+        if (usuario.getNivel() == 0 || usuario.getNivel() == 1) {
+            try {
+                reserva.vaciarListaReservas();
+                JOptionPane.showMessageDialog(null, "Lista de reservas vaciada con exito");
+            } catch (ModelException ex) {
+                Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tienes el nivel requerido para hacer esto");
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_prestamoActionPerformed
 
@@ -226,7 +255,7 @@ public class Configuracion extends javax.swing.JFrame {
         NuevoUsuario nuevoUsuario = new NuevoUsuario();
         nuevoUsuario.setVisible(true);
         this.dispose();;
-             
+
     }//GEN-LAST:event_reservasActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
