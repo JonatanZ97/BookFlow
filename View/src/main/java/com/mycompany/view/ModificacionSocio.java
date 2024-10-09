@@ -130,10 +130,12 @@ public class ModificacionSocio extends javax.swing.JFrame {
 
         buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
+        botonDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         buttonGroup1.add(botonId);
         botonId.setText("ID");
+        botonId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(51, 204, 0));
@@ -184,9 +186,11 @@ public class ModificacionSocio extends javax.swing.JFrame {
 
         buttonGroup2.add(botonNombre);
         botonNombre.setText("NOMBRE");
+        botonNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         buttonGroup2.add(botonApellido);
         botonApellido.setText("APELLIDO");
+        botonApellido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         campDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

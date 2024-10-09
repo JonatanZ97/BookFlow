@@ -96,10 +96,12 @@ public class EliminarSocio extends javax.swing.JFrame {
 
         buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
+        botonDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
         buttonGroup1.add(botonId);
         botonId.setText("ID");
+        botonId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N

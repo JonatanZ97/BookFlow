@@ -182,9 +182,11 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         buttonGroup1.add(BotonTitulo);
         BotonTitulo.setText("TITULO");
+        BotonTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         buttonGroup1.add(BotonAutor);
         BotonAutor.setText("AUTOR");
+        BotonAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         CampoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,9 +196,11 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         buttonGroup1.add(BotonEditorial);
         BotonEditorial.setText("EDITORIAL");
+        BotonEditorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         buttonGroup1.add(BotonCdu);
         BotonCdu.setText("CDU");
+        BotonCdu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

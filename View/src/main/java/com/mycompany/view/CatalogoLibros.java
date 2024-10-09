@@ -128,18 +128,22 @@ public class CatalogoLibros extends javax.swing.JFrame {
 
         buttonGroup1.add(BotonAutor);
         BotonAutor.setText("Autor");
+        BotonAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(BotonAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         buttonGroup1.add(BotonEditorial);
         BotonEditorial.setText("Editorial");
+        BotonEditorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(BotonEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         buttonGroup1.add(BotonCdu);
         BotonCdu.setText("CDU");
+        BotonCdu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(BotonCdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         buttonGroup1.add(BotonTitulo);
         BotonTitulo.setText("Titulo");
+        BotonTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(BotonTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
         jPanel1.add(CampoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 240, 40));
 

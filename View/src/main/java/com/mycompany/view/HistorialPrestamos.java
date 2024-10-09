@@ -117,14 +117,17 @@ public class HistorialPrestamos extends javax.swing.JFrame {
 
         buttonGroup1.add(botonId);
         botonId.setText("ID SOCIO");
+        botonId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
+        botonDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         buttonGroup1.add(botonIdentificacion);
         botonIdentificacion.setText("NUMERO DE IDENTIFICACIÓN DEL LIBRO");
+        botonIdentificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(204, 255, 204));

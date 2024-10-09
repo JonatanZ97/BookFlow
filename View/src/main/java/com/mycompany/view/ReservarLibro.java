@@ -105,10 +105,12 @@ public class ReservarLibro extends javax.swing.JFrame {
 
         buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
+        botonDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
 
         buttonGroup1.add(botonId);
         botonId.setText("ID");
+        botonId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonIdActionPerformed(evt);

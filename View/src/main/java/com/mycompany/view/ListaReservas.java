@@ -118,14 +118,17 @@ public class ListaReservas extends javax.swing.JFrame {
 
         buttonGroup1.add(botonId);
         botonId.setText("ID SOCIO");
+        botonId.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         buttonGroup1.add(botonDni);
         botonDni.setText("DNI");
+        botonDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         buttonGroup1.add(botonIdentificador);
         botonIdentificador.setText("NUMERO DE IDENTIFICACIÓN DEL LIBRO");
+        botonIdentificador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(botonIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         botonBuscar.setBackground(new java.awt.Color(204, 255, 204));
