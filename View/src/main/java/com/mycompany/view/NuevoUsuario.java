@@ -172,6 +172,8 @@ public class NuevoUsuario extends javax.swing.JFrame {
             contrasenia = campContrasenia.getText();
             String temporal = cajaNivel.getSelectedItem().toString();
             
+
+            
             if (temporal.equalsIgnoreCase("1")) {
                 nivel = 1;
             } else if (temporal.equalsIgnoreCase("2")) {
@@ -182,7 +184,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
             
             
             UsuarioBusiness usuario = new UsuarioBusiness();
-            if(contrasenia != null && nombre != null && nivel != 0){
+            if(!contrasenia.isEmpty() && !nombre.isEmpty() && nivel != 0){
                 usuario.nuevoUsuario(nombre, contrasenia, nivel);
                 JOptionPane.showMessageDialog(null, "Usuario creado con exito");
                 MenuPrincipal menu = new MenuPrincipal();

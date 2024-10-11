@@ -137,7 +137,7 @@ public class Modificar extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("MOIFICAR");
+        jLabel4.setText("MODIFICAR");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 130, 30));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -158,7 +158,7 @@ public class Modificar extends javax.swing.JFrame {
 
         estadoActual.setBackground(new java.awt.Color(255, 255, 255));
         estadoActual.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
-        jPanel1.add(estadoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 230, 40));
+        jPanel1.add(estadoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 470, 40));
 
         botonMostrar.setBackground(new java.awt.Color(102, 255, 0));
         botonMostrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -231,7 +231,7 @@ public class Modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        ModificarDatos modificar = new ModificarDatos();
+        ModificarLibro modificar = new ModificarLibro();
         modificar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton3ActionPerformed

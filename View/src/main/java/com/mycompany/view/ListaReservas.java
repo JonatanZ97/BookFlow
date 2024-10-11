@@ -304,7 +304,9 @@ public class ListaReservas extends javax.swing.JFrame {
                 // Manejar el error si el texto no es un número válido
                 JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
             }
-        }        // TODO add your handling code here:
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion de busqueda");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed

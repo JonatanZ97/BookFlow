@@ -299,7 +299,7 @@ public class NuevoSocio extends javax.swing.JFrame {
 
             dni = Long.parseLong(texto);
 
-            if (fechaLocal == null || nombre == null || apellido == null || mail == null || direccion == null) {// compruebo que no sean null
+            if (fechaLocal == null || nombre.isEmpty() || apellido.isEmpty() || mail.isEmpty() || direccion.isEmpty()) {// compruebo que no sean null
                 JOptionPane.showMessageDialog(null, "Campo vacio");
             } else {
                 SociosBusiness socios = new SociosBusiness();

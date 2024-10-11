@@ -79,7 +79,7 @@ public class Informes extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("HISTORIAL DE PRESTAMOS");
+        jLabel4.setText("INFORMES");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 200, 30));
 
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N

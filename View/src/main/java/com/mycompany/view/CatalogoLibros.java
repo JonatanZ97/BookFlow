@@ -202,51 +202,65 @@ public class CatalogoLibros extends javax.swing.JFrame {
         // Verificar cuál de los botones está seleccionado
         if (BotonTitulo.isSelected()) {
             String titulo = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorTitulo(titulo);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (titulo.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorTitulo(titulo);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-             if(listaLibros.isEmpty()){
-             AreaLibros.setText("No hay coincidencia.");          
-        }
 
         } else if (BotonAutor.isSelected()) {
             String autor = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorAutor(autor);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (autor.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorAutor(autor);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-             if(listaLibros.isEmpty()){
-             AreaLibros.setText("No hay coincidencia.");          
-        }
 
         } else if (BotonEditorial.isSelected()) {
             String editorial = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorEditorial(editorial);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-            AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (editorial.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorEditorial(editorial);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-            if(listaLibros.isEmpty()){
-            AreaLibros.setText("No hay coincidencia.");
-            }
-
         } else if (BotonCdu.isSelected()) {
             String cdu = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorCDU(cdu);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (cdu.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorCDU(cdu);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-             if(listaLibros.isEmpty()){
-            AreaLibros.setText("No hay coincidencia.");
-            }
-
         } else {
             // Si ningún botón está seleccionado
-             JOptionPane.showMessageDialog(null, "Ingrese una opción de búsqueda por favor.");
+            JOptionPane.showMessageDialog(null, "Ingrese una opción de búsqueda por favor.");
         }
 
     }//GEN-LAST:event_BuscarLibrosActionPerformed

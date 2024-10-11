@@ -312,25 +312,37 @@ public class CambiarContrasenia extends javax.swing.JFrame {
             String nuevaC = nuevaContraseña.getText();
             String repetirC = repetirContraseña.getText();
 
-            if (contraseña.equals(actual)) {
-               if(nuevaC.equals(repetirC)){
-                   UsuarioBusiness business = new UsuarioBusiness();
-                   int idUsuario = usuario.getId();
-                   try {
-                       boolean respuesta = business.cambiarContrasenia(idUsuario,nuevaC);
-                       if (respuesta == true){
-                         JOptionPane.showMessageDialog(null, "La contraseña ha sido actualizada exitosamente");   
-                       }else{
-                       JOptionPane.showMessageDialog(null, "La contraseña no se ha podido actualizar.");     
-                       }
-                   } catch (ModelException ex) {
-                       Logger.getLogger(CambiarContrasenia.class.getName()).log(Level.SEVERE, null, ex);
-                   }             
-               }else{
-              JOptionPane.showMessageDialog(null, "Las contraseñas nuevas ingresadas no coinciden");     
-               }
+            if (!actual.isEmpty() && !nuevaC.isEmpty() && !repetirC.isEmpty()) {
+                if (contraseña.equals(actual)) {
+                    if (nuevaC.equals(repetirC)) {
+                        if (!nuevaC.equals(actual)) {
+                            UsuarioBusiness business = new UsuarioBusiness();
+                            int idUsuario = usuario.getId();
+                            try {
+                                boolean respuesta = business.cambiarContrasenia(idUsuario, nuevaC);
+                                if (respuesta) {
+                                    JOptionPane.showMessageDialog(null, "La contraseña ha sido actualizada exitosamente");
+                                    usuario.setContraseña(nuevaC);
+                                    MenuPrincipal menu = new MenuPrincipal();
+                                    menu.setVisible(true);
+                                    this.dispose();
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "La contraseña no se ha podido actualizar.");
+                                }
+                            } catch (ModelException ex) {
+                                Logger.getLogger(CambiarContrasenia.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La nueva contrasenia es igual a la original");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Las contraseñas nuevas ingresadas no coinciden");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contraseña actual incorrecta");
+                }
             } else {
-            JOptionPane.showMessageDialog(null, "Contraseña actual incorrecta");              
+                JOptionPane.showMessageDialog(null, "Campo vacio");
             }
         } else {
             JOptionPane.showMessageDialog(null, "El usuario administrador no puede cambiar su contraseña.");
@@ -341,55 +353,53 @@ public class CambiarContrasenia extends javax.swing.JFrame {
         UsuarioLocal usuario = UsuarioLocal.getInstancia();
         int nivel = usuario.getNivel();
 
-        
         String contra1 = pass1.getText();
         String contra2 = pass2.getText();
-        
+
         if (contra1 == null || contra1.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos vacios");
-        }else if(contra1.equals(contra2)){
+        } else if (contra1.equals(contra2)) {
             if (nivel == 0 || nivel == 1) {
-            try{
-            String idUsuario = idUser.getText();
-            
-            int idInt = Integer.parseInt(idUsuario);
-            
-            UsuarioBusiness userM = new UsuarioBusiness();
-            
                 try {
-                    boolean respuesta = userM.modificarContraseñaOtro(idInt, contra1);
-                    
-                    if(!respuesta){
-                        JOptionPane.showMessageDialog(null, "El usuario no fue encontrado");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "CONTRASEÑA MODIFICADA");
-                    } 
-                    
-                } catch (ModelException ex) {
-                    JOptionPane.showMessageDialog(null, "ERROR EN LOS DATOS INGRESADOS");
-                }
-            
-            
-            }catch (NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "ERROR EN LOS DATOS INGRESADOS");
-        
-            }
-        } else {
+                    String idUsuario = idUser.getText();
 
-            JOptionPane.showMessageDialog(null, "Permisos insuficientes para realizar esta accion");
+                    int idInt = Integer.parseInt(idUsuario);
+
+                    UsuarioBusiness userM = new UsuarioBusiness();
+
+                    try {
+                        boolean respuesta = userM.modificarContraseñaOtro(idInt, contra1);
+
+                        if (!respuesta) {
+                            JOptionPane.showMessageDialog(null, "El usuario no fue encontrado");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "CONTRASEÑA MODIFICADA");
+                            if(idInt == usuario.getId()){
+                                usuario.setContraseña(contra1);
+                            }
+                        }
+
+                    } catch (ModelException ex) {
+                        JOptionPane.showMessageDialog(null, "ERROR EN LOS DATOS INGRESADOS");
+                    }
+
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un ID valido");
+
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Permisos insuficientes para realizar esta accion");
+            }
         }
-        }
-        
-        
-        
 
 
     }//GEN-LAST:event_BotonOtroActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       MostrarUsuarios mostrar = new MostrarUsuarios();
-       mostrar.setVisible(true);
-       this.dispose();
+        MostrarUsuarios mostrar = new MostrarUsuarios();
+        mostrar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

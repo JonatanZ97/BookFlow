@@ -299,7 +299,7 @@ public class ModificarLibro extends javax.swing.JFrame {
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
@@ -313,83 +313,99 @@ public class ModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoIdentificadorActionPerformed
 
     private void buscarIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIdentificadorActionPerformed
-        LibrosBusiness libros = new LibrosBusiness();   
+        LibrosBusiness libros = new LibrosBusiness();
         String numero = campoIdentificador.getText();
 
-      long identificador = Long.parseLong(numero);
-        
-      boolean respuesta = libros.existeLibro(identificador);
-      
-      if(respuesta == true){
-          
-          LibroLocal singleton = LibroLocal.getInstance();
-          singleton.setNumIdentificacion(identificador);
-          Modificar modificar = new Modificar();
-          modificar.setVisible(true);
-          this.dispose();
-          
-      }else{
-      campoIdentificador.setText(" ");
-      campoIdentificador.setText("No hay coincidencia."); 
-      }
-       
+        try {
+            long identificador = Long.parseLong(numero);
+
+            boolean respuesta = libros.existeLibro(identificador);
+
+            if (respuesta == true) {
+
+                LibroLocal singleton = LibroLocal.getInstance();
+                singleton.setNumIdentificacion(identificador);
+                Modificar modificar = new Modificar();
+                modificar.setVisible(true);
+                this.dispose();
+
+            } else {
+                campoIdentificador.setText(" ");
+                campoIdentificador.setText("No hay coincidencia.");
+            }
+        } catch (NumberFormatException e) {
+            // Manejar el error si el texto no es un número válido
+            JOptionPane.showMessageDialog(null, "ingrese un numero valido");
+        }
     }//GEN-LAST:event_buscarIdentificadorActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+
         LibrosBusiness libros = new LibrosBusiness();
         ArrayList<String> listaLibros = new ArrayList<>();
 
         // Verificar cuál de los botones está seleccionado
         if (BotonTitulo.isSelected()) {
             String titulo = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorTitulo(titulo);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (titulo.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorTitulo(titulo);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-             if(listaLibros.isEmpty()){
-             AreaLibros.setText("No hay coincidencia.");          
-        }
-
         } else if (BotonAutor.isSelected()) {
             String autor = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorAutor(autor);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (autor.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorAutor(autor);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-             if(listaLibros.isEmpty()){
-             AreaLibros.setText("No hay coincidencia.");          
-        }
-
         } else if (BotonEditorial.isSelected()) {
             String editorial = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorEditorial(editorial);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-            AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (editorial.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorEditorial(editorial);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-            if(listaLibros.isEmpty()){
-            AreaLibros.setText("No hay coincidencia.");
-            }
-
         } else if (BotonCdu.isSelected()) {
             String cdu = CampoBusqueda.getText();
-            listaLibros = libros.buscarPorCDU(cdu);
-            AreaLibros.setText("");
-            for (String libro : listaLibros) {
-                AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+            if (cdu.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                listaLibros = libros.buscarPorCDU(cdu);
+                AreaLibros.setText("");
+                for (String libro : listaLibros) {
+                    AreaLibros.append(libro + "\n");  // Mostrar los libros en el JTextArea
+                }
+                if (listaLibros.isEmpty()) {
+                    AreaLibros.setText("No hay coincidencia.");
+                }
             }
-             if(listaLibros.isEmpty()){
-            AreaLibros.setText("No hay coincidencia.");
-            }
-
         } else {
             // Si ningún botón está seleccionado
-             JOptionPane.showMessageDialog(null, "Ingrese una opción de búsqueda por favor.");
+            JOptionPane.showMessageDialog(null, "Ingrese una opcion de busqueda por favor.");
         }
-           
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void CampoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoBusquedaActionPerformed

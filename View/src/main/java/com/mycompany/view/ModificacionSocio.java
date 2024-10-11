@@ -359,20 +359,10 @@ public class ModificacionSocio extends javax.swing.JFrame {
         SociosBusiness socios = new SociosBusiness();
         if (botonNombre.isSelected()) {
             texto = campDatos.getText();
-            ArrayList<String> listaString = socios.buscarPorNombre(texto);
-
-            StringBuilder contenido = new StringBuilder();
-            for (String elemento : listaString) {
-                contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
-            }
-
-            // Mostrar el contenido en el TextArea
-            areaTexto.setText(contenido.toString());
-
-        } else {
-            if (botonApellido.isSelected()) {
-                texto = campDatos.getText();
-                ArrayList<String> listaString = socios.buscarPorApellido(texto);
+            if (texto.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+            } else {
+                ArrayList<String> listaString = socios.buscarPorNombre(texto);
 
                 StringBuilder contenido = new StringBuilder();
                 for (String elemento : listaString) {
@@ -381,6 +371,26 @@ public class ModificacionSocio extends javax.swing.JFrame {
 
                 // Mostrar el contenido en el TextArea
                 areaTexto.setText(contenido.toString());
+            }
+
+        } else {
+            if (botonApellido.isSelected()) {
+                texto = campDatos.getText();
+
+                if (texto.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo vacio");
+                } else {
+                    ArrayList<String> listaString = socios.buscarPorApellido(texto);
+
+                    StringBuilder contenido = new StringBuilder();
+                    for (String elemento : listaString) {
+                        contenido.append(elemento).append("\n");  // Cada elemento en una nueva línea
+                    }
+
+                    // Mostrar el contenido en el TextArea
+                    areaTexto.setText(contenido.toString());
+                }
+
             } else {
                 JOptionPane.showMessageDialog(null, "seleccione una de las opciones de busqueda");
             }
