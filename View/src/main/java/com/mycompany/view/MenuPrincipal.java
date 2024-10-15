@@ -231,13 +231,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void informesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informesActionPerformed
         
-        JOptionPane.showMessageDialog(null, "EN DESARROLLO");
+       // JOptionPane.showMessageDialog(null, "EN DESARROLLO");
         
-        /*
+     
         Informes informes = new Informes();
         informes.setVisible(true);
         this.dispose();
-        */
+       
         
     }//GEN-LAST:event_informesActionPerformed
 

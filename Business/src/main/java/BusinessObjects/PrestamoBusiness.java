@@ -215,8 +215,8 @@ public class PrestamoBusiness {
 
     }
 
-    // Método de conversión de Date a LocalDate
     
+// Método de conversión de Date a LocalDate
     public static LocalDate convertirDateALocalDate(Date fecha) {
         return fecha.toInstant()
                 .atZone(ZoneId.of("America/Argentina/Buenos_Aires")) // Definir la zona horaria de Buenos Aires
@@ -225,101 +225,36 @@ public class PrestamoBusiness {
 
     public ArrayList<String> obtenerEstadisticas(Date fechaInicio, Date fechaFin) {
 
-        //creamos los objetos nesesarios
-        ArrayList<String> listaString = new ArrayList<>();
+    ArrayList<String> listaString = new ArrayList<>();
+    LibrosBusiness libros = new LibrosBusiness();
+///////////////////////////////////////////////////////
+    LocalDate fechaInicioLD = convertirDateALocalDate(fechaInicio);
+    LocalDate fechaFinLD = convertirDateALocalDate(fechaFin);
 
-        LibrosBusiness libros = new LibrosBusiness();
+    List<Integer> masPrestados = librosMasPrestadosEntreFechas(fechaInicioLD, fechaFinLD);
 
-        //convierto las variables tipo Date a LocalDate
-        LocalDate fechaInicioLD = convertirDateALocalDate(fechaInicio);
-        LocalDate fechaFinLD = convertirDateALocalDate(fechaFin);
-
-        //obtenemos la lista de los libros mas prestados entre las fechas seleccionadas
-        List<Integer> masPrestados = librosMasPrestadosEntreFechas(fechaInicioLD, fechaFinLD);
-        
-        
-        //==========================================================================================
-            
-        //obtenemos los datos del libro 1
-        long numID = libros.obtenerNumID(masPrestados.get(0));
-
-        libros = libros.obtenerDatos(numID);
-        
-        //guardamos los datos en variables String
-        String titulo = libros.getTitulo();
-        String autor = libros.getAutor();
-        String editorial = libros.getEditorial();
-
-        //las convinamos en un String
-        StringBuilder sb = new StringBuilder();
-        sb.append(titulo);
-        sb.append(", ");
-        sb.append(editorial);
-        sb.append(", ");
-        sb.append(autor);
-
-        //las guardamos en un nuevo String
-        String combinacion = sb.toString();
-        
-        //lo sumamos a la lista
-        listaString.add(combinacion);
-        
-        //==========================================================================================
-            
-        //obtenemos los datos del libro 1
-        numID = libros.obtenerNumID(masPrestados.get(1));
-
-        libros = libros.obtenerDatos(numID);
-        
-        //guardamos los datos en variables String
-        titulo = libros.getTitulo();
-        autor = libros.getAutor();
-        editorial = libros.getEditorial();
-
-        //las convinamos en un String
-        StringBuilder sb2 = new StringBuilder();
-        sb.append(titulo);
-        sb.append(", ");
-        sb.append(editorial);
-        sb.append(", ");
-        sb.append(autor);
-
-        //las guardamos en un nuevo String
-        combinacion = sb2.toString();
-        
-        //lo sumamos a la lista
-        listaString.add(combinacion);
-        
-        //==========================================================================================
-            
-        //obtenemos los datos del libro 1
-        numID = libros.obtenerNumID(masPrestados.get(0));
-
-        libros = libros.obtenerDatos(numID);
-        
-        //guardamos los datos en variables String
-        titulo = libros.getTitulo();
-        autor = libros.getAutor();
-        editorial = libros.getEditorial();
-
-        //las convinamos en un String
-        StringBuilder sb3 = new StringBuilder();
-        sb.append(titulo);
-        sb.append(", ");
-        sb.append(editorial);
-        sb.append(", ");
-        sb.append(autor);
-
-        //las guardamos en un nuevo String
-        combinacion = sb3.toString();
-        
-        //lo sumamos a la lista
-        listaString.add(combinacion);
-        
-        
-        //retornamos la loista con los libros 
-        return listaString;
+    if (masPrestados.size() < 3) {
+        throw new IllegalArgumentException("No hay suficientes libros prestados en el rango de fechas.");
     }
+
+    for (int i = 0; i < 3; i++) {
+        long numID = libros.obtenerNumID(masPrestados.get(i));
+        LibrosBusiness libro = libros.obtenerDatos(numID);
+
+        if (libro == null) {
+            throw new IllegalStateException("No se encontraron datos para el libro con ID: " + numID);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(libro.getTitulo()).append(", ");
+        sb.append(libro.getEditorial()).append(", ");
+        sb.append(libro.getAutor());
+
+        listaString.add(sb.toString());
+    }
+
+    return listaString;
+}
 
     public List<Integer> librosMasPrestadosEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
 
